@@ -6,6 +6,7 @@ use App\Filament\Resources\Blog\PostResource\Pages;
 use App\Filament\Resources\Blog\PostResource\RelationManagers;
 use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
 use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDatePicker;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Filament\Forms;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
@@ -23,9 +24,6 @@ use Modules\Blog\Entities\Post;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use RalphJSmit\Filament\SEO\SEO;
 
-// TODO: add filter 
-// TODO: add Jalaly date piker
-// TODO: add Slugable
 
 class PostResource extends Resource
 {
@@ -62,11 +60,11 @@ class PostResource extends Resource
                         Forms\Components\TextInput::make('title')
                             ->label("عنوان")
                             ->required()
-                            ->reactive(),
-                        // ->afterStateUpdated(fn ($state, callable $set) => $set('slug', SlugService::createSlug(Post::class, 'slug', $state == null ? "" : $state))),
+                            ->reactive()
+                            ->afterStateUpdated(fn ($state, callable $set) => $set('slug', SlugService::createSlug(Post::class, 'slug', $state == null ? "" : $state))),
                         Forms\Components\TextInput::make('slug')
                             ->label("نامک (URL)")
-                            // ->disabled()
+                            ->disabled()
                             ->required()
                             ->unique(Post::class, 'slug', fn ($record) => $record),
 

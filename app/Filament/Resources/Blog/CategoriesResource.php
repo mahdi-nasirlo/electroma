@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Blog;
 
 use App\Filament\Resources\Blog\CategoriesResource\Pages;
-use App\Filament\Resources\Blog\CategoryResource\RelationManagers\PostsRelationManager;
+use App\Filament\Resources\Blog\CategoriesResource\RelationManagers\PostsRelationManager;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -12,6 +12,8 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
+use Closure;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\IconColumn;
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +21,7 @@ use Modules\Blog\Entities\Category;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use RalphJSmit\Filament\SEO\SEO;
 
-// TODO: add parent and childe
+// TODO: check category relationship
 
 class CategoriesResource extends Resource
 {
@@ -55,12 +57,11 @@ class CategoriesResource extends Resource
                             ->schema([
                                 Forms\Components\TextInput::make('name')
                                     ->label('عنوان')
-                                    ->required()
-                                    ->reactive(),
-                                // ->afterStateUpdated(fn ($state, callable $set) => $set('slug', SlugService::createSlug(Category::class, 'slug', $state == null ? "" : $state))),
+                                    ->reactive()
+                                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', SlugService::createSlug(Category::class, 'slug', $state == null ? "" : $state))),
                                 Forms\Components\TextInput::make('slug')
                                     ->label('نامک')
-                                    // ->disabled()
+                                    ->disabled()
                                     ->required()
                                     ->unique(Category::class, 'slug', fn ($record) => $record),
                             ]),
@@ -139,12 +140,12 @@ class CategoriesResource extends Resource
             ]);
     }
 
-    // public static function getRelations(): array
-    // {
-    //     return [
-    //         PostsRelationManager::class
-    //     ];
-    // }
+    public static function getRelations(): array
+    {
+        return [
+            PostsRelationManager::class
+        ];
+    }
 
     protected static function getGlobalSearchEloquentQuery(): Builder
     {

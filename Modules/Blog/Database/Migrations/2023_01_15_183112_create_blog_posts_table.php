@@ -17,11 +17,11 @@ return new class extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('blog_author_id')->nullable()->cascadeOnDelete();
-            // $table->foreign('blog_author_id')->references('id')->on('users');
+            $table->foreignId('blog_author_id')->nullable()->cascadeOnDelete();
+            $table->foreign('blog_author_id')->references('id')->on('users');
 
-            // $table->foreignId('blog_category_id')->nullable()->nullOnDelete();
-            // $table->foreign("blog_category_id")->references('id')->on('blog_categories')->cascadeOnDelete();
+            $table->foreignId('blog_category_id')->nullable()->nullOnDelete();
+            $table->foreign("blog_category_id")->references('id')->on('blog_categories')->cascadeOnDelete();
 
             $table->string('title');
             $table->string('slug')->unique();

@@ -6,12 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Kalnoy\Nestedset\NodeTrait;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
-use Spatie\Tags\HasTags;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 // TODO: add slug
 class Category extends Model
 {
-    use HasFactory, NodeTrait, HasSEO;
+    use HasFactory, NodeTrait, HasSEO, Sluggable;
 
     protected $fillable = [
         'name',
@@ -34,6 +35,11 @@ class Category extends Model
     protected $casts = [
         'is_visible' => 'boolean',
     ];
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class, 'blog_category_id');
+    }
 
     protected static function newFactory()
     {
