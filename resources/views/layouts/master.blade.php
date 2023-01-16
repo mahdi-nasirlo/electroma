@@ -13,15 +13,14 @@
     <meta name="website" content="https://www.rtl-theme.com/author/tn_plugin/" />
     <meta name="Version" content="v3.2.1" />
     <!-- favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="static/favicon.ico">
+
+    @vite('resources/css/app.css')
+
     <!-- Icons -->
     <link href="css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="unicons.iconscout.com/release/v3.0.6/css/line.css">
-    <!-- Main Css -->
-    <link href="css/style.min.css" rel="stylesheet" type="text/css" id="theme-opt" />
-    <link href="css/colors/default.css" rel="stylesheet" id="color-opt">
+
 </head>
 
 <body>
@@ -35,7 +34,7 @@
         </div>
     </div>
     <!-- Loader -->
-
+    @include('layouts.header.index')
 
     @yield('content')
 
@@ -48,7 +47,10 @@
             data-feather="arrow-up" class="icons"></i></a>
     <!-- Back to top -->
 
-    <!-- javascript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    @vite('resources/js/app.js')
+
+    {{-- <!-- javascript -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Icons -->
     <script src="js/feather.min.js"></script>
@@ -58,7 +60,7 @@
     <script src="js/plugins.init.js"></script>
     <!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
     <script src="js/app.js"></script>
-    <!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+    <!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. --> --}}
 </body>
 
 </html>

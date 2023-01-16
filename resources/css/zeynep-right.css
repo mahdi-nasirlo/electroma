@@ -1,0 +1,227 @@
+html {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: inherit;
+}
+
+.lead {
+    font-size: 16px;
+    line-height: 1.44;
+    max-width: 260px;
+    margin: 0 auto;
+    margin-bottom: 25px;
+}
+
+.btn-open {
+    border: 0;
+    border-radius: 27.5px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 150px;
+    outline: 0;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    cursor: pointer;
+    margin: 0 6px;
+}
+
+.btn-open.first {
+    color: #ffffff;
+}
+.btn-open.second {
+    background-color: #ffffff;
+    color: #fd698d;
+}
+
+/* zeynepjs menu styles */
+.zeynep {
+    background-color: #ffffff;
+    color: #404143;
+    width: 295px;
+}
+
+.zeynep ul {
+    list-style-type: none;
+    padding: 0;
+    padding-left: 20px;
+    -webkit-overflow-scrolling: touch;
+}
+.zeynep ul > li {
+    display: block;
+}
+
+.zeynep ul > li > a {
+    color: inherit;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 18px 20px;
+    text-decoration: none;
+    transition: all 150ms;
+}
+
+.zeynep ul > li > a:hover {
+    background-color: #efefef8c;
+    border-radius: 3px;
+    color: orangered;
+}
+
+.zeynep ul > li > a:hover img {
+    opacity: 0.4;
+}
+
+.zeynep ul > li > a img:hover {
+    background-color: #e400008c;
+    border-radius: 3px;
+    color: orangered;
+}
+
+.zeynep ul > li:not(:last-child) > a {
+    border-bottom: 1px solid #efefef;
+}
+
+.zeynep ul > li.has-submenu > a {
+    background-image: linear-gradient(
+            to bottom,
+            rgb(255 255 255 / 75%),
+            rgb(255 255 255 / 75%)
+        ),
+        url(../images/submenu-arrow.png);
+    background-position: 20px center;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
+
+.zeynep ul > li.has-submenu > a:hover {
+    background-image: url("../images/submenu-arrow.png");
+}
+
+/* zeynepjs submenu styles */
+.zeynep .submenu {
+    z-index: 10;
+    background-color: #ffffff;
+    left: 295px;
+}
+
+.zeynep .submenu-header {
+    background-image: url("../images/menu-back.png");
+    background-position: left 20px center;
+    background-repeat: no-repeat;
+    background-size: 8px 14px;
+    border-bottom: solid 1px #efefef;
+    cursor: pointer;
+    position: relative;
+}
+
+.zeynep .submenu-header > a {
+    color: inherit;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 18px 20px;
+    padding-left: 40px;
+    text-decoration: none;
+}
+
+.zeynep .submenu-header > a:before {
+    background-image: url("../images/submenu-arrow.png");
+    background-position: right 20px center;
+    background-repeat: no-repeat;
+    background-size: 8px 14px;
+    content: "";
+    height: 100%;
+    left: 26px;
+    position: absolute;
+    top: 0;
+    transform: rotate(-180deg);
+    width: 20px;
+}
+
+.zeynep .submenu > label {
+    color: orangered;
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    margin-top: 19px;
+    opacity: 0.5;
+    padding-left: 40px;
+    width: 100%;
+}
+
+/* right side menu specific styles */
+body {
+    right: 0;
+}
+
+.zeynep-opened body {
+    overflow: hidden;
+}
+
+.zeynep.right {
+    left: auto;
+    right: 0;
+}
+.zeynep.right:not(.opened) {
+    transform: translateX(100%);
+}
+
+.menu {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    padding: 0;
+    justify-content: flex-end;
+}
+
+.line {
+    fill: none;
+    stroke: black;
+    stroke-width: 6;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
+}
+
+.line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+}
+
+.opened .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
+
+.opened .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+}
+
+.opened .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+}
