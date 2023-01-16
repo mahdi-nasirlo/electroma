@@ -11,6 +11,9 @@
 |
 */
 
-Route::prefix('blog')->group(function() {
-    Route::get('/', 'BlogController@index');
+use Illuminate\Support\Facades\Route;
+
+Route::prefix('blog')->group(function () {
+    Route::get('/{post:slug}', [articleController::class, 'show'])->name('article.single');
+    Route::get('/category/{category:slug}', [articleController::class, 'list'])->name('article.list');
 });
