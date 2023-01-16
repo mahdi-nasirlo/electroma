@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Blog;
 
 use App\Filament\Resources\Blog\PostResource\Pages;
 use App\Filament\Resources\Blog\PostResource\RelationManagers;
+use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
 use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDatePicker;
 use Filament\Forms;
 use Filament\Forms\Components\DateTimePicker;
@@ -17,8 +18,10 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Blog\Entities\Category;
 use Modules\Blog\Entities\Post;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use RalphJSmit\Filament\SEO\SEO;
 
 // TODO: add filter 
 // TODO: add Jalaly date piker
@@ -81,45 +84,45 @@ class PostResource extends Resource
                             ->required(),
                         // ->gt('zero'),
 
-                        // Hidden::make("blog_author_id")->default(auth()->user()->id),
+                        Hidden::make("blog_author_id")->default(auth()->user()->id),
 
-                        // Forms\Components\Select::make('blog_category_id')
-                        //     ->preload()
-                        //     ->label("دسته بندی")
-                        //     ->options(function (callable $get) {
-                        //         return Category::all()->pluck("name", "id")->toArray();
-                        //     })
-                        //     ->relationship("category", "name")
-                        //     ->createOptionForm([
-                        //         Forms\Components\Grid::make()
-                        //             ->schema([
-                        //                 Forms\Components\TextInput::make('name')
-                        //                     ->label('عنوان')
-                        //                     ->required()
-                        //                     ->reactive()
-                        //                     ->afterStateUpdated(fn ($state, callable $set) => $set('slug', SlugService::createSlug(Category::class, 'slug', $state == null ? "" : $state))),
-                        //                 Forms\Components\TextInput::make('slug')
-                        //                     ->label('نامک')
-                        //                     ->disabled()
-                        //                     ->required()
-                        //                     ->unique(Category::class, 'slug', fn ($record) => $record),
-                        //             ]),
-                        //         Forms\Components\Select::make('parent_id')
-                        //             ->label('دسته بندی پدر')
-                        //             ->relationship('parent', 'name', fn (Builder $query, ?Category $record) => $query->whereNot('id', $record ? $record->id : null)),
-                        //         Forms\Components\Toggle::make('is_visible')
-                        //             ->label('قابل نمایش برای کاربران.')
-                        //             ->onIcon('heroicon-s-eye')
-                        //             ->offIcon('heroicon-s-eye-off')
-                        //             ->default(true),
-                        //         // TinyEditor::make('description')
-                        //         //     ->label("محتوا")
-                        //         //     ->columnSpan([
-                        //         //         'sm' => 2,
-                        //         //     ]),
-                        //     ])
-                        //     ->searchable()
-                        //     ->required(),
+                        Forms\Components\Select::make('blog_category_id')
+                            ->preload()
+                            ->label("دسته بندی")
+                            ->options(function (callable $get) {
+                                return Category::all()->pluck("name", "id")->toArray();
+                            })
+                            ->relationship("category", "name")
+                            ->createOptionForm([
+                                Forms\Components\Grid::make()
+                                    ->schema([
+                                        Forms\Components\TextInput::make('name')
+                                            ->label('عنوان')
+                                            ->required()
+                                            ->reactive()
+                                            ->afterStateUpdated(fn ($state, callable $set) => $set('slug', SlugService::createSlug(Category::class, 'slug', $state == null ? "" : $state))),
+                                        Forms\Components\TextInput::make('slug')
+                                            ->label('نامک')
+                                            ->disabled()
+                                            ->required()
+                                            ->unique(Category::class, 'slug', fn ($record) => $record),
+                                    ]),
+                                Forms\Components\Select::make('parent_id')
+                                    ->label('دسته بندی پدر')
+                                    ->relationship('parent', 'name', fn (Builder $query, ?Category $record) => $query->whereNot('id', $record ? $record->id : null)),
+                                Forms\Components\Toggle::make('is_visible')
+                                    ->label('قابل نمایش برای کاربران.')
+                                    ->onIcon('heroicon-s-eye')
+                                    ->offIcon('heroicon-s-eye-off')
+                                    ->default(true),
+                                // TinyEditor::make('description')
+                                //     ->label("محتوا")
+                                //     ->columnSpan([
+                                //         'sm' => 2,
+                                //     ]),
+                            ])
+                            ->searchable()
+                            ->required(),
                         JalaliDatePicker::make('published_at')
                             ->label('تاریخ انتشار')
                             ->default(now())
@@ -140,7 +143,7 @@ class PostResource extends Resource
                             ->required()
                             ->label('عکس شاخص')
                             ->image(),
-                        // SEO::make(),
+                        SEO::make(),
 
                         Forms\Components\Placeholder::make('created_at')
                             ->label('ساخته شده :')
@@ -184,36 +187,36 @@ class PostResource extends Resource
                     ->label("دسته بندی")
                     ->searchable()
                     ->sortable(),
-                // JalaliDateTimeColumn::make('published_at')->date()
-                //     ->sortable()
-                //     ->label("تاریخ انتشار")
-                //     ->date(),
-                // JalaliDateTimeColumn::make('created_at')->date()
-                //     ->sortable()
-                //     ->label("تاریخ ثبت")
-                //     ->date(),
+                JalaliDateTimeColumn::make('published_at')->date()
+                    ->sortable()
+                    ->label("تاریخ انتشار")
+                    ->date(),
+                JalaliDateTimeColumn::make('created_at')->date()
+                    ->sortable()
+                    ->label("تاریخ ثبت")
+                    ->date(),
             ])
             ->filters([
-                // Tables\Filters\Filter::make('published_at')
-                // ->form([
-                // JalaliDatePicker::make('published_from')
-                //     ->label("منتشر شده از")
-                //     ->placeholder(fn ($state): string => \Morilog\Jalali\Jalalian::now()->format("d M, Y")),
-                // JalaliDatePicker::make('published_until')
-                //     ->label("منتشر شده_تا")
-                //     ->placeholder(fn ($state): string => \Morilog\Jalali\Jalalian::now()->format("d M, Y")),
-                // ])
-                // ->query(function (Builder $query, array $data): Builder {
-                //     return $query
-                //         ->when(
-                //             $data['published_from'],
-                //             fn (Builder $query, $date): Builder => $query->whereDate('published_at', '>=', $date),
-                //         )
-                //         ->when(
-                //             $data['published_until'],
-                //             fn (Builder $query, $date): Builder => $query->whereDate('published_at', '<=', $date),
-                //         );
-                // }),
+                Tables\Filters\Filter::make('published_at')
+                    ->form([
+                        JalaliDatePicker::make('published_from')
+                            ->label("منتشر شده از")
+                            ->placeholder(fn ($state): string => \Morilog\Jalali\Jalalian::now()->format("d M, Y")),
+                        JalaliDatePicker::make('published_until')
+                            ->label("منتشر شده_تا")
+                            ->placeholder(fn ($state): string => \Morilog\Jalali\Jalalian::now()->format("d M, Y")),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['published_from'],
+                                fn (Builder $query, $date): Builder => $query->whereDate('published_at', '>=', $date),
+                            )
+                            ->when(
+                                $data['published_until'],
+                                fn (Builder $query, $date): Builder => $query->whereDate('published_at', '<=', $date),
+                            );
+                    }),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

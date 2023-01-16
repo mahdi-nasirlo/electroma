@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->unsignedBigInteger('parent_id')->nullable()->default(0);
+            $table->nestedSet();
+            // $table->unsignedBigInteger('parent_id')->nullable()->default(0);
             $table->longText('description')->nullable();
             $table->boolean('is_visible')->default(false);
             $table->string('seo_title', 60)->nullable();

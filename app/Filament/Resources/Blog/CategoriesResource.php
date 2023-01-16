@@ -12,6 +12,8 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Columns\IconColumn;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Blog\Entities\Category;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
@@ -54,17 +56,25 @@ class CategoriesResource extends Resource
                                 Forms\Components\TextInput::make('name')
                                     ->label('عنوان')
                                     ->required()
-                                    ->reactive()
-                                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', SlugService::createSlug(Category::class, 'slug', $state == null ? "" : $state))),
+                                    ->reactive(),
+                                // ->afterStateUpdated(fn ($state, callable $set) => $set('slug', SlugService::createSlug(Category::class, 'slug', $state == null ? "" : $state))),
                                 Forms\Components\TextInput::make('slug')
                                     ->label('نامک')
-                                    ->disabled()
+                                    // ->disabled()
                                     ->required()
                                     ->unique(Category::class, 'slug', fn ($record) => $record),
                             ]),
-                        // Forms\Components\Select::make('parent_id')
-                        //     ->label('دسته بندی پدر')
-                        //     ->relationship('parent', 'name', fn (Builder $query, ?Category $record) => $query->whereNot('id', $record ? $record->id : null)),
+                        Forms\Components\Select::make('parent_id')
+                            ->searchable()
+                            ->preload()
+                            ->label('دسته بندی پدر')
+                            ->columnSpan(2)
+                            ->relationship(
+                                'parent',
+                                'name',
+                                fn (Builder $query, ?Category $record) => $query->whereNot('id', $record ? $record->id : null)
+                            ),
+                        // ->options(fn (?Category $record) => Category::whereNot('id', $record ? $record->id : null)->get()->pluck('name', 'id')->toArray()),
                         Forms\Components\Toggle::make('is_visible')
                             ->label('قابل نمایش برای کاربران.')
                             ->onIcon('heroicon-s-eye')
@@ -109,7 +119,7 @@ class CategoriesResource extends Resource
                     ->label('دسته بندی اصلی')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\BooleanColumn::make('is_visible')
+                IconColumn::make('is_visible')
                     ->label('عمومی')
                     ->sortable(),
                 JalaliDateTimeColumn::make('updated_at')->date()
@@ -122,6 +132,7 @@ class CategoriesResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
