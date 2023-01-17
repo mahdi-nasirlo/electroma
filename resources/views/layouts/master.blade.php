@@ -16,11 +16,6 @@
     <link rel="shortcut icon" href="static/favicon.ico">
 
     @vite('resources/css/app.css')
-
-    <!-- Icons -->
-    <link href="css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="unicons.iconscout.com/release/v3.0.6/css/line.css">
-
 </head>
 
 <body>

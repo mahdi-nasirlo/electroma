@@ -5,6 +5,13 @@
 @import "./zeynep-right.css";
 @import "./materialdesignicons.min.css";
 @import "./unicons.iconscout.com/release/v3.0.6/css/line.css";
+
+.has-submenu:hover > ul {
+    border: 1px solid rgba(223, 223, 223, 0.589);
+    border-radius: 10px;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
 @media only screen and (min-width: 990px) {
     #Mynavigation {
         justify-content: end;
@@ -19,16 +26,16 @@
     }
 }
 
-#topnav .menu-tow > li > a {
+.topnav .menu-tow > li > a {
     padding-top: 5px;
     padding-bottom: 5px;
     min-height: 15px;
 }
 
-#topnav .menu-tow .has-submenu .menu-arrow {
+.topnav .menu-tow .has-submenu .menu-arrow {
     top: 12px !important;
 }
 
-#topnav .menu-tow > .has-submenu:hover .menu-arrow {
+.topnav .menu-tow > .has-submenu:hover .menu-arrow {
     top: 16px !important;
 }

@@ -1,4 +1,4 @@
-<header>
+<header class="border-bottom">
     @include('layouts.header.top-header')
 
     @php
@@ -12,24 +12,19 @@
         // ->where('inventory', '>', 0)
         // ->where('published_at', '<', now());
         
-        $categoreis = \Modules\Blog\Entities\Category::all()
-            ->where('is_visible', true)
-            ->where('parent_id', 0);
-        
-        $shopCategoies = \Modules\Shop\Entities\Category::all()
-            ->where('is_visible', true)
-            ->where('parent_id', null);
+        // $categoreis = \Modules\Blog\Entities\Category::all()
+        //     ->where('is_visible', true)
+        //     ->where('parent_id', 0);
         
         // $pages = \App\Models\Page::all();
-        
     @endphp
 
-    <div id="topnav" class="">
+    <div id="topnav" class="topnav">
         <div class="container-xl d-flex justify-content-between">
             <!-- Logo container-->
             <div class="d-flex">
                 <a class="logo" href="/">
-                    <img style="width: 30%;height: auto;" src="static/logo.png" alt="Logo" height="100">
+                    <img style="width: 30%;height: auto;" src="/static/logo.png" alt="Logo" height="100">
                 </a>
             </div>
             <!--end login button-->
@@ -114,75 +109,7 @@
             </div>
             <!--end navigation-->
         </div>
-        <div class="container-xl d-flex justify-content-between pb-2">
-
-            <div id="Mynavigation">
-                <!-- Navigation Menu-->
-                <ul style="margin-right: -22px" class="navigation-menu menu-tow justify-content-end">
-
-                    {{-- @include('layouts.header.mega-sub-menu') --}}
-
-                    {{-- @if (count($categoreis) > 0)
-                        <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">مجله تخصصی تعمیرات </a>
-                            <span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                @include('layouts.header.article-sub-item', ['categoreis' => $categoreis])
-                            </ul>
-                        </li>
-                    @endif --}}
-                    {{-- @if (count($courses) > 0)
-                        <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">دوره های آموزشی </a><span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                @foreach ($courses as $item)
-                                    <li class="has-submenu parent-menu-item">
-                                        <a href="{{ route('cours.single', $item) }}"> {{ $item->title }} </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </li>
-                    @endif --}}
-                    {{-- @if (count($products) > 0)
-                        <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">فروشگاه</a><span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                @include('layouts.header.article-sub-item', [
-                                    'categoreis' => $shopCategoies,
-                                ])
-                            </ul>
-                        </li>
-                    @endif --}}
-
-                    {{-- @if ($pages->count())
-                        <li class="has-submenu parent-menu-item">
-                            <a href="javascript:void(0)">لینک های مفید
-                            </a>
-                            <span class="menu-arrow"></span>
-
-                            <ul class="submenu">
-                                @foreach ($pages as $page)
-                                    <li class="has-submenu parent-menu-item">
-                                        <a href="{{ route('pages', $page) }}"> {{ $page->name }} </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </li>
-                    @endif --}}
-                </ul>
-            </div>
-
-
-            {{-- @if (!request()->routeIs('home'))
-                <a class="px-0" href="{{ route('service') }}">
-                    <span class="bg-soft-warning px-2 py-1 rounded">
-                        درخواست تعمیرکار
-                    </span>
-                </a>
-            @endif --}}
-            <!--end navigation-->
-        </div>
         <!--end container-->
     </div>
-    <!--end header-->
+    @include('layouts.header.navigation')
 </header>

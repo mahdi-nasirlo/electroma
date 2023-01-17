@@ -20,8 +20,11 @@ return new class extends Migration
             $table->foreignId('blog_author_id')->nullable()->cascadeOnDelete();
             $table->foreign('blog_author_id')->references('id')->on('users');
 
-            $table->foreignId('blog_category_id')->nullable()->nullOnDelete();
-            $table->foreign("blog_category_id")->references('id')->on('blog_categories')->cascadeOnDelete();
+            // $table->unsignedBigInteger('blog_category_id')->nullable()->nullOnDelete();
+            // $table->foreign("blog_category_id")->references('id')->on('blog_categories')->cascadeOnDelete();
+
+            $table->unsignedBigInteger('blog_category_id');
+            $table->foreign('blog_category_id')->on('blog_categories')->references('id');
 
             $table->string('title');
             $table->string('slug')->unique();
