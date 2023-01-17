@@ -43,12 +43,12 @@ class Category extends Model
 
     public function isVIsible()
     {
-        return true;
+        return $this->posts()->count() > 0;
     }
 
     public function categoryLink()
     {
-        return ($this->isVIsible() and $this->is_visible) ? route('article.list', $this) : "javascript:void(0)";
+        return ($this->isVIsible() and $this->is_visible) ? route('blog.article.list', $this) : "javascript:void(0)";
     }
 
     public function childIsVisible()

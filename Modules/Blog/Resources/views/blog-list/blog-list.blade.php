@@ -5,7 +5,7 @@
              {!! $category->description !!}
          </div>
          @foreach ($posts as $post)
-             @include('home.post-cart', ['post' => $post])
+             @include('blog::post-cart', ['post' => $post])
          @endforeach
 
          <!--end col-->

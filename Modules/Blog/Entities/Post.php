@@ -2,7 +2,10 @@
 
 namespace Modules\Blog\Entities;
 
+use App\Models\Comment;
+use Spatie\Tags\Tag;
 use App\Models\User;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
@@ -10,7 +13,7 @@ use Spatie\Tags\HasTags;
 
 class Post extends Model
 {
-    use HasFactory, HasSEO, HasTags;
+    use HasFactory, HasSEO, HasTags, Sluggable;
 
     protected $fillable = [
         'title',
@@ -54,10 +57,10 @@ class Post extends Model
         return $this->belongsTo(Category::class, 'blog_category_id');
     }
 
-    // public function comments()
-    // {
-    //     return $this->morphMany(Comment::class, 'commentable');
-    // }
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
 
     /**
      * Get all of the tags for the post.

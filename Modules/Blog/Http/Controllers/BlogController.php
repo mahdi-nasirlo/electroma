@@ -14,7 +14,12 @@ class BlogController extends Controller
 {
     public function show(Post $post)
     {
+        if (request()->input('s')) {
+            return redirect()->to(route('blog.article.list', ['search' => request()->input('s'), 'category' => $post->category]));
+        }
         if (!$post->published_at->isPast()) abort(404);
+
+        $postTags = $post->tags()->pluck("name")->toArray();
 
         SEOMeta::setTitle($post->seo->title ?? $post->title)
             ->addMeta("article:published_time", $post->created_at)
@@ -22,7 +27,7 @@ class BlogController extends Controller
             ->addMeta("author",  $post->seo->author ??  $post->user->name . " ," . $post->user->email)
             ->addMeta("designer", env("DESIGNER"))
             ->addMeta("owner", $post->user->name)
-            ->addKeyword($post->tags()->pluck("name")->toArray())
+            ->addKeyword($postTags)
             ->addMeta("category", $post->category->name);
 
         OpenGraph::setTitle($post->seo->title ?? $post->title)
@@ -32,14 +37,14 @@ class BlogController extends Controller
                 'published_time' => $post->created_at,
                 'modified_time' => $post->updated_at,
                 'author' => $post->seo->author ??  $post->user->name,
-                'tag' => $post->tags()->pluck("name")->toArray()
+                'tag' => $postTags
             ]);
 
         OpenGraph::addImage(asset('storage/' . $post->image));
 
         $post->update(['view' => $post->view + 1]);
 
-        return view('home.blog-detail.index', ['article' => $post]);
+        return view('blog::blog-detail.index', ['article' => $post]);
     }
 
     public function list(Category $category)
@@ -56,9 +61,13 @@ class BlogController extends Controller
         $category_sub_cat_ids = [$category->id];
         $category->getChildrenIds($category_sub_cat_ids);
 
-        $post = Post::query()->whereIn('blog_category_id', ['1', 2])->Where('published_at', "<", now())->paginate(10);
+        $post = Post::query()->whereIn('blog_category_id', ['1', 2])->Where('published_at', "<", now());
 
-        return view('blog::blog-list.index', ['category' => $category, 'posts' => $post]);
+        if (request()->input('search')) {
+            $post->where('title', 'like', '%' . request()->input('search') . '%');
+        }
+
+        return view('blog::blog-list.index', ['category' => $category, 'posts' => $post->paginate(10)]);
     }
 
 

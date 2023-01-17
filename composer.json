@@ -25,6 +25,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "livewire/livewire": "^2.11",
+        "mhmiton/laravel-modules-livewire": "^1.5",
         "mohamedsabil83/filament-forms-tinyeditor": "^1.6",
         "mohamedsabil83/filament-hijri-picker": "^0.1.0",
         "nwidart/laravel-modules": "^9.0",

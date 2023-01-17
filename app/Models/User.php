@@ -49,4 +49,9 @@ class User extends Authenticatable implements FilamentUser
     {
         return auth()->user()->roles()->count() > 0;
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

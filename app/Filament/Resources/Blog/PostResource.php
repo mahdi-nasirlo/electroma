@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Blog;
 
 use App\Filament\Resources\Blog\PostResource\Pages;
 use App\Filament\Resources\Blog\PostResource\RelationManagers;
+use App\Filament\Resources\Shop\CourceResource\RelationManagers\CommentsRelationManager;
 use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
 use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDatePicker;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -177,7 +178,7 @@ class PostResource extends Resource
                     ->label("نامک")
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('author.name')
+                Tables\Columns\TextColumn::make('user.name')
                     ->label("نویسنده")
                     ->searchable()
                     ->sortable(),
@@ -227,26 +228,26 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CommentsRelationManager::class
         ];
     }
 
     protected static function getGlobalSearchEloquentQuery(): Builder
     {
-        return parent::getGlobalSearchEloquentQuery()->with(['author', 'category']);
+        return parent::getGlobalSearchEloquentQuery()->with(['user', 'category']);
     }
 
     public static function getGloballySearchableAttributes(): array
     {
-        return ['title', 'slug', 'author.name', 'category.name'];
+        return ['title', 'slug', 'user.name', 'category.name'];
     }
 
     public static function getGlobalSearchResultDetails(Model $record): array
     {
         $details = [];
 
-        if ($record->author) {
-            $details['نویسنده'] = $record->author->name;
+        if ($record->user) {
+            $details['نویسنده'] = $record->user->name;
         }
 
         if ($record->category) {

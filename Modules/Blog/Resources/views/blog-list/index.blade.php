@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    @include('blog::blog-list.hero')
+    @include('blog::hero.index', ['name' => $category->name])
 
     <!-- Blog Start -->
     <section class="section">

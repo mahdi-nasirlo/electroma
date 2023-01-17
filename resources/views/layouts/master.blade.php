@@ -16,6 +16,7 @@
     <link rel="shortcut icon" href="static/favicon.ico">
 
     @vite('resources/css/app.css')
+    @livewireStyles
 </head>
 
 <body>
@@ -44,6 +45,7 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     @vite('resources/js/app.js')
+    @livewireScripts
 
     {{-- <!-- javascript -->
     <script src="js/bootstrap.bundle.min.js"></script>

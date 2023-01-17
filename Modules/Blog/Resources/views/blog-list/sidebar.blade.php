@@ -22,7 +22,7 @@
                     @foreach ($cats as $cat)
                         @if ($cat->posts->count() > 0)
                             <li>
-                                <a href="{{ route('article.list', $cat) }}">
+                                <a href="{{ route('blog.article.list', $cat) }}">
                                     {{ $cat->name }}
                                 </a>
                                 <span class="float-end">
@@ -47,7 +47,7 @@
                                             class="img-fluid rounded"></a>
                                 </div>
                                 <div class="post-recent-content float-start">
-                                    <a href="{{ route('article.single', $lastArticle) }}">
+                                    <a href="{{ route('blog.article.single', $lastArticle) }}">
                                         {{ $lastArticle->title }}
                                     </a>
                                     <span class="text-muted mt-2">

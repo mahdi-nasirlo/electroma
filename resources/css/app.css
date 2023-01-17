@@ -3,7 +3,7 @@
 @import "default.css";
 @import "./zeynep.css";
 @import "./zeynep-right.css";
-@import "./materialdesignicons.min.css";
+/* @import "./materialdesignicons.min.css"; */
 @import "./unicons.iconscout.com/release/v3.0.6/css/line.css";
 
 .has-submenu:hover > ul {

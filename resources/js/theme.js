@@ -192,7 +192,7 @@ function topFunction() {
 })();
 
 //Feather icon
-feather.replace();
+// feather.replace();
 
 // dd-menu
 var ddmenu = document.getElementsByClassName("dd-menu");
