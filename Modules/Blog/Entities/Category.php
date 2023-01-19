@@ -46,7 +46,7 @@ class Category extends Model
         return $this->posts()->count() > 0;
     }
 
-    public function categoryLink()
+    public function link()
     {
         return ($this->isVIsible() and $this->is_visible) ? route('blog.article.list', $this) : "javascript:void(0)";
     }

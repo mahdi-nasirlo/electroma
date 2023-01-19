@@ -25,3 +25,6 @@
     <!--end section-->
     <!-- Blog End -->
 @endsection
+{{-- 
+TODO : add view if not have posts 
+--}}

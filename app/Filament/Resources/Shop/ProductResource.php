@@ -6,7 +6,6 @@ use App\Filament\Resources\Shop\ProductResource\RelationManagers\CommentsRelatio
 use App\Filament\Resources\Shop\ProductResource\Pages;
 use App\Filament\Resources\Shop\ProductResource\RelationManagers;
 use App\Filament\Resources\Shop\ProductResource\RelationManagers\AttributesRelationManager;
-use App\Models\Shop\ShopCategory;
 use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDateTimePicker;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Filament\Forms;
@@ -30,6 +29,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use Modules\Shop\Entities\Category;
 use Modules\Shop\Entities\Product;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use RalphJSmit\Filament\SEO\SEO;
@@ -177,72 +177,72 @@ class ProductResource extends Resource
             //                 'sm' => 2,
             //             ]),
             //     ]),
-            // Select::make('category_id')
-            //     ->label('دسته بندی')
-            //     ->required()
-            //     ->searchable()
-            //     ->preload()
-            //     ->relationship('category', 'name')
-            //     ->createOptionForm([
-            //         Forms\Components\Grid::make()
-            //             ->schema([
-            //                 Forms\Components\TextInput::make('name')
-            //                     ->label('عنوان')
-            //                     ->required()
-            //                     ->reactive()
-            //                     ->afterStateUpdated(fn ($state, callable $set) => $set('slug', SlugService::createSlug(ShopCategory::class, 'slug', $state == null ? "" : $state))),
-            //                 Forms\Components\TextInput::make('slug')
-            //                     ->label('نامک')
-            //                     ->disabled()
-            //                     ->required()
-            //                     ->unique(ShopCategory::class, 'slug', fn ($record) => $record),
-            //             ]),
-            //         Forms\Components\Select::make('parent_id')
-            //             ->preload()
-            //             ->searchable()
-            //             ->label('دسته بندی پدر')
-            //             ->relationship('parent', 'name', fn (Builder $query, ?ShopCategory $record) => $query->whereNot('id', $record ? $record->id : null)),
-            //         Forms\Components\Toggle::make('is_visible')
-            //             ->label('قابل نمایش برای کاربران.')
-            //             ->onIcon('heroicon-s-eye')
-            //             ->offIcon('heroicon-s-eye-off')
-            //             ->default(true),
-            //         TinyEditor::make('description')
-            //             ->label("محتوا")
-            //             ->columnSpan([
-            //                 'sm' => 2,
-            //             ]),
-            //         // Forms\Components\TextInput::make('name')
-            //         //     ->required()
-            //         //     ->maxLength(255),
-            //         // Hidden::make('slug')->default("laskjdflk" . rand(0, 1000000)),
-            //         // Forms\Components\Textarea::make('desc')
-            //         //     ->maxLength(65535),
-            //         // Select::make('type')
-            //         //     ->options([
-            //         //         'api' => 'api',
-            //         //         'web' => 'web',
-            //         //         'blog' => 'blog'
-            //         //     ]),
-            //         // TextInput::make('level')->default(0),
-            //         // Forms\Components\Select::make('parent_id')
-            //         //     ->label('دسته بندی پدر')
-            //         //     ->reactive()
-            //         //     ->afterStateUpdated(function (Closure $set, $state) {
-            //         //         if ($state) {
-            //         //             $level = Category::find($state)->level;
-            //         //             $set('level', $level + 1);
-            //         //         } else
-            //         //             $set('level', 0);
-            //         //     })
-            //         //     ->relationship('parent', 'name', fn (Builder $query, ?Category $record) => $query->whereNot('id', $record ? $record->id : null)),
-            //         // Forms\Components\Toggle::make('is_visible'),
-            //         // // IconPicker::make('icon'),
-            //         // Forms\Components\Textarea::make('shortInfo')
-            //         //     ->maxLength(65535),
-            //         // Forms\Components\TextInput::make('cover')
-            //         //     ->maxLength(255),
-            //     ]),
+            Select::make('category_id')
+                ->label('دسته بندی')
+                ->required()
+                ->searchable()
+                ->preload()
+                ->relationship('category', 'name')
+                ->createOptionForm([
+                    Forms\Components\Grid::make()
+                        ->schema([
+                            Forms\Components\TextInput::make('name')
+                                ->label('عنوان')
+                                ->required()
+                                ->reactive()
+                                ->afterStateUpdated(fn ($state, callable $set) => $set('slug', SlugService::createSlug(category::class, 'slug', $state == null ? "" : $state))),
+                            Forms\Components\TextInput::make('slug')
+                                ->label('نامک')
+                                ->disabled()
+                                ->required()
+                                ->unique(category::class, 'slug', fn ($record) => $record),
+                        ]),
+                    Forms\Components\Select::make('parent_id')
+                        ->preload()
+                        ->searchable()
+                        ->label('دسته بندی پدر')
+                        ->relationship('parent', 'name', fn (Builder $query, ?Category $record) => $query->whereNot('id', $record ? $record->id : null)),
+                    Forms\Components\Toggle::make('is_visible')
+                        ->label('قابل نمایش برای کاربران.')
+                        ->onIcon('heroicon-s-eye')
+                        ->offIcon('heroicon-s-eye-off')
+                        ->default(true),
+                    TinyEditor::make('description')
+                        ->label("محتوا")
+                        ->columnSpan([
+                            'sm' => 2,
+                        ]),
+                    //         // Forms\Components\TextInput::make('name')
+                    //         //     ->required()
+                    //         //     ->maxLength(255),
+                    //         // Hidden::make('slug')->default("laskjdflk" . rand(0, 1000000)),
+                    //         // Forms\Components\Textarea::make('desc')
+                    //         //     ->maxLength(65535),
+                    //         // Select::make('type')
+                    //         //     ->options([
+                    //         //         'api' => 'api',
+                    //         //         'web' => 'web',
+                    //         //         'blog' => 'blog'
+                    //         //     ]),
+                    //         // TextInput::make('level')->default(0),
+                    //         // Forms\Components\Select::make('parent_id')
+                    //         //     ->label('دسته بندی پدر')
+                    //         //     ->reactive()
+                    //         //     ->afterStateUpdated(function (Closure $set, $state) {
+                    //         //         if ($state) {
+                    //         //             $level = Category::find($state)->level;
+                    //         //             $set('level', $level + 1);
+                    //         //         } else
+                    //         //             $set('level', 0);
+                    //         //     })
+                    //         //     ->relationship('parent', 'name', fn (Builder $query, ?Category $record) => $query->whereNot('id', $record ? $record->id : null)),
+                    //         // Forms\Components\Toggle::make('is_visible'),
+                    //         // // IconPicker::make('icon'),
+                    //         // Forms\Components\Textarea::make('shortInfo')
+                    //         //     ->maxLength(65535),
+                    //         // Forms\Components\TextInput::make('cover')
+                    //         //     ->maxLength(255),
+                ]),
         ];
     }
 
@@ -302,7 +302,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->label('نام محصول')
                     ->sortable()
-                    ->url(fn (Product $record) => route("product.single", $record))
+                    ->url(fn (Product $record) => route("shop.product.single", $record))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug'),
                 Tables\Columns\TextColumn::make('gallery'),

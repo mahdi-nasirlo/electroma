@@ -11,6 +11,11 @@
 |
 */
 
-Route::prefix('shop')->group(function() {
-    Route::get('/', 'ShopController@index');
+use Illuminate\Support\Facades\Route;
+use Modules\Shop\Http\Controllers\ShopController;
+use Modules\Shop\Http\Livewire\ProductList;
+
+Route::prefix('shop')->name('shop.')->group(function () {
+    Route::get('products/{category:slug}', [ShopController::class, 'list'])->name('product.list');
+    Route::get('product/{product:slug}', [ShopController::class, 'show'])->name("product.single");
 });

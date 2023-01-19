@@ -34,6 +34,16 @@ class Category extends Model
         'is_visible' => 'boolean',
     ];
 
+    public function link()
+    {
+        return ($this->is_visible) ? route('shop.product.list', $this) : "javascript:void(0)";
+    }
+
+    public function hasChilde()
+    {
+        return $this->children->count() > 0;
+    }
+
     protected static function newFactory()
     {
         return \Modules\Shop\Database\factories\CategoryFactory::new();

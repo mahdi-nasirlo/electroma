@@ -1,24 +1,6 @@
 <header class="border-bottom">
     @include('layouts.header.top-header')
 
-    @php
-        
-        $courses = \Modules\Course\Entities\Course::all()
-            ->where('inventory', '>', 0)
-            ->where('published_at', '<', now());
-        
-        // FIXME product condition to display category
-        $products = \Modules\Shop\Entities\Product::all();
-        // ->where('inventory', '>', 0)
-        // ->where('published_at', '<', now());
-        
-        // $categoreis = \Modules\Blog\Entities\Category::all()
-        //     ->where('is_visible', true)
-        //     ->where('parent_id', 0);
-        
-        // $pages = \App\Models\Page::all();
-    @endphp
-
     <div id="topnav" class="topnav">
         <div class="container-xl d-flex justify-content-between">
             <!-- Logo container-->

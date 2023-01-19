@@ -1,4 +1,5 @@
 // import './bootstrap';
+console.log("sldkafjjlkj");
 import "./bootstrap.bundle.min";
 import "./feather.min";
 import "./theme";

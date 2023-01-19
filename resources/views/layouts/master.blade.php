@@ -17,6 +17,7 @@
 
     @vite('resources/css/app.css')
     @livewireStyles
+    @yield('style')
 </head>
 
 <body>
@@ -43,10 +44,10 @@
             data-feather="arrow-up" class="icons"></i></a>
     <!-- Back to top -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> --}}
+    @yield('script')
     @vite('resources/js/app.js')
     @livewireScripts
-
     {{-- <!-- javascript -->
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Icons -->

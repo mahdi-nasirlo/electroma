@@ -2,9 +2,13 @@
 
 namespace Modules\Shop\Entities;
 
+use App\Models\Comment;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Payment\Entities\DiscountItem;
+use Modules\Payment\Entities\Order;
+use Modules\Shop\Entities\Category;
 use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\HasMedia;
@@ -64,6 +68,32 @@ class Product extends Model implements HasMedia
         'rate'
     ];
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function orders()
+    {
+        return $this->morphToMany(Order::class, 'orderable');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function attributes()
+    {
+        return $this->belongsToMany(
+            Attribute::class,
+            'attribute_product',
+            'product_id',
+            'attributes_id'
+        )
+            ->withPivot(['value']);
+    }
+
     public function getRateAttribute()
     {
         if (!$this->comments()->count()) {
@@ -92,6 +122,11 @@ class Product extends Model implements HasMedia
             return "/placeholder.webp";
         else
             return "/storage/" . $this->cover;
+    }
+
+    public function discountItem()
+    {
+        return $this->belongsTo(DiscountItem::class, "discount_id");
     }
 
     protected static function newFactory()

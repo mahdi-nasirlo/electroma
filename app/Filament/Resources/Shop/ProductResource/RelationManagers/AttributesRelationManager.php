@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Shop\ProductResource\RelationManagers;
 
-use App\Models\Shop\Attribute;
 use Closure;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
@@ -20,6 +19,7 @@ use Filament\Tables\Columns\TagsColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Shop\Entities\Attribute;
 
 class AttributesRelationManager extends RelationManager
 {

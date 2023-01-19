@@ -21,7 +21,6 @@ use Modules\Blog\Entities\Category;
 use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 use RalphJSmit\Filament\SEO\SEO;
 
-// TODO: check category relationship
 
 class CategoriesResource extends Resource
 {
@@ -161,8 +160,8 @@ class CategoriesResource extends Resource
     {
         $details = [];
 
-        if ($record->author) {
-            $details['نویسنده'] = $record->author->name;
+        if ($record->user) {
+            $details['نویسنده'] = $record->user->name;
         }
 
         if ($record->category) {

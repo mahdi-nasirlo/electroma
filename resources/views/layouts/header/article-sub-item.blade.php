@@ -3,7 +3,7 @@
         {{-- $item->is_visible and $item->isVisible() --}}
         @if ($item->is_visible)
             <li class="has-submenu parent-menu-item">
-                <a href="{{ $item->categoryLink() }}">
+                <a href="{{ $item->link() }}">
                     {{ $item->name }}
                 </a>
                 {{-- $item->childIsVisible() --}}
