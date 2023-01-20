@@ -6,6 +6,8 @@ use App\Models\Comment;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Jackiedo\Cart\Contracts\UseCartable;
+use Jackiedo\Cart\Traits\CanUseCart;
 use Modules\Payment\Entities\DiscountItem;
 use Modules\Payment\Entities\Order;
 use Modules\Shop\Entities\Category;
@@ -16,10 +18,10 @@ use Spatie\MediaLibrary\HasMedia;
 
 // TODO: add Cartable to product
 
-class Product extends Model implements HasMedia
+class Product extends Model implements HasMedia, UseCartable
 {
     use HasFactory;
-    // use CanUseCart;
+    use CanUseCart;
     use HasSEO;
     use Sluggable;
     use InteractsWithMedia;

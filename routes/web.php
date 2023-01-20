@@ -16,4 +16,4 @@ use Modules\Blog\Entities\Category;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');

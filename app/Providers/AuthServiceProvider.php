@@ -3,7 +3,11 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
+use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+use Modules\Payment\Entities\Order;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +29,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('view-payment', function (User $user, Order $order) {
+            return $user->id === $order->user->id;
+        });
+
+        Gate::define('auth', function (User $user) {
+            return false;
+        });
     }
 }

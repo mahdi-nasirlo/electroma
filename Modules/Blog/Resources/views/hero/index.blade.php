@@ -15,8 +15,11 @@
                             </li>
                         </ul>
                     @endif
-                    @if (isset($category))
-                        @include('blog::hero.navigation-hero', ['category' => $category])
+                    @if (isset($category) or isset($string))
+                        @include('blog::hero.navigation-hero', [
+                            'category' => isset($category) ? $category : null,
+                            'string' => isset($string) ? $string : null,
+                        ])
                     @endif
                 </div>
             </div>

@@ -10,6 +10,7 @@
             transform: rotate(-45deg);
         }
     </style>
+
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-5">
@@ -65,35 +66,8 @@
                         @endif
                     </ul>
 
-                    <div class="row mt-4 pt-2">
-                        <!--end col-->
-                        <div class="col-lg-6 col-12 mt-4 mt-lg-0">
-                            <div
-                                class="d-flex shop-list align-items-center justify-content-center justify-content-md-center mt-3">
-                                <h6 class="mb-0">تعداد: </h6>
-                                <div class="qty-icons ms-3">
-                                    <button wire:click='decrement'
-                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                                        class="btn btn-icon btn-soft-primary minus">-</button>
-                                    <input wire:model='count' min="1" max="{{ $product->inventory }}"
-                                        name="quantity" value="1" type="number"
-                                        class="btn btn-icon btn-soft-primary qty-btn quantity">
-                                    <button wire:click='increment'
-                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                                        class="btn btn-icon btn-soft-primary plus">+</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-12">
-                            <div
-                                class="d-flex align-items-center justify-content-center justify-content-md-center mt-3">
-                                <a href="javascript:void(0)" class="btn btn-primary">
-                                    اکنون بخرید
-                                </a>
-                                <a wire:click='addToCart' class="btn btn-soft-primary ms-2">افزودن به سبد</a>
-                            </div>
-                        </div>
-                        <!--end col-->
+                    <div>
+                        <livewire:shop::product-page :product="$product" />
                     </div>
                     <!--end row-->
                 </div>
@@ -145,7 +119,7 @@
                     <!--end nav item-->
                 </ul>
 
-                <div class="tab-content mt-5" id="pills-tabContent">
+                <div class="tab-content mt-5 py-3" id="pills-tabContent">
                     <div class="card border-0 tab-pane fade show active bg-white rounded-2 p-3 mb-2" id="description"
                         role="tabpanel" aria-labelledby="description-data">
                         <p class="text-muted mb-0">
@@ -188,4 +162,5 @@
             </div>
         </div>
         <!--end container-->
+    </div>
 </section>

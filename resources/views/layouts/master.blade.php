@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <!-- Loader -->
+    {{-- <!-- Loader -->
     <div id="preloader">
         <div id="status">
             <div class="spinner">
@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <!-- Loader -->
+    <!-- Loader --> --}}
     @include('layouts.header.index')
 
     @yield('content')

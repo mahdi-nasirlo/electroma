@@ -5,6 +5,8 @@
             <li class="breadcrumb-item"><a href="#">{{ isset($title) ? $title : 'وبلاگ' }}</a></li>
             @if (isset($category))
                 @include('blog::hero.navigation-hero-item', ['category' => $category])
+            @else
+                <li class="breadcrumb-item"><a href="#">{{ $string }}</a></li>
             @endif
         </ul>
     </nav>

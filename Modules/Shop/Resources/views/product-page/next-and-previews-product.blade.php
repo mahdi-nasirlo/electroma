@@ -14,7 +14,7 @@
                     <div class="col-12">
                         <div class="d-flex align-items-center justify-content-between">
                             @if ($nextRecorde)
-                                <a href="{{ route('product.single', $nextRecorde) }}"
+                                <a href="{{ route('shop.product.single', $nextRecorde) }}"
                                     class="text-dark align-items-center">
                                     <span class="pro-icons">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -42,7 +42,7 @@
                             </a>
 
                             @if ($preRecorde)
-                                <a href="{{ route('product.single', $preRecorde) }}"
+                                <a href="{{ route('shop.product.single', $preRecorde) }}"
                                     class="text-dark align-items-center">
                                     <img src="{{ $preRecorde->getCoverUrl() }}"
                                         class="avatar avatar-small rounded shadow me-2" style="height:auto;"

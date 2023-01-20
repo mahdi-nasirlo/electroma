@@ -1,11 +1,10 @@
 // import './bootstrap';
-console.log("sldkafjjlkj");
 import "./bootstrap.bundle.min";
 import "./feather.min";
 import "./theme";
 import "./plugins.init";
-import "./zeynep";
-import "./zeynep-right";
+// import "./zeynep";
+// import "./zeynep-right";
 
 /*********************************/
 /*         INDEX                 */

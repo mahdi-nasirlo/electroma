@@ -38,7 +38,7 @@
                 <ul class="navigation-menu justify-content-end w-100">
 
                     <li style="margin: 13px 0" class="w-100">
-                        {{-- <livewire:search /> --}}
+                        <livewire:search />
                     </li>
 
                     <li class="has-submenu parent-menu-item d-flex">
@@ -48,18 +48,20 @@
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="uil uil-user align-middle icons"></i>
                                 </button>
-                                <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 py-3"
+                                <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 pb-3"
                                     style="width: 200px; margin: 0px;">
 
                                     @if (auth()->user()->canAccessFilament())
-                                        <a class="dropdown-item border border-danger rounded text-danger"
+                                        <a class="dropdown-item text-danger "
                                             href="{{ route('filament.pages.dashboard') }}">
                                             <i class="text-danger uil uil-user align-middle me-1">
                                             </i> پنل مدیریت</a>
+                                        <hr class="my-1">
                                     @endif
 
-                                    {{-- <a class="dropdown-item text-dark">
-                                        href="{{ route('profile', ['tab' => 'dashboard']) }}"
+                                    <a class="dropdown-item text-dark"
+                                        href="{{ route('profile', ['tab' => 'dashboard']) }}">
+
                                         <i class="uil uil-user align-middle me-1"></i> حساب
                                         کاربری</a>
                                     <a class="dropdown-item text-dark" href="{{ route('profile', ['tab' => 'order']) }}"><i
@@ -73,7 +75,7 @@
                                     <form id="logout-form" action="{{ route('filament.auth.logout') }}" method="POST"
                                         style="display: none;">
                                         @csrf
-                                    </form> --}}
+                                    </form>
                                 </div>
                             </div>
                         @else
@@ -84,7 +86,7 @@
                         @endauth
                     </li>
 
-                    {{-- <livewire:cart.cart-header /> --}}
+                    <livewire:payment::cart.cart-header />
 
                 </ul>
 

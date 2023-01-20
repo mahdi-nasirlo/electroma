@@ -9,8 +9,17 @@ class Payment extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
-    
+    protected $fillable = [
+        'resnumber',
+        'status',
+        'verify_code'
+    ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
     protected static function newFactory()
     {
         return \Modules\Payment\Database\factories\PaymentFactory::new();

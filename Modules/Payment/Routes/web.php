@@ -11,6 +11,17 @@
 |
 */
 
-Route::prefix('payment')->group(function() {
-    Route::get('/', 'PaymentController@index');
+use Illuminate\Support\Facades\Route;
+use Modules\Payment\Http\Controllers\CartController;
+
+Route::prefix('payment')->name('payment.')->group(function () {
+    Route::get('/payment/order/{order}', [CartController::class, 'payment'])->name('index');
+    Route::get('/payment/callback', [CartController::class, 'callback'])->name('callback');
 });
+Route::prefix('cart')->name('cart.')->group(function () {
+
+    Route::get("/", [CartController::class, 'index'])->name("index");
+    Route::get("/order/{order}", [CartController::class, "paymentPage"])->name("address")->middleware("auth");
+});
+
+Route::get('profile', [CartController::class, 'profile'])->middleware('auth')->name("profile");
