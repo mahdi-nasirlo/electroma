@@ -122,7 +122,7 @@
                                                         </a>
                                                     @endforeach
                                                     @foreach ($order->courses as $course)
-                                                        <a href="{{ route('cours.single', $course) }}"
+                                                        <a href="{{ route('course.single', $course) }}"
                                                             class="d-flex align-items-center">
                                                             <img src="{{ asset('/storage/' . $course->image) }}"
                                                                 class="shadow rounded" style="max-height: 100px;"

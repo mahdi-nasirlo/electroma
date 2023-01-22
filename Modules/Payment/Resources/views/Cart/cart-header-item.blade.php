@@ -32,7 +32,7 @@
         </h6>
     </a> --}}
 @else
-    <a href="{{ route('cours.single', $cart->getModel()) }}" class="d-flex align-items-center my-4">
+    <a href="{{ route('course.single', $cart->getModel()) }}" class="d-flex align-items-center my-4">
         <img src="{{ asset('/storage/' . $cart->getModel()->image) }}" class="shadow rounded" style="max-height: 30px;"
             alt="">
         <div class="flex-1 text-start ms-3">

@@ -11,6 +11,7 @@
 |
 */
 
-Route::prefix('course')->group(function() {
-    Route::get('/', 'CourseController@index');
-});
+use Illuminate\Support\Facades\Route;
+use Modules\Course\Http\Controllers\CourseController;
+
+Route::get('/course/{course:slug}', [CourseController::class, 'show'])->name('course.single');

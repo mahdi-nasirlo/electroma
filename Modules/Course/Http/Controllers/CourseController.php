@@ -2,78 +2,37 @@
 
 namespace Modules\Course\Http\Controllers;
 
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Carbon;
+use Modules\Course\Entities\Course;
 
 class CourseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
-    public function index()
+    public function show(Course $course)
     {
-        return view('course::index');
-    }
+        if (!Carbon::parse($course->published_at)->isPast() && !$course->inventory > 0) {
+            return abort(404);
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('course::create');
-    }
+        SEOMeta::setTitle($course->seo->title ?? $course->title)
+            ->setDescription($course->seo->description)
+            ->addMeta("article:published_time", $course->created_at)
+            ->addMeta("revised", $course->updated_at)
+            ->addMeta("author",  $course->seo->author ??  $course->user->name . " ," . $course->user->email)
+            ->addMeta("designer", env("DESIGNER"))
+            ->addMeta("owner", $course->user->name);
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        OpenGraph::setDescription($course->seo->description);
+        OpenGraph::setTitle($course->seo->title ?? $course->title);
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('course::show');
-    }
+        OpenGraph::addImage(asset("/storage/" . $course->image));
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('course::edit');
-    }
+        $course->update(['view' => $course->view + 1]);
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
+        return view("course::course-single.index", ['course' => $course]);
     }
 }

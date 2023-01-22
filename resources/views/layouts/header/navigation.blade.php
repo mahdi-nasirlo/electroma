@@ -1,9 +1,7 @@
 @php
     $shopCategoies = \Modules\Shop\Entities\Category::where('is_visible', true)->get();
     
-    // $courses = \Modules\Course\Entities\Course::all()
-    //     ->where('inventory', '>', 0)
-    //     ->where('published_at', '<', now());
+    $courses = \Modules\Course\Entities\Course::where('published_at', '<', now())->where('inventory', '>', 0);
     
     // FIXME product condition to display category
     // $products = \Modules\Shop\Entities\Product::all();
@@ -33,38 +31,19 @@
                 </ul>
             </li>
         @endif
-        @if ($shopCategoies->count() > 0)
+
+        @if ($courses->count() > 0)
             <li class="has-submenu parent-parent-menu-item">
-                <a href="javascript:void(0)">فروشگاه</a><span class="menu-arrow"></span>
+                <a href="javascript:void(0)">دوره های آموزشی </a><span class="menu-arrow"></span>
                 <ul class="submenu">
-                    @include('layouts.header.article-sub-item', [
-                        'categoreis' => $shopCategoies->toTree(),
-                    ])
+                    @foreach ($courses->get() as $item)
+                        <li class="has-submenu parent-menu-item">
+                            <a href="{{ route('course.single', $item) }}"> {{ $item->title }} </a>
+                        </li>
+                    @endforeach
                 </ul>
             </li>
         @endif
-
-        {{-- @if ($category->count() > 0)
-            <li class="has-submenu parent-parent-menu-item">
-                <a href="javascript:void(0)">مجله تخصصی تعمیرات </a>
-                <span class="menu-arrow"></span>
-                <ul class="submenu">
-                    @include('layouts.header.article-sub-item', ['categoreis' => $category->toTree()])
-                </ul>
-            </li>
-        @endif --}}
-        {{-- @if (count($courses) > 0)
-                        <li class="has-submenu parent-parent-menu-item">
-                            <a href="javascript:void(0)">دوره های آموزشی </a><span class="menu-arrow"></span>
-                            <ul class="submenu">
-                                @foreach ($courses as $item)
-                                    <li class="has-submenu parent-menu-item">
-                                        <a href="{{ route('cours.single', $item) }}"> {{ $item->title }} </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </li>
-                    @endif --}}
 
 
         {{-- @if ($pages->count())
