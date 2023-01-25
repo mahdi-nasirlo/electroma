@@ -4,6 +4,7 @@
             <a href="{{ $category->link() }}">
                 {{ $item->name }}
             </a>
+            <x-icon-o-chevron-left />
         </li>
     @endforeach
     <li class="breadcrumb-item active" aria-current="page">

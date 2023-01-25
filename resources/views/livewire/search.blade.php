@@ -1,13 +1,13 @@
 <div>
     <div class="subcribe-form w-100">
         <form class="">
-            <input wire:model='string' class="form-control rounded-md shadow py-2 search-input" placeholder="جستو جو"
+            <input wire:model='string' class="form-control rounded-md shadow py-2 search-input" placeholder="جستو جو ...."
                 required="" aria-describedby="newssubscribebtn">
             <button style=" padding: 6px 7px;" type="submit" class="btn btn-primary d-flex align-item-center">
                 <div style="width: 25px; height: 25px" wire:loading class="spinner-grow" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
-                <img width="25" src="/static/search-icon.png" wire:loading.remove alt="">
+                <x-icon-s-search style="width: 26px" wire:loading.remove />
             </button>
             @if ($string)
                 <div style="position: absolute;z-index: 10;"

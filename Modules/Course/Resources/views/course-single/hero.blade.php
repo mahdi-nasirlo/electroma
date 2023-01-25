@@ -50,11 +50,6 @@
                         <div class="position-relative pt-3">
                             <img src="{{ asset('/storage/' . $course->image) }}"
                                 class="rounded img-fluid mx-auto d-block" alt="">
-                            {{-- <div class="play-icon">
-                                <a href="#!" data-type="youtube" data-id="yba7hPeTSjk" class="play-btn lightbox">
-                                    <i class="mdi mdi-play text-primary rounded-circle bg-white shadow"></i>
-                                </a>
-                            </div> --}}
                         </div>
                     </div>
                 </div>

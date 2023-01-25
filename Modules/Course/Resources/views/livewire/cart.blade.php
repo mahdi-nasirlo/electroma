@@ -2,9 +2,9 @@
     <div>
         <a href="{{ $link }}">
             <button wire:click='addToCart' class="btn btn-outline-primary rounded">
-                <i class="uil uil-store"></i>
+                <x-icon-o-shopping-cart />
                 {!! $btnText !!}
-                <div wire:loading style="width: 20px;height: 20px" class="spinner-border text-white" role="status">
+                <div wire:loading style="width: 20px;height: 20px" class="spinner-border text-light" role="status">
             </button>
         </a>
     </div>

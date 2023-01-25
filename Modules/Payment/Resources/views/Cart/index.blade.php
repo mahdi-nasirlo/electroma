@@ -68,8 +68,8 @@
             <div class="section section-padding-bottom">
                 <div class="container">
                     <div style=" display: flex;flex-direction: column;align-content: center;" class="cart-empty-content">
-                        <span class="icon text-center"><i style="font-size: 296px;display: flex;justify-content: center;"
-                                class="uil uil-shopping-cart align-middle icons"></i></span>
+                        <span class="icon text-center">
+                            </span>
                         <h3 class="title text-center">سبد خرید شما در حال حاضر خالی است.</h3>
 
                         <a style="margin: 0 auto" href="{{ route('home') }}"

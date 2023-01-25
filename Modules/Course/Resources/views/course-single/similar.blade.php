@@ -1,4 +1,4 @@
-@if (count($papular) >= 3)
+@if ($papular->count() >= 2)
     <div class="container mt-5 pt-3">
         <div class="row justify-content-center">
             <div class="col-12 text-center">
@@ -25,9 +25,14 @@
                         <div class="card-body">
                             <h5><a href="javascript:void(0)" class="title text-dark">{{ $item->title }}</a></h5>
                             <div class="fees d-flex justify-content-between">
-                                <ul class="list-unstyled mb-0 numbers">
-                                    <li><i class="uil uil-graduation-cap text-muted"></i> 30 کار آموز </li>
-                                    <li><i class="uil uil-notebooks text-muted"></i> {{ $item->attributes->count() }}
+                                <ul class="list-unstyled mb-0 numbers ps-0">
+                                    <li>
+                                        <x-icon-o-users class="text-muted" />
+                                        30 کار آموز
+                                    </li>
+                                    <li>
+                                        <x-icon-o-document-duplicate class="text-muted" />
+                                        {{ count($item->attributes) }}
                                         درس
                                     </li>
                                 </ul>

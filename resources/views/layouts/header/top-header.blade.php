@@ -3,7 +3,7 @@
         <div class="d-flex">
             <div class="d-flex">
                 <span style="display:flex; align-items: center;">
-                    <i class="uil uil-phone"></i>
+                    <x-icon-o-phone class="mx-1" style="margin: 2px 0" />
                     تلفن پشتیبانی
                 </span>
                 <span class="d-none d-sm-flex px-1">
@@ -15,10 +15,10 @@
             </div>
         </div>
 
-        <div style="display: flex;align-items: center;" class="">
-            <a class="text-white d-flex">
+        <div class="">
+            <a style="display: flex;align-items: center;"class="text-white d-flex">
                 {{-- href="{{ strip_tags($information['location']['content']) }}" --}}
-                <i class="uil uil-location-point"></i>
+                <x-icon-o-location-marker class="mx-1" style="margin: 2px 0" />
                 نشانی
                 <span class="d-none d-sm-flex px-1">
                     {{ config('app.name') }}

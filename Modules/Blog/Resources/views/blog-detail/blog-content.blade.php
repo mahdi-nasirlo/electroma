@@ -4,7 +4,8 @@
         <div class="card-body content">
             <div class="d-flex justify-between">
                 <h6>
-                    <i style="color: rgb(255, 135, 23)" class="mdi mdi-tag me-1"></i>
+
+                    <x-icon-o-tag style="color: rgb(255, 135, 23)" />
                     @foreach ($article->tags as $item)
                         <a href="javscript:void(0)" class="text-primary px-2">
                             {{ $item->name }}

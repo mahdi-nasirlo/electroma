@@ -9,7 +9,7 @@
                         @foreach ($course->attributes as $key => $value)
                             <li class="mb-0">
                                 <span class="text-orange h5 me-2">
-                                    <i class="uil uil-check-circle align-middle"></i>
+                                    <x-font-check-circle />
                                 </span>
                                 {{ $value['attribute'] }}
                             </li>
@@ -53,8 +53,9 @@
                             {{ env('app_name') }} </span> می تواند هر آنچه را که شما برای ایجاد آگاهی ، ایجاد
                         مهارت ، کسب درآمد به آن
                         نیاز دارید فراهم کند.</p>
-                    <a href="page-contact-two.html" class="btn btn-primary mt-4"><i class="uil uil-phone"></i> تماس
-                        با ما</a>
+                    <a href="page-contact-two.html" class="btn btn-primary mt-4">
+                        <x-font-phone /> تماس با ما
+                    </a>
                 </div>
             </div>
             <!--end col-->
