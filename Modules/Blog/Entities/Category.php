@@ -12,7 +12,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 // TODO: add slug
 class Category extends Model
 {
-    use HasFactory, NodeTrait, HasSEO, Sluggable;
+    use HasFactory, HasSEO;
+
+    use Sluggable,
+        NodeTrait {
+        NodeTrait::replicate insteadof Sluggable;
+    }
 
     protected $fillable = [
         'name',
