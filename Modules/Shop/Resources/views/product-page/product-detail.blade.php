@@ -57,7 +57,7 @@
                         @if ($product->short_information)
                             @foreach ($product->short_information as $attribute)
                                 <li class="mb-0"><span class="text-primary h5 me-2">
-                                        <i class="uil uil-check-circle align-middle">
+                                        <x-icon-o-check-circle />
                                         </i>
                                     </span>
                                     {{ $attribute['name'] }}

@@ -6,8 +6,9 @@
                      <div class="input-group mb-3 border rounded">
                          <input type="text" id="s" name="s" class="form-control border-0"
                              placeholder="جستجوی کلمه کلیدی...">
-                         <button type="submit" class="input-group-text bg-transparent border-0" id="searchsubmit"><i
-                                 class="uil uil-search"></i></button>
+                         <button type="submit" class="input-group-text bg-transparent border-0" id="searchsubmit">
+                             <x-font-search style="color: orangered" />
+                         </button>
                      </div>
                  </form>
              </div>
@@ -72,12 +73,10 @@
                  <h5 class="widget-title">دنبال کردن ما</h5>
                  <ul class="list-unstyled social-icon mb-0 ps-0 mt-2">
                      <a href="">
-                         <i
-                             class="uil text-dark uil-instagram list-inline-item border border-secondary rounded p-2"></i>
+                         <x-font-instagram class="text-primary list-inline-item" />
                      </a>
                      <a href="">
-                         <i
-                             class="uil text-dark  uil-telegram list-inline-item border border-secondary rounded p-2"></i>
+                         <x-font-telegram class="text-primary list-inline-item" style="padding: 3px" />
                      </a>
                  </ul>
              </div>

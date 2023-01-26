@@ -4,7 +4,7 @@
                    <div class="mb-3">
                        <label class="form-label">نام اصلی </label>
                        <div class="form-icon position-relative">
-                           <i data-feather="user" class="fea icon-sm icons"></i>
+                           <x-font-user-circle data-feather="user" class="fea icon-sm icons" />
                            <input wire:model="name" name="name" id="first-name" type="text"
                                class="form-control ps-5">
                            @if ($errors->has('name'))
@@ -17,7 +17,7 @@
                    <div class="mb-3">
                        <label class="form-label">ایمیل شما </label>
                        <div class="form-icon position-relative">
-                           <i data-feather="mail" class="fea icon-sm icons"></i>
+                           <x-icon-o-mail class="fea icon-sm icons" data-feather="mail" />
                            <input wire:model="email" name="email" id="email" type="email"
                                class="form-control ps-5">
                            @if ($errors->has('email'))

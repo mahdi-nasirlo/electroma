@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 {{-- <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#commentModal"
-                class="text-muted"><i class="mdi mdi-reply commentModalBtn"
+                class="text-muted"> class="mdi mdi-reply commentModalBtn"
                     answer="{{ $comment->user->name }}"></i> پاسخ </a> --}}
                 @auth
                     {{-- <button data-bs-toggle="modal" data-bs-target="#commentModal"

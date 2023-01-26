@@ -9,7 +9,7 @@
                       <div class="md:w-1/2 w-full font-semibold">برای ثبت دیدگاه وارد حساب کاربری شوید !</div>
                       <div class="md:w-1/2 w-full text-left">
                           <a href="#" class="text-white font-semibold">ورود / ثبت نام</a>
-                          <i class="fas fa-arrow-left"></i>
+                          <x-font-o-arrow-sm-left class="text-white" />
                       </div>
                   </div> --}}
                         <div class="alert bg-warning d-flex justify-content-between mt-2" role="alert">
@@ -17,7 +17,7 @@
                             </div>
                             <div class="md:w-1/2 w-full text-left">
                                 <a href="#" class="text-white font-semibold">ورود / ثبت نام</a>
-                                <i class="fas fa-arrow-left"></i>
+                                <x-font-o-arrow-sm-left class="text-white" />
                             </div>
                         </div>
                     @endguest

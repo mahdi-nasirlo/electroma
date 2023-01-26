@@ -7,10 +7,16 @@
                     <h4 class="title"> {{ isset($name) ? $name : 'وبلاگ' }} </h4>
                     @if (isset($article))
                         <ul class="list-unstyled mt-4">
-                            <li class="list-inline-item h6 user text-muted me-2"><i class="mdi mdi-account"></i>
+                            <li class="list-inline-item h6 date text-muted pe-2 ">
+                                <x-icon-o-clock />
+                                {{ $article->read_time }} زمان مطالعه
+                            </li>
+                            <li class="list-inline-item h6 user text-muted me-2">
+                                <x-icon-o-user />
                                 {{ $article->user->name }}
                             </li>
-                            <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i>
+                            <li class="list-inline-item h6 date text-muted">
+                                <x-icon-o-calendar />
                                 {{ jdate($article->creeated_at)->format('%d %B %Y') }}
                             </li>
                         </ul>

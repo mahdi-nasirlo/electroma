@@ -44,6 +44,15 @@
                 </ul>
             </li>
         @endif
+        @if ($category->count() > 0)
+            <li class="has-submenu parent-parent-menu-item">
+                <a href="javascript:void(0)">مجله تخصصی تعمیرات </a>
+                <span class="menu-arrow"></span>
+                <ul class="submenu">
+                    @include('layouts.header.article-sub-item', ['categoreis' => $category->toTree()])
+                </ul>
+            </li>
+        @endif
 
 
         {{-- @if ($pages->count())

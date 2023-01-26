@@ -41,12 +41,12 @@
                         <livewire:search />
                     </li>
 
-                    <li class="has-submenu parent-menu-item d-flex">
+                    <li class="has-submenu parent-menu-item d-flex align-items-center">
                         @auth
                             <div class="dropdown dropdown-primary">
-                                <button type="button" class="btn my-3 btn-soft-primary px-3 py-1 shadow-none"
+                                <button type="button" class="btn my-1 btn-soft-primary px-2 py-1 shadow-none"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="uil uil-user align-middle icons"></i>
+                                    <x-icon-o-user />
                                 </button>
                                 <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 pb-3"
                                     style="width: 200px; margin: 0px;">
@@ -54,24 +54,29 @@
                                     @if (auth()->user()->canAccessFilament())
                                         <a class="dropdown-item text-danger "
                                             href="{{ route('filament.pages.dashboard') }}">
-                                            <i class="text-danger uil uil-user align-middle me-1">
-                                            </i> پنل مدیریت</a>
+                                            <x-icon-o-view-grid-add />
+                                            </i> پنل مدیریت
+                                        </a>
                                         <hr class="my-1">
                                     @endif
 
                                     <a class="dropdown-item text-dark"
                                         href="{{ route('profile', ['tab' => 'dashboard']) }}">
 
-                                        <i class="uil uil-user align-middle me-1"></i> حساب
-                                        کاربری</a>
-                                    <a class="dropdown-item text-dark" href="{{ route('profile', ['tab' => 'order']) }}"><i
-                                            class="uil uil-clipboard-notes align-middle me-1"></i> سفارشات من </a>
+                                        <x-icon-o-user /> حساب
+                                        کاربری
+                                    </a>
+                                    <a class="dropdown-item text-dark" href="{{ route('profile', ['tab' => 'order']) }}">
+                                        <x-icon-o-truck /> سفارشات من
+                                    </a>
                                     <a class="dropdown-item text-dark" href="{{ route('profile', ['tab' => 'address']) }}">
-                                        <i class="uil uil-map-marker h5 align-middle me-2 mb-0"></i> آدرس </a>
+                                        <x-icon-o-map /> آدرس
+                                    </a>
                                     <div class="dropdown-divider my-3 border-top"></div>
                                     <button class="dropdown-item text-dark"
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                            class="uil uil-sign-out-alt align-middle me-1"></i> خروج </button>
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <x-icon-s-logout /> خروج
+                                    </button>
                                     <form id="logout-form" action="{{ route('filament.auth.logout') }}" method="POST"
                                         style="display: none;">
                                         @csrf
@@ -79,9 +84,10 @@
                                 </div>
                             </div>
                         @else
-                            <i style="transform: scaleX(-1)" class="uil uil-arrow-right d-flex align-items-center"></i>
-                            <a class="px-1" href="{{ route('filament.auth.login') }}">
-                                ورود
+                            <a class="p-0" href="{{ route('filament.auth.login') }}">
+                                <button class="btn px-2 py-1 btn-soft-primary cartBtn shadow-none">
+                                    <x-icon-s-login />
+                                </button>
                             </a>
                         @endauth
                     </li>

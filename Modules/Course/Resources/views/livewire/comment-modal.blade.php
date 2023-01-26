@@ -12,7 +12,7 @@
                             {{ session('message') }}
                         </div>
                     @endif
-                    <i data-feather="message-circle" class="fea icon-sm icons"></i>
+                    <x-font-comment-o class="fea icon-sm icons" data-feather="message-circle" />
                     <textarea wire:model='comment' id="message" placeholder="کامنت شما" rows="5" name="content"
                         class="form-control ps-5 border border-slate-300 rounded focus:border-orange-400" required=""></textarea>
                     @error('comment')

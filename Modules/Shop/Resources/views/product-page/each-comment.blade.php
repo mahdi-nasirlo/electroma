@@ -5,8 +5,12 @@
                 <div class="d-flex justify-content-between">
                     <div class="d-flex align-items-center">
                         <a class="pe-3" href="#">
-                            <img src="{{ asset($comment->user->avatar ? '/storage/' . $comment->user->avatar : '/theme/images/Sample.png') }}"
-                                class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
+                            @if ($comment->user->avatar)
+                                <img src="{{ asset($comment->user->avatar ? '/storage/' . $comment->user->avatar : '/theme/images/Sample.png') }}"
+                                    class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
+                            @else
+                                <x-icon-o-user />
+                            @endif
                         </a>
                         <div class="flex-1 commentor-detail">
                             <h6 class="mb-0">
@@ -34,7 +38,10 @@
                                 @endphp
                             @endwhile
 
-                            <li class="list-inline-item"><i class="mdi mdi-star-outline text-warning"></i></li>
+                            <li class="list-inline-item">
+                                <x-font-star-o class="mdi mdi-star-outline text-warning"
+                                    style="width: 17px;height: 17px;" />
+                            </li>
                         </ul>
                     @endif
                 </div>

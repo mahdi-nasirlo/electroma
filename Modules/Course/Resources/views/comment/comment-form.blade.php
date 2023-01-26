@@ -6,14 +6,13 @@
                       <div class="md:w-1/2 w-full font-semibold">برای ثبت دیدگاه وارد حساب کاربری شوید !</div>
                       <div class="md:w-1/2 w-full text-left">
                           <a href="#" class="text-white font-semibold">ورود / ثبت نام</a>
-                          <i class="fas fa-arrow-left"></i>
                       </div>
                   </div> --}}
                   <div class="alert bg-warning d-flex justify-content-between mt-2" role="alert">
                       <div class="md:w-1/2 w-full font-semibold text-white">برای ثبت دیدگاه وارد حساب کاربری شوید !</div>
                       <div class="md:w-1/2 w-full text-left">
                           <a href="#" class="text-white font-semibold">ورود / ثبت نام</a>
-                          <i class="fas fa-arrow-left"></i>
+                          <x-icon-o-arrow-sm-left />
                       </div>
                   </div>
               @endguest
@@ -30,7 +29,7 @@
                               <div class="mb-3">
                                   <label class="form-label">نظر شما</label>
                                   <div class="form-icon position-relative">
-                                      <i data-feather="message-circle" class="fea icon-sm icons"></i>
+                                      <x-font-comment-o data-feather="message-circle" class="icon-sm icons" />
                                       <textarea id="message" placeholder="کامنت شما" rows="5" name="content"
                                           class="form-control ps-5 border border-slate-300 rounded focus:border-orange-400" required=""></textarea>
                                   </div>

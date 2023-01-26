@@ -2193,8 +2193,7 @@ button:not(:disabled) {
 .breadcrumb .breadcrumb-item:before {
     content: "";
 }
-.breadcrumb .breadcrumb-item:after {
-    content: "\F0141" !important;
+.breadcrumb .breadcrumb-item svg {
     font-size: 14px;
     color: #3c4858;
     font-family: "Material Design Icons";
