@@ -32,13 +32,13 @@
         </style>
         <li class="has-submenu parent-menu-item d-flex ms-1">
             <div class="dropdown">
-                <button style="box-shadow: none" type="button" class="btn px-3 py-1 mt-3 btn-soft-primary cartBtn"
+                <button style="box-shadow: none" type="button" class="btn px-2 py-1 mt-3 btn-soft-primary cartBtn"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="uil uil-shopping-cart align-middle icons"></i>
+                    <x-icon-o-shopping-cart />
 
                     @if ($countOfCart)
                         <span class="badge bg-warning">{{ $countOfCart }}</span>
-                        @endif
+                    @endif
                 </button>
                 <div class="dropdown-menu dd-menu dropdown-menu-end bg-white rounded border mt-3 p-4"
                     style="width: 350px; margin: 0px;">
@@ -61,9 +61,9 @@
                     @else
                         <div style=" display: flex;flex-direction: column;align-content: center;"
                             class="cart-empty-content">
-                            <span class="icon text-center"><i
-                                    style="font-size: 70px;display: flex;justify-content: center;"
-                                    class="uil uil-shopping-cart align-middle icons"></i></span>
+                            <span class="icon text-center">
+                                <x-icon-o-shopping-bag class="h-25 w-25" />
+                            </span>
                             <h6 class="title text-center">سبد خرید شما در حال حاضر خالی است.</h6>
                         </div>
                     @endif

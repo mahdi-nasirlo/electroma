@@ -9,7 +9,7 @@
                     <div class="mb-3">
                         <label class="form-label">نظر شما</label>
                         <div class="form-icon position-relative">
-                            <i data-feather="message-circle" class="fea icon-sm icons"></i>
+                            <x-font-comment-o data-feather="message-circle" class="icon-sm icons" />
                             <textarea wire:model="message" id="message" placeholder="کامنت شما" rows="5" name="content"
                                 class="form-control ps-5 border border-slate-300 rounded focus:border-orange-400"></textarea>
                             @error('message')

@@ -8,9 +8,12 @@
             </div>
 
             <h6>
-                <i style="color: rgb(255, 135, 23)" class="mdi mdi-tag me-1"></i>
+
 
                 @foreach ($course->tags as $item)
+                    @if ($loop->first)
+                        <x-font-tag style="color: rgb(255, 135, 23)" class="mdi mdi-tag me-1" />
+                    @endif
                     <a href="javscript:void(0)" class="text-primary px-2">
                         {{ $item->name }}
                     </a>

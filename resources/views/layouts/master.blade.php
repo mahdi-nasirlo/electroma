@@ -10,10 +10,10 @@
     <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern" />
     <meta name="author" content="JafarAbbasi" />
     <meta name="email" content="jabasi26@gmail.com" />
-    <meta name="website" content="https://www.rtl-theme.com/author/tn_plugin/" />
+    {{-- <meta name="website" content="https://www.rtl-theme.com/author/tn_plugin/" /> --}}
     <meta name="Version" content="v3.2.1" />
     <!-- favicon -->
-    <link rel="shortcut icon" href="static/favicon.ico">
+    <link rel="shortcut icon" href="/static/favicon.ico">
 
     @vite('resources/css/app.css')
     @livewireStyles
@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    {{-- <!-- Loader -->
+    <!-- Loader -->
     <div id="preloader">
         <div id="status">
             <div class="spinner">
@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <!-- Loader --> --}}
+    <!-- Loader -->
     @include('layouts.header.index')
 
     @yield('content')
@@ -40,8 +40,9 @@
     @endif
 
     <!-- Back to top -->
-    <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-primary back-to-top"><i
-            data-feather="arrow-up" class="icons"></i></a>
+    <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-primary back-to-top">
+        <x-icon-o-arrow-sm-up data-feather="arrow-up" class="icons h-75 w-75" />
+    </a>
     <!-- Back to top -->
 
     {{-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> --}}

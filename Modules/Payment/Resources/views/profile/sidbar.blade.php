@@ -5,8 +5,10 @@
             href="#dash" role="tab" aria-controls="dash"
             aria-selected="{{ activeClassProfile('dashboad', false) }}">
             <div class="text-start py-1 px-3">
-                <h6 class="mb-0"><i class="uil uil-dashboard h5 align-middle me-2 mb-0"></i>
-                    داشبورد </h6>
+                <h6 class="mb-0">
+                    <x-icon-o-view-grid class="uil uil-dashboard h5 align-middle me-2 mb-0" />
+                    داشبورد
+                </h6>
             </div>
         </a>
         <!--end nav link-->
@@ -18,7 +20,9 @@
             href="#orders" role="tab" aria-controls="orders"
             aria-selected="{{ activeClassProfile('order', false) }}">
             <div class="text-start py-1 px-3">
-                <h6 class="mb-0"><i class="uil uil-list-ul h5 align-middle me-2 mb-0"></i> سفارشات
+                <h6 class="mb-0">
+                    <x-icon-o-truck class="uil uil-dashboard h5 align-middle me-2 mb-0" />
+                    سفارشات
                 </h6>
             </div>
         </a>
@@ -31,7 +35,8 @@
             href="#address" role="tab" aria-controls="address"
             aria-selected="{{ activeClassProfile('address', false) }}">
             <div class="text-start py-1 px-3">
-                <h6 class="mb-0"><i class="uil uil-map-marker h5 align-middle me-2 mb-0"></i> آدرس
+                <h6 class="mb-0">
+                    <x-icon-o-location-marker class="uil uil-dashboard h5 align-middle me-2 mb-0" /> آدرس
                 </h6>
             </div>
         </a>
@@ -44,8 +49,10 @@
             href="#account" role="tab" aria-controls="account"
             aria-selected="{{ activeClassProfile('info', false) }}">
             <div class="text-start py-1 px-3">
-                <h6 class="mb-0"><i class="uil uil-user h5 align-middle me-2 mb-0"></i> جزئیات
-                    حساب</h6>
+                <h6 class="mb-0">
+                    <x-icon-o-lock-open class="uil uil-dashboard h5 align-middle me-2 mb-0" /> جزئیات
+                    حساب
+                </h6>
             </div>
         </a>
         <!--end nav link-->
@@ -56,7 +63,7 @@
         <a class="nav-link rounded" href="auth-login.html" aria-selected="false">
             <div class="text-start py-1 px-3">
                 <h6 onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="mb-0">
-                    <i class="uil uil-sign-out-alt h5 align-middle me-2 mb-0"></i>
+                    <x-icon-o-logout class="uil uil-dashboard h5 align-middle me-2 mb-0" />
                     خروج
                 </h6>
 

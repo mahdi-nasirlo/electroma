@@ -1,4 +1,4 @@
-// import './bootstrap';
+import "./bootstrap";
 import "./bootstrap.bundle.min";
 import "./feather.min";
 import "./theme";

@@ -5,7 +5,7 @@
                 <div class="mb-3">
                     <label class="form-label">رمز عبور قدیمی : </label>
                     <div class="form-icon position-relative">
-                        <i data-feather="key" class="fea icon-sm icons"></i>
+                        <x-icon-o-lock-closed data-feather="key" class="fea icon-sm icons" />
                         <input wire:model='password' type="password" class="form-control ps-5" placeholder="رمز قدیمی">
                         @if ($errors->has('password'))
                             <span class="text-danger">{{ $errors->first('password') }}</span>
@@ -19,7 +19,7 @@
                 <div class="mb-3">
                     <label class="form-label">رمز عبور جدید : </label>
                     <div class="form-icon position-relative">
-                        <i data-feather="key" class="fea icon-sm icons"></i>
+                        <x-icon-o-lock-closed data-feather="key" class="fea icon-sm icons" />
                         <input wire:model='newPassword' type="password" class="form-control ps-5"
                             placeholder="رمز جدید">
                         @if ($errors->has('newPassword'))
@@ -34,7 +34,7 @@
                 <div class="mb-3">
                     <label class="form-label">تایید رمز عبور جدید : </label>
                     <div class="form-icon position-relative">
-                        <i data-feather="key" class="fea icon-sm icons"></i>
+                        <x-icon-o-lock-closed data-feather="key" class="fea icon-sm icons" />
                         <input wire:model='confirmationPassword' type="password" class="form-control ps-5"
                             placeholder="رمز عبور جدید">
                         @if ($errors->has('confirmationPassword'))

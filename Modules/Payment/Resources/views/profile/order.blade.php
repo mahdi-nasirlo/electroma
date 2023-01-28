@@ -77,7 +77,8 @@
 
                                 <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#LoginForm"
                                     class="text-primary">
-                                    نمایش <i class="uil uil-arrow-right"></i>
+                                    نمایش
+                                    <x-icon-o-arrow-sm-left />
                                 </a>
 
                                 @if ($order->canAccessToPayment())
