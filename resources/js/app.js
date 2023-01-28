@@ -3,6 +3,7 @@ import "./bootstrap.bundle.min";
 import "./feather.min";
 import "./theme";
 import "./plugins.init";
+import "./jquery-3.3.1.min";
 import "./zeynep";
 import "./zeynep-right";
 
