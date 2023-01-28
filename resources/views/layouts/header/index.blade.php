@@ -113,8 +113,7 @@
         //     ->where('is_visible', true)
         //     ->where('parent_id', 0);
         
-        // $pages = \App\Models\Page::all();
-        
+        $pages = \Modules\Information\Entities\Page::get(['name', 'slug', 'id']);
         $category = \Modules\Blog\Entities\Category::where('is_visible', true)->get();
     @endphp
     @include('layouts.header.navigation')

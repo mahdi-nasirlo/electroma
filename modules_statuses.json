@@ -3,5 +3,6 @@
     "Shop": true,
     "Payment": true,
     "Course": true,
-    "Service": true
+    "Service": true,
+    "Information": true
 }
