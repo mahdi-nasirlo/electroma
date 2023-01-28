@@ -55,6 +55,7 @@ body {
     padding: 0;
     padding-left: 20px;
     -webkit-overflow-scrolling: touch;
+    width: 107%;
 }
 .zeynep ul > li {
     display: block;
@@ -65,7 +66,7 @@ body {
     display: block;
     font-size: 14px;
     font-weight: bold;
-    padding: 18px 20px;
+    padding: 18px 15px;
     text-decoration: none;
     transition: all 150ms;
 }
@@ -93,17 +94,18 @@ body {
 .zeynep ul > li.has-submenu > a {
     background-image: linear-gradient(
             to bottom,
-            rgb(255 255 255 / 75%),
-            rgb(255 255 255 / 75%)
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0)
         ),
-        url(../images/submenu-arrow.png);
-    background-position: 20px center;
+        url("../svg/default/o-chevron-left.svg");
+    background-position: 10px center;
     background-repeat: no-repeat;
     background-size: 30px 30px;
 }
 
 .zeynep ul > li.has-submenu > a:hover {
-    background-image: url("../images/submenu-arrow.png");
+    background-image: url("../svg/default/o-chevron-left.svg"),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.505), #ffffff81);
 }
 
 /* zeynepjs submenu styles */
@@ -114,10 +116,10 @@ body {
 }
 
 .zeynep .submenu-header {
-    background-image: url("../images/menu-back.png");
+    background-image: url("../svg/default/o-chevron-right.svg");
     background-position: left 20px center;
     background-repeat: no-repeat;
-    background-size: 8px 14px;
+    background-size: 20px;
     border-bottom: solid 1px #efefef;
     cursor: pointer;
     position: relative;
@@ -134,7 +136,7 @@ body {
 }
 
 .zeynep .submenu-header > a:before {
-    background-image: url("../images/submenu-arrow.png");
+    background-image: url("../svg/default/o-chevron-double-down.svg");
     background-position: right 20px center;
     background-repeat: no-repeat;
     background-size: 8px 14px;
