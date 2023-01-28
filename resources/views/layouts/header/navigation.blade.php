@@ -62,15 +62,13 @@
                         </li>
                     @endif --}}
     </ul>
+    @if (!request()->routeIs('service.index') and Route::has('service.index'))
+        <a class="px-0" href="{{ route('service.index') }}">
+            <span class="bg-soft-warning px-2 py-1 rounded">
+                درخواست تعمیرکار
+            </span>
+        </a>
+    @endif
 </div>
 
-
-{{-- @if (!request()->routeIs('home'))
-                <a class="px-0" href="{{ route('service') }}">
-                    <span class="bg-soft-warning px-2 py-1 rounded">
-                        درخواست تعمیرکار
-                    </span>
-                </a>
-            @endif --}}
-<!--end navigation-->
 </div>

@@ -2,5 +2,6 @@
     "Blog": true,
     "Shop": true,
     "Payment": true,
-    "Course": true
+    "Course": true,
+    "Service": true
 }
