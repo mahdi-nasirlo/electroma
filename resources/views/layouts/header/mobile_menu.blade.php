@@ -311,7 +311,7 @@
              ])
          @endif
 
-         {{-- @if ($pages->count())
+         @if ($pages->count())
              <li class="has-submenu">
                  <a href="#" data-submenu="pages">لینک های مفید</a>
 
@@ -333,7 +333,7 @@
                      </ul>
                  </div>
              </li>
-         @endif --}}
+         @endif
          @auth
              <li class="d-flex justify-content-between bg-soft-blue py-2" style="position: absolute;bottom: 0;width: 100%">
                  <span class="ps-1">

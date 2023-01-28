@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style type="text/css">
     .megasubmenu {
         padding: 1rem;
@@ -77,6 +78,8 @@
     // DOMContentLoaded  end
 </script>
 
+=======
+>>>>>>> e0446df (complete page section)
 <li class="nav-item dropdown has-submenu parent-parent-menu-item">
     <a class="nav-link dropdown-toggle show" aria-expanded="true" href="#" data-bs-toggle="dropdown"
         href="javascript:void(0)">

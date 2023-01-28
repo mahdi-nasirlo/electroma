@@ -95,3 +95,27 @@
         height: 170px !important;
     }
 }
+
+.megasubmenu {
+    padding: 1rem;
+}
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+    .megasubmenu {
+        right: 100%;
+        top: 0;
+        min-height: 100%;
+        min-width: 500px;
+    }
+
+    .dropdown-menu > li:hover .megasubmenu {
+        display: block;
+    }
+
+    .dropdown-toggle::after {
+        content: none;
+    }
+}
+
+/* ============ desktop view .end// ============ */
