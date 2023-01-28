@@ -1,22 +1,3 @@
-@php
-    $shopCategoies = \Modules\Shop\Entities\Category::where('is_visible', true)->get();
-    
-    $courses = \Modules\Course\Entities\Course::where('published_at', '<', now())->where('inventory', '>', 0);
-    
-    // FIXME product condition to display category
-    // $products = \Modules\Shop\Entities\Product::all();
-    // ->where('inventory', '>', 0)
-    // ->where('published_at', '<', now());
-    
-    // $categoreis = \Modules\Blog\Entities\Category::all()
-    //     ->where('is_visible', true)
-    //     ->where('parent_id', 0);
-    
-    // $pages = \App\Models\Page::all();
-    
-    $category = \Modules\Blog\Entities\Category::where('is_visible', true)->get();
-    
-@endphp
 <div class="container-xl d-none justify-content-between pb-1 topnav d-md-flex">
     <ul style="margin-right: -22px" class="navigation-menu menu-tow justify-content-end">
 

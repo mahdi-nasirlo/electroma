@@ -31,8 +31,6 @@
                 </div>
             </div>
 
-            {{-- @include('layouts.header.mobile_menu') --}}
-
             <div id="Mynavigation" class="w-50">
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu justify-content-end w-100">
@@ -101,5 +99,25 @@
         </div>
         <!--end container-->
     </div>
+    @php
+        $shopCategoies = \Modules\Shop\Entities\Category::where('is_visible', true)->get();
+        
+        $courses = \Modules\Course\Entities\Course::where('published_at', '<', now())->where('inventory', '>', 0);
+        
+        // FIXME product condition to display category
+        // $products = \Modules\Shop\Entities\Product::all();
+        // ->where('inventory', '>', 0)
+        // ->where('published_at', '<', now());
+        
+        // $categoreis = \Modules\Blog\Entities\Category::all()
+        //     ->where('is_visible', true)
+        //     ->where('parent_id', 0);
+        
+        // $pages = \App\Models\Page::all();
+        
+        $category = \Modules\Blog\Entities\Category::where('is_visible', true)->get();
+    @endphp
     @include('layouts.header.navigation')
+    @include('layouts.header.mobile_menu')
+
 </header>
