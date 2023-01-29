@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'path' => env('FILAMENT_PATH', 'admin'),
+    'path' => env('FILAMENT_PATH', 'auth'),
 
     /*
     |--------------------------------------------------------------------------
@@ -102,8 +102,8 @@ return [
     */
 
     'pages' => [
-        'namespace' => 'App\\Filament\\Pages',
-        'path' => app_path('Filament/Pages'),
+        'namespace' => 'App\\Admin\\Pages',
+        'path' => app_path('Admin/Pages'),
         'register' => [
             Pages\Dashboard::class,
         ],
@@ -120,8 +120,8 @@ return [
     */
 
     'resources' => [
-        'namespace' => 'App\\Filament\\Resources',
-        'path' => app_path('Filament/Resources'),
+        'namespace' => 'App\\Admin\\Resources',
+        'path' => app_path('Admin/Resources'),
         'register' => [],
     ],
 
@@ -136,8 +136,8 @@ return [
     */
 
     'widgets' => [
-        'namespace' => 'App\\Filament\\Widgets',
-        'path' => app_path('Filament/Widgets'),
+        'namespace' => 'App\\Admin\\Widgets',
+        'path' => app_path('Admin/Widgets'),
         'register' => [
             Widgets\AccountWidget::class,
             Widgets\FilamentInfoWidget::class,
@@ -155,8 +155,8 @@ return [
     */
 
     'livewire' => [
-        'namespace' => 'App\\Filament',
-        'path' => app_path('Filament'),
+        'namespace' => 'App\\Admin',
+        'path' => app_path('Admin'),
     ],
 
     /*
@@ -169,7 +169,7 @@ return [
     |
     */
 
-    'dark_mode' => false,
+    'dark_mode' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -236,7 +236,7 @@ return [
             'have_inline_labels' => false,
         ],
         'footer' => [
-            'should_show_logo' => true,
+            'should_show_logo' => false,
         ],
         'max_content_width' => null,
         'notifications' => [
@@ -244,11 +244,11 @@ return [
             'alignment' => 'right',
         ],
         'sidebar' => [
-            'is_collapsible_on_desktop' => false,
+            'is_collapsible_on_desktop' => true,
             'groups' => [
                 'are_collapsible' => true,
             ],
-            'width' => null,
+            'width' => "300px",
             'collapsed_width' => null,
         ],
     ],
@@ -262,7 +262,7 @@ return [
     |
     */
 
-    'favicon' => null,
+    'favicon' => "/static/logo.png",
 
     /*
     |--------------------------------------------------------------------------

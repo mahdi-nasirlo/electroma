@@ -2,19 +2,22 @@
     @if ($category->is_visible)
         {{-- @if ($category->childIsVisible()) --}}
         <li class="has-megasubmenu">
-            <a class="dropdown-item d-flex justify-content-between" href="{{ $category->link() }}">
+            <a style="align-items: center;" class="dropdown-item d-flex justify-content-between align-item-center"
+                href="{{ $category->link() }}">
                 {{ $category->name }}
-                <img src="\static\menu-back.png" width="12" height="12">
+                <x-icon-o-chevron-left />
             </a>
             <div class="megasubmenu dropdown-menu">
                 <div class="row">
                     @foreach ($category->children as $parent)
                         <div class="col-6">
-                            <a class="d-flex align-center justify-content-between" href="{{ $parent->link() }}">
+                            <a style="align-items: center;"
+                                class="d-flex align-center justify-content-between align-item-center"
+                                href="{{ $parent->link() }}">
                                 <h6 class="title">
                                     {{ $parent->name }}
                                 </h6>
-                                <img class="mt-2" src="\static\menu-back.png" width="12" height="12">
+                                <x-icon-o-chevron-left />
                             </a>
                             <ul class="list-unstyled bg-light">
                                 @foreach ($parent->children as $child)
