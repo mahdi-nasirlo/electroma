@@ -84,7 +84,7 @@
                         @else
                             <a class="p-0" href="{{ route('filament.auth.login') }}">
                                 <button class="btn px-2 py-1 btn-soft-primary cartBtn shadow-none">
-                                    <x-icon-s-login />
+                                    <x-icon-o-login />
                                 </button>
                             </a>
                         @endauth
