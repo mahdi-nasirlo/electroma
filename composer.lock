@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "933a56c7dd75e71a18bf1b0c2571f752",
+    "content-hash": "246af43d0ef141971eeb7c72e713e479",
     "packages": [
         {
             "name": "3x1io/filament-user",
@@ -2779,6 +2779,68 @@
                 }
             ],
             "time": "2022-10-26T14:07:24+00:00"
+        },
+        {
+            "name": "hollyit/filament-static-assets",
+            "version": "0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/HollyIT/filament-static-assets.git",
+                "reference": "225c27e17cca8b5b93eaf12dbae815945dbb0bf6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/HollyIT/filament-static-assets/zipball/225c27e17cca8b5b93eaf12dbae815945dbb0bf6",
+                "reference": "225c27e17cca8b5b93eaf12dbae815945dbb0bf6",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^2.13",
+                "illuminate/contracts": "^9.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.9.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "7.*",
+                "pestphp/pest": "^1.21"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "HollyIT\\FilamentStaticAssets\\StaticAssetsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "HollyIT\\FilamentStaticAssets\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jamie Holly",
+                    "email": "jamie@hollyit.net"
+                }
+            ],
+            "description": "Improved handling of stylesheets and javascript files for Filament",
+            "homepage": "https://github.com/HollyIT/filament-static-assets",
+            "keywords": [
+                "assets",
+                "filament",
+                "hollyit",
+                "laravel",
+                "performance"
+            ],
+            "support": {
+                "issues": "https://github.com/HollyIT/filament-static-assets/issues",
+                "source": "https://github.com/HollyIT/filament-static-assets/tree/0.1.3"
+            },
+            "time": "2022-10-19T19:24:05+00:00"
         },
         {
             "name": "intervention/image",
