@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Service\Entities;
+namespace Modules\Service\Policies;
 
 use App\Models\User;
-use Modules\Service\Entities\ServiceItem;
+use Modules\Service\Entities\Service;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ServiceItemPolicy
+class ServicePolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class ServiceItemPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('view_any_service::item::service');
+        return $user->can('view_any_service::service::request');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\ServiceItem  $serviceItem
+     * @param  \Modules\Service\Entities\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, ServiceItem $serviceItem)
+    public function view(User $user, Service $service)
     {
-        return $user->can('view_service::item::service');
+        return $user->can('view_service::service::request');
     }
 
     /**
@@ -41,31 +41,31 @@ class ServiceItemPolicy
      */
     public function create(User $user)
     {
-        return $user->can('create_service::item::service');
+        return $user->can('create_service::service::request');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\ServiceItem  $serviceItem
+     * @param  \Modules\Service\Entities\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, ServiceItem $serviceItem)
+    public function update(User $user, Service $service)
     {
-        return $user->can('update_service::item::service');
+        return $user->can('update_service::service::request');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\ServiceItem  $serviceItem
+     * @param  \Modules\Service\Entities\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, ServiceItem $serviceItem)
+    public function delete(User $user, Service $service)
     {
-        return $user->can('delete_service::item::service');
+        return $user->can('delete_service::service::request');
     }
 
     /**
@@ -76,19 +76,19 @@ class ServiceItemPolicy
      */
     public function deleteAny(User $user)
     {
-        return $user->can('delete_any_service::item::service');
+        return $user->can('delete_any_service::service::request');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\ServiceItem  $serviceItem
+     * @param  \Modules\Service\Entities\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, ServiceItem $serviceItem)
+    public function forceDelete(User $user, Service $service)
     {
-        return $user->can('force_delete_service::item::service');
+        return $user->can('force_delete_service::service::request');
     }
 
     /**
@@ -99,19 +99,19 @@ class ServiceItemPolicy
      */
     public function forceDeleteAny(User $user)
     {
-        return $user->can('force_delete_any_service::item::service');
+        return $user->can('force_delete_any_service::service::request');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\ServiceItem  $serviceItem
+     * @param  \Modules\Service\Entities\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, ServiceItem $serviceItem)
+    public function restore(User $user, Service $service)
     {
-        return $user->can('restore_service::item::service');
+        return $user->can('restore_service::service::request');
     }
 
     /**
@@ -122,19 +122,19 @@ class ServiceItemPolicy
      */
     public function restoreAny(User $user)
     {
-        return $user->can('restore_any_service::item::service');
+        return $user->can('restore_any_service::service::request');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\ServiceItem  $serviceItem
+     * @param  \Modules\Service\Entities\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, ServiceItem $serviceItem)
+    public function replicate(User $user, Service $service)
     {
-        return $user->can('replicate_service::item::service');
+        return $user->can('replicate_service::service::request');
     }
 
     /**
@@ -145,7 +145,6 @@ class ServiceItemPolicy
      */
     public function reorder(User $user)
     {
-        return $user->can('reorder_service::item::service');
+        return $user->can('reorder_service::service::request');
     }
-
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Payment\Entities;
+namespace Modules\Blog\Policies;
 
 use App\Models\User;
-use Modules\Payment\Entities\Order;
+use Modules\Blog\Entities\Category;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class OrderPolicy
+class CategoryPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class OrderPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('view_any_shop::order');
+        return $user->can('view_any_blog::categories');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Order  $order
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Order $order)
+    public function view(User $user, Category $category)
     {
-        return $user->can('view_shop::order');
+        return $user->can('view_blog::categories');
     }
 
     /**
@@ -41,31 +41,31 @@ class OrderPolicy
      */
     public function create(User $user)
     {
-        return $user->can('create_shop::order');
+        return $user->can('create_blog::categories');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Order  $order
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Order $order)
+    public function update(User $user, Category $category)
     {
-        return $user->can('update_shop::order');
+        return $user->can('update_blog::categories');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Order  $order
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Order $order)
+    public function delete(User $user, Category $category)
     {
-        return $user->can('delete_shop::order');
+        return $user->can('delete_blog::categories');
     }
 
     /**
@@ -76,19 +76,19 @@ class OrderPolicy
      */
     public function deleteAny(User $user)
     {
-        return $user->can('delete_any_shop::order');
+        return $user->can('delete_any_blog::categories');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Order  $order
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Order $order)
+    public function forceDelete(User $user, Category $category)
     {
-        return $user->can('force_delete_shop::order');
+        return $user->can('force_delete_blog::categories');
     }
 
     /**
@@ -99,19 +99,19 @@ class OrderPolicy
      */
     public function forceDeleteAny(User $user)
     {
-        return $user->can('force_delete_any_shop::order');
+        return $user->can('force_delete_any_blog::categories');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Order  $order
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Order $order)
+    public function restore(User $user, Category $category)
     {
-        return $user->can('restore_shop::order');
+        return $user->can('restore_blog::categories');
     }
 
     /**
@@ -122,19 +122,19 @@ class OrderPolicy
      */
     public function restoreAny(User $user)
     {
-        return $user->can('restore_any_shop::order');
+        return $user->can('restore_any_blog::categories');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Order  $order
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, Order $order)
+    public function replicate(User $user, Category $category)
     {
-        return $user->can('replicate_shop::order');
+        return $user->can('replicate_blog::categories');
     }
 
     /**
@@ -145,7 +145,6 @@ class OrderPolicy
      */
     public function reorder(User $user)
     {
-        return $user->can('reorder_shop::order');
+        return $user->can('reorder_blog::categories');
     }
-
 }

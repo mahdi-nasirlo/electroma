@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Shop\Entities;
+namespace Modules\Shop\Policies;
 
 use App\Models\User;
 use Modules\Shop\Entities\Product;
@@ -147,5 +147,4 @@ class ProductPolicy
     {
         return $user->can('reorder_shop::product');
     }
-
 }

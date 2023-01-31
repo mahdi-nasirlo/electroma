@@ -3,6 +3,7 @@
 namespace App\Admin\Widgets;
 
 use App\Models\User;
+use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Card;
 use Modules\Blog\Entities\Post;
@@ -11,6 +12,11 @@ use Modules\Payment\Entities\Order;
 
 class StatsOrderOverView extends BaseWidget
 {
+    use HasWidgetShield;
+
+    protected static ?string $heading = "آمار کلی";
+
+
     protected function getCards(): array
     {
         return [

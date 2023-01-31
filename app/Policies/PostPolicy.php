@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Blog\Entities;
+namespace App\Policies;
 
 use App\Models\User;
 use Modules\Blog\Entities\Post;
@@ -147,5 +147,4 @@ class PostPolicy
     {
         return $user->can('reorder_blog::post');
     }
-
 }

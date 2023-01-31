@@ -3,6 +3,7 @@
 namespace App\Admin\Widgets;
 
 use App\Models\Comment;
+use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Closure;
 use Filament\Tables;
 use Filament\Tables\Columns\BooleanColumn;
@@ -12,6 +13,8 @@ use Illuminate\Database\Eloquent\Builder;
 
 class LatestCommetn extends BaseWidget
 {
+    use HasWidgetShield;
+
     protected static ?int $sort = 2;
 
     protected static ?string $heading = "اخرین دیدگاه ها ";

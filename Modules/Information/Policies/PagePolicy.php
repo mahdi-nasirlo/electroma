@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Course\Entities;
+namespace Modules\Information\Policies;
 
 use App\Models\User;
-use Modules\Course\Entities\Course;
+use Modules\Information\Entities\Page;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CoursePolicy
+class PagePolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class CoursePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('view_any_shop::cource');
+        return $user->can('view_any_information::page');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Course\Entities\Course  $course
+     * @param  \Modules\Information\Entities\Page  $page
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Course $course)
+    public function view(User $user, Page $page)
     {
-        return $user->can('view_shop::cource');
+        return $user->can('view_information::page');
     }
 
     /**
@@ -41,31 +41,31 @@ class CoursePolicy
      */
     public function create(User $user)
     {
-        return $user->can('create_shop::cource');
+        return $user->can('create_information::page');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Course\Entities\Course  $course
+     * @param  \Modules\Information\Entities\Page  $page
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Course $course)
+    public function update(User $user, Page $page)
     {
-        return $user->can('update_shop::cource');
+        return $user->can('update_information::page');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Course\Entities\Course  $course
+     * @param  \Modules\Information\Entities\Page  $page
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Course $course)
+    public function delete(User $user, Page $page)
     {
-        return $user->can('delete_shop::cource');
+        return $user->can('delete_information::page');
     }
 
     /**
@@ -76,19 +76,19 @@ class CoursePolicy
      */
     public function deleteAny(User $user)
     {
-        return $user->can('delete_any_shop::cource');
+        return $user->can('delete_any_information::page');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Course\Entities\Course  $course
+     * @param  \Modules\Information\Entities\Page  $page
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Course $course)
+    public function forceDelete(User $user, Page $page)
     {
-        return $user->can('force_delete_shop::cource');
+        return $user->can('force_delete_information::page');
     }
 
     /**
@@ -99,19 +99,19 @@ class CoursePolicy
      */
     public function forceDeleteAny(User $user)
     {
-        return $user->can('force_delete_any_shop::cource');
+        return $user->can('force_delete_any_information::page');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Course\Entities\Course  $course
+     * @param  \Modules\Information\Entities\Page  $page
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Course $course)
+    public function restore(User $user, Page $page)
     {
-        return $user->can('restore_shop::cource');
+        return $user->can('restore_information::page');
     }
 
     /**
@@ -122,19 +122,19 @@ class CoursePolicy
      */
     public function restoreAny(User $user)
     {
-        return $user->can('restore_any_shop::cource');
+        return $user->can('restore_any_information::page');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Course\Entities\Course  $course
+     * @param  \Modules\Information\Entities\Page  $page
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, Course $course)
+    public function replicate(User $user, Page $page)
     {
-        return $user->can('replicate_shop::cource');
+        return $user->can('replicate_information::page');
     }
 
     /**
@@ -145,7 +145,6 @@ class CoursePolicy
      */
     public function reorder(User $user)
     {
-        return $user->can('reorder_shop::cource');
+        return $user->can('reorder_information::page');
     }
-
 }

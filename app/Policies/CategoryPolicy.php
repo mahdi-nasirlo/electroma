@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Payment\Entities;
+namespace App\Policies;
 
 use App\Models\User;
-use Modules\Payment\Entities\Discount;
+use Modules\Blog\Entities\Category;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class DiscountPolicy
+class CategoryPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,20 @@ class DiscountPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('view_any_shop::discount');
+        dd("lkajf");
+        return $user->can('view_any_blog::categories');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Discount  $discount
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Discount $discount)
+    public function view(User $user, Category $category)
     {
-        return $user->can('view_shop::discount');
+        return $user->can('view_blog::categories');
     }
 
     /**
@@ -41,31 +42,31 @@ class DiscountPolicy
      */
     public function create(User $user)
     {
-        return $user->can('create_shop::discount');
+        return $user->can('create_blog::categories');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Discount  $discount
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Discount $discount)
+    public function update(User $user, Category $category)
     {
-        return $user->can('update_shop::discount');
+        return $user->can('update_blog::categories');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Discount  $discount
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Discount $discount)
+    public function delete(User $user, Category $category)
     {
-        return $user->can('delete_shop::discount');
+        return $user->can('delete_blog::categories');
     }
 
     /**
@@ -76,19 +77,19 @@ class DiscountPolicy
      */
     public function deleteAny(User $user)
     {
-        return $user->can('delete_any_shop::discount');
+        return $user->can('delete_any_blog::categories');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Discount  $discount
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Discount $discount)
+    public function forceDelete(User $user, Category $category)
     {
-        return $user->can('force_delete_shop::discount');
+        return $user->can('force_delete_blog::categories');
     }
 
     /**
@@ -99,19 +100,19 @@ class DiscountPolicy
      */
     public function forceDeleteAny(User $user)
     {
-        return $user->can('force_delete_any_shop::discount');
+        return $user->can('force_delete_any_blog::categories');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Discount  $discount
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Discount $discount)
+    public function restore(User $user, Category $category)
     {
-        return $user->can('restore_shop::discount');
+        return $user->can('restore_blog::categories');
     }
 
     /**
@@ -122,19 +123,19 @@ class DiscountPolicy
      */
     public function restoreAny(User $user)
     {
-        return $user->can('restore_any_shop::discount');
+        return $user->can('restore_any_blog::categories');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Payment\Entities\Discount  $discount
+     * @param  \Modules\Blog\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, Discount $discount)
+    public function replicate(User $user, Category $category)
     {
-        return $user->can('replicate_shop::discount');
+        return $user->can('replicate_blog::categories');
     }
 
     /**
@@ -145,7 +146,6 @@ class DiscountPolicy
      */
     public function reorder(User $user)
     {
-        return $user->can('reorder_shop::discount');
+        return $user->can('reorder_blog::categories');
     }
-
 }
