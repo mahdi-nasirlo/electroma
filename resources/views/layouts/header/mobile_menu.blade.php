@@ -230,8 +230,8 @@
              <img src="/static/logo.png" alt="Logo" height="100">
          </a>
      </div>
-
-     <ul>
+     <livewire:search />
+     <ul class="mt-2">
          @guest
              <li>
                  <a class="px-1 d-flex justify-content-between bg-soft-warning" href="{{ route('filament.auth.login') }}">
