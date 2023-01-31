@@ -27,6 +27,23 @@
 /*            01) Tiny slider              */
 //=========================================//
 
+if (document.getElementsByClassName("tiny-five-item").length > 0) {
+    var slider = tns({
+        container: ".tiny-five-item",
+        controls: false,
+        mouseDrag: true,
+        loop: true,
+        rewind: true,
+        autoplay: true,
+        autoplayButtonOutput: false,
+        autoplayTimeout: 3000,
+        navPosition: "bottom",
+        speed: 400,
+        gutter: 12,
+        nav: false,
+    });
+}
+
 if (document.getElementsByClassName("tiny-single-item").length > 0) {
     var slider = tns({
         container: ".tiny-single-item",
@@ -88,7 +105,7 @@ if (document.getElementsByClassName("tiny-three-item").length > 0) {
         gutter: 12,
         responsive: {
             992: {
-                items: 3,
+                items: 5,
             },
 
             767: {
@@ -184,6 +201,66 @@ if (document.getElementsByClassName("tiny-six-item").length > 0) {
 
             320: {
                 items: 1,
+            },
+        },
+    });
+}
+
+if (document.getElementsByClassName("last-product-slider").length > 0) {
+    console.log("last-product-slider");
+    var slider = tns({
+        container: ".last-product-slider",
+        controls: false,
+        mouseDrag: true,
+        loop: true,
+        rewind: true,
+        autoplay: true,
+        autoplayButtonOutput: false,
+        autoplayTimeout: 3000,
+        navPosition: "bottom",
+        speed: 400,
+        gutter: 12,
+        responsive: {
+            992: {
+                items: 5,
+            },
+
+            767: {
+                items: 3,
+            },
+
+            320: {
+                items: 2,
+            },
+        },
+    });
+}
+
+if (document.getElementsByClassName("most-buy-product").length > 0) {
+    console.log("most-buy-product");
+    var slider = tns({
+        container: ".most-buy-product",
+        controls: false,
+        mouseDrag: true,
+        loop: true,
+        rewind: true,
+        autoplay: true,
+        autoplayButtonOutput: false,
+        autoplayTimeout: 3000,
+        navPosition: "bottom",
+        speed: 400,
+        gutter: 12,
+        responsive: {
+            992: {
+                items: 5,
+            },
+
+            767: {
+                items: 3,
+            },
+
+            320: {
+                items: 2,
             },
         },
     });

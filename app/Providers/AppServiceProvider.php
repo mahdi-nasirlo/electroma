@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
                 'خدمات'
             ]);
 
-            Filament::registerViteTheme('resources/css/vendor/filament.css');
+            // Filament::registerViteTheme('resources/css/vendor/filament.css');
         });
 
         // if (Schema::hasTable("infographics")) {

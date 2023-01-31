@@ -2,7 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Shop\Product;
+use Modules\Shop\Entities\Product;;
+
 use Livewire\Component;
 use Modules\Shop\Entities\Product as EntitiesProduct;
 
