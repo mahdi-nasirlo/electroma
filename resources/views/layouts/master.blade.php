@@ -4,9 +4,21 @@
 
 <head>
     <meta charset="utf-8" />
+<<<<<<< HEAD
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {!! SEO::generate(true) !!}
+=======
+    <title>لندریک - قالب چندمنظوره ای مدرن html</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
+    <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern" />
+    <meta name="author" content="JafarAbbasi" />
+    <meta name="email" content="jabasi26@gmail.com" />
+    {{-- <meta name="website" content="https://www.rtl-theme.com/author/tn_plugin/" /> --}}
+    <meta name="Version" content="v3.2.1" />
+    <!-- favicon -->
+>>>>>>> parent of 6c19f25 (fix reload page in resize)
     <link rel="shortcut icon" href="/static/favicon.ico">
     <meta name="copyright" content="electroma - الکتروما" />
     <meta name="language" content="fa" />
@@ -44,6 +56,7 @@
     </a>
     <!-- Back to top -->
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     @yield('script')
     @vite('resources/js/app.js')
     @livewireScripts
