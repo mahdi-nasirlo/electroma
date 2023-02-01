@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
                 Vite::asset('resources/css/font.css')
             ]);
 
-            // Filament::registerViteTheme('resources/css/filament.css');
+            // Filament::registerViteTheme('resources/css/vendor/filament.css');
         });
 
         // if (Schema::hasTable("infographics")) {

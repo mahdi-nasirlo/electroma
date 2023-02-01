@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Payment\Entities;
+namespace Modules\Payment\Policies;
 
 use App\Models\User;
 use Modules\Payment\Entities\Payment;
@@ -147,5 +147,4 @@ class PaymentPolicy
     {
         return $user->can('reorder_shop::payment');
     }
-
 }

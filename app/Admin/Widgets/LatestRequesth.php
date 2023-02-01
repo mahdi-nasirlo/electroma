@@ -2,6 +2,7 @@
 
 namespace App\Admin\Widgets;
 
+use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Filament\Notifications\Notification;
 use Filament\Tables;
 use Filament\Tables\Columns\BooleanColumn;
@@ -13,6 +14,8 @@ use Modules\Service\Entities\Service;
 
 class LatestRequesth extends BaseWidget
 {
+    use HasWidgetShield;
+
     protected static ?string $heading = "اخرین درخواست تعمیرکار با وضعیت باز";
 
     protected static ?int $sort = 1;

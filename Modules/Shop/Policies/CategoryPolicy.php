@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Service\Entities;
+namespace Modules\Shop\Policies;
 
 use App\Models\User;
-use Modules\Service\Entities\Service;
+use Modules\Shop\Entities\Category;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ServicePolicy
+class CategoryPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class ServicePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('view_any_service::service::request');
+        return $user->can('view_any_shop::category');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\Service  $service
+     * @param  \Modules\Shop\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Service $service)
+    public function view(User $user, Category $category)
     {
-        return $user->can('view_service::service::request');
+        return $user->can('view_shop::category');
     }
 
     /**
@@ -41,31 +41,31 @@ class ServicePolicy
      */
     public function create(User $user)
     {
-        return $user->can('create_service::service::request');
+        return $user->can('create_shop::category');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\Service  $service
+     * @param  \Modules\Shop\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Service $service)
+    public function update(User $user, Category $category)
     {
-        return $user->can('update_service::service::request');
+        return $user->can('update_shop::category');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\Service  $service
+     * @param  \Modules\Shop\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Service $service)
+    public function delete(User $user, Category $category)
     {
-        return $user->can('delete_service::service::request');
+        return $user->can('delete_shop::category');
     }
 
     /**
@@ -76,19 +76,19 @@ class ServicePolicy
      */
     public function deleteAny(User $user)
     {
-        return $user->can('delete_any_service::service::request');
+        return $user->can('delete_any_shop::category');
     }
 
     /**
      * Determine whether the user can permanently delete.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\Service  $service
+     * @param  \Modules\Shop\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Service $service)
+    public function forceDelete(User $user, Category $category)
     {
-        return $user->can('force_delete_service::service::request');
+        return $user->can('force_delete_shop::category');
     }
 
     /**
@@ -99,19 +99,19 @@ class ServicePolicy
      */
     public function forceDeleteAny(User $user)
     {
-        return $user->can('force_delete_any_service::service::request');
+        return $user->can('force_delete_any_shop::category');
     }
 
     /**
      * Determine whether the user can restore.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\Service  $service
+     * @param  \Modules\Shop\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Service $service)
+    public function restore(User $user, Category $category)
     {
-        return $user->can('restore_service::service::request');
+        return $user->can('restore_shop::category');
     }
 
     /**
@@ -122,19 +122,19 @@ class ServicePolicy
      */
     public function restoreAny(User $user)
     {
-        return $user->can('restore_any_service::service::request');
+        return $user->can('restore_any_shop::category');
     }
 
     /**
      * Determine whether the user can replicate.
      *
      * @param  \App\Models\User  $user
-     * @param  \Modules\Service\Entities\Service  $service
+     * @param  \Modules\Shop\Entities\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function replicate(User $user, Service $service)
+    public function replicate(User $user, Category $category)
     {
-        return $user->can('replicate_service::service::request');
+        return $user->can('replicate_shop::category');
     }
 
     /**
@@ -145,7 +145,6 @@ class ServicePolicy
      */
     public function reorder(User $user)
     {
-        return $user->can('reorder_service::service::request');
+        return $user->can('reorder_shop::category');
     }
-
 }

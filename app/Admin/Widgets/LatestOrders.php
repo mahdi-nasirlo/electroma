@@ -2,6 +2,7 @@
 
 namespace App\Admin\Widgets;
 
+use BezhanSalleh\FilamentShield\Traits\HasWidgetShield;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Widgets\TableWidget as BaseWidget;
@@ -12,6 +13,8 @@ use Modules\Payment\Entities\Order;
 
 class LatestOrders extends BaseWidget
 {
+    use HasWidgetShield;
+
     protected int | string | array $columnSpan = 'full';
 
     protected static ?int $sort = 3;
