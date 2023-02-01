@@ -3,9 +3,10 @@
 @import "default.css";
 @import "./zeynep.css";
 @import "./zeynep-right.css";
-/* @import "./unicons.iconscout.com/release/v3.0.6/css/line.css"; */
+@import "./tiny-slider.css";
 
-.has-submenu:hover > ul {
+/* @import "./unicons.iconscout.com/release/v3.0.6/css/line.css"; */
+.has-submenu: hover > ul {
     border: 1px solid rgba(223, 223, 223, 0.589);
     border-radius: 10px;
     visibility: visible !important;

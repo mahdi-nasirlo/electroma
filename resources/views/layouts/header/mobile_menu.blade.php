@@ -127,7 +127,7 @@
          @endif
 
          @php
-             $pages = \App\Models\Page::all();
+             $pages = \use Modules\Information\Entities\Page;::all();
          @endphp
 
          @if ($pages->count())
@@ -218,7 +218,7 @@
      //     ->where('is_visible', true)
      //     ->where('parent_id', 0);
      
-     // $pages = \App\Models\Page::all();
+     // $pages = \use Modules\Information\Entities\Page;::all();
      
      $category = \Modules\Blog\Entities\Category::where('is_visible', true)->get();
      

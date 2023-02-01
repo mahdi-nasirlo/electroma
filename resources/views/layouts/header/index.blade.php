@@ -2,11 +2,12 @@
     @include('layouts.header.top-header')
 
     <div id="topnav" class="topnav">
-        <div class="container-xl d-flex justify-content-between">
+        <div class="container-xl d-flex justify-content-between ">
             <!-- Logo container-->
             <div class="d-flex">
                 <a class="logo" href="/">
-                    <img style="width: 30%;height: auto;" src="/static/logo.png" alt="Logo" height="100">
+                    <img class="my-1" style="width: 30%;height: auto;" src="/static/logo.png" alt="Logo"
+                        height="100">
                 </a>
             </div>
             <!--end login button-->
