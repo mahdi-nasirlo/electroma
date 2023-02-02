@@ -124,3 +124,13 @@
 }
 
 /* ============ desktop view .end// ============ */
+
+.content {
+    overflow: hidden;
+}
+
+.content img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
