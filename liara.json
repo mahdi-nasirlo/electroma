@@ -1,4 +1,10 @@
 {
     "platform": "laravel",
-    "app": "electroma"
+    "app": "electroma",
+    "disks": [
+        {
+            "name": "data",
+            "mountTo": "storage"
+        }
+    ]
 }
