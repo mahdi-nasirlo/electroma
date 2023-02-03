@@ -204,8 +204,10 @@
      </ul>
  </div> --}}
 
- @php
-     $shopCategoies = \Modules\Shop\Entities\Category::where('is_visible', true)->get();
+ {{-- @php
+     $shopCategoies = \Modules\Shop\Entities\Category::where('is_visible', true)
+         ->get()
+         ->toTree();
      
      $courses = \Modules\Course\Entities\Course::where('published_at', '<', now())->where('inventory', '>', 0);
      
@@ -220,9 +222,11 @@
      
      // $pages = \use Modules\Information\Entities\Page;::all();
      
-     $category = \Modules\Blog\Entities\Category::where('is_visible', true)->get();
+     $category = \Modules\Blog\Entities\Category::where('is_visible', true)
+         ->get()
+         ->toTree();
      
- @endphp
+ @endphp --}}
 
  <div class="zeynep right">
      <div class="d-flex">
@@ -232,6 +236,11 @@
      </div>
 
      <ul>
+         <li>
+             <a>
+                 <livewire:search />
+             </a>
+         </li>
          @guest
              <li>
                  <a class="px-1 d-flex justify-content-between bg-soft-warning" href="{{ route('filament.auth.login') }}">
@@ -240,7 +249,8 @@
                  </a>
              </li>
          @endguest
-         {{-- <livewire:cart.cart-header /> --}}
+         {{-- <livewire:cart::زشقفcart-header /> --}}
+
          @if (!request()->routeIs('service.index') and Route::has('service.index'))
              <li>
                  <a class="text-warning " href="{{ route('service.index') }}">

@@ -84,14 +84,14 @@ class Category extends Model
 
     public function getChildrenIds(&$arr)
     {
-        // $children = $this->descendants;
-        // foreach ($children as $child) {
-        //     if (count($child->children) > 0) {
-        //         $arr[] = $child->id;
-        //         $child->getChildrenIds($arr);
-        //     } else
-        //         array_push($arr, $child->id);
-        // }
+        $children = $this->descendants;
+        foreach ($children as $child) {
+            if (count($child->children) > 0) {
+                $arr[] = $child->id;
+                $child->getChildrenIds($arr);
+            } else
+                array_push($arr, $child->id);
+        }
     }
 
     protected static function newFactory()

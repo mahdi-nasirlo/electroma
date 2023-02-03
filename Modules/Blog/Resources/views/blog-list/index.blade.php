@@ -11,12 +11,9 @@
         <div class="container">
             <div class="row">
                 @include('blog::blog-list.blog-list')
-
-
                 @include('blog::blog-list.sidebar', [
-                    'cats' => \Modules\Blog\Entities\Category::latest()->get(),
+                    'cats' => $category->getSiblings()->merge($category->children),
                 ])
-
             </div>
             <!--end row-->
         </div>

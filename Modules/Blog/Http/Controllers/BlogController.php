@@ -49,7 +49,6 @@ class BlogController extends Controller
 
     public function list(Category $category)
     {
-
         if (!$category->isVIsible() or !$category->is_visible) abort(404);
 
         SEOMeta::setTitle($category->seo->title ?? $category->name)
@@ -58,10 +57,11 @@ class BlogController extends Controller
             ->addMeta("designer", env("DESIGNER"))
             ->addKeyword($category->tags(true));
 
-        $category_sub_cat_ids = [$category->id];
-        $category->getChildrenIds($category_sub_cat_ids);
 
-        $post = Post::query()->whereIn('blog_category_id', ['1', 2])->Where('published_at', "<", now());
+        $category_sub_cat_ids = $category->descendants()->pluck('id')->toArray();
+        $category_sub_cat_ids[] = $category->id;
+
+        $post = Post::query()->whereIn('blog_category_id', $category_sub_cat_ids)->Where('published_at', "<", now());
 
         if (request()->input('search')) {
             $post->where('title', 'like', '%' . request()->input('search') . '%');
