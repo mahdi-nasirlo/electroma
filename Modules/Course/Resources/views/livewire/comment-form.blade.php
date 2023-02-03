@@ -41,8 +41,10 @@
 
                 <div class="col-md-12">
                     <div class="send d-grid">
-                        <button wire:click='submitComment' id="send_comments" type="submit" class="btn btn-primary">ارسال
-                            پیام</button>
+                        <button wire:click='submitComment' id="send_comments" type="submit" class="btn btn-primary">
+                            <span wire:loading.remove> ارسال پیام </span>
+                            <span wire:loading> در حال پردازش </span>
+                        </button>
                     </div>
                 </div>
                 <!--end col-->

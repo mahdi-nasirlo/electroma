@@ -90,7 +90,10 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-grid">
-                    <button type="submit" id="submit" name="send" class="btn btn-primary">ارسال پیام</button>
+                    <button type="submit" id="submit" name="send" class="btn btn-primary">
+                        <span wire:loading.remove> ارسال </span>
+                        <span wire:loading> در حال پردازش </span>
+                    </button>
                 </div>
             </div>
             <!--end col-->
