@@ -28,7 +28,7 @@
         $infoBanner = $banners->where('collection', 'info-banner');
         $posts = \Modules\Blog\Entities\Post::latest()->take(4);
     @endphp
-    <section class="container-lg px-2 px-md-4">
+    <section class="container-lg px-md-4">
         <div style="margin-top: 20px">
             <div>
                 <div class="title-heading">

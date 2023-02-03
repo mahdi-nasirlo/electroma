@@ -47,7 +47,10 @@
                         <ul class="media-list list-unstyled mb-0">
                             @foreach ($comments as $comment)
                                 @if ($comment->is_visible)
-                                    @livewire('comment-message', ['comment' => $comment, 'model' => $model])
+                                    @include('blog::comment-message', [
+                                        'comment' => $comment,
+                                        'model' => $model,
+                                    ])
                                 @endif
                             @endforeach
                         </ul>

@@ -21,7 +21,10 @@
     {{ $this->form }}
 
     <x-filament::button type="submit" class="w-full">
-        {{ __('filament::login.buttons.submit.label') }} <span wire:loading>...</span>
+        <span wire:loading.remove>
+            {{ __('filament::login.buttons.submit.label') }}
+        </span>
+        <span wire:loading>درحال پردازش ...</span>
     </x-filament::button>
 
     <div class="text-center">
