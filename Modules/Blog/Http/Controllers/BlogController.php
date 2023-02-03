@@ -49,7 +49,6 @@ class BlogController extends Controller
 
     public function list(Category $category)
     {
-        // dd($category->ancestors);
         if (!$category->isVIsible() or !$category->is_visible) abort(404);
 
         SEOMeta::setTitle($category->seo->title ?? $category->name)

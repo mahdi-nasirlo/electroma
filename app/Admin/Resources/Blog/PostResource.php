@@ -127,8 +127,10 @@ class PostResource extends Resource
                             ->default(now())
                             ->required(),
                         SpatieTagsInput::make('tags')
+                            ->hint("تاثیرگذار در سئو")
                             ->label('تگ ها')
-                            ->required(),
+                        // ->required()
+                        ,
                     ])
                     ->columns([
                         'sm' => 2,

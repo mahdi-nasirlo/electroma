@@ -101,7 +101,9 @@
         <!--end container-->
     </div>
     @php
-        $shopCategoies = \Modules\Shop\Entities\Category::where('is_visible', true)->get();
+        $shopCategoies = \Modules\Shop\Entities\Category::where('is_visible', true)
+            ->get()
+            ->toTree();
         
         $courses = \Modules\Course\Entities\Course::where('published_at', '<', now())->where('inventory', '>', 0);
         
@@ -113,9 +115,10 @@
         // $categoreis = \Modules\Blog\Entities\Category::all()
         //     ->where('is_visible', true)
         //     ->where('parent_id', 0);
-        
         $pages = \Modules\Information\Entities\Page::get(['name', 'slug', 'id']);
-        $category = \Modules\Blog\Entities\Category::where('is_visible', true)->get();
+        $category = \Modules\Blog\Entities\Category::where('is_visible', true)
+            ->get()
+            ->toTree();
     @endphp
     @include('layouts.header.navigation')
     @include('layouts.header.mobile_menu')

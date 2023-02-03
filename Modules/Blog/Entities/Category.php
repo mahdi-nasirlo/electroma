@@ -48,6 +48,7 @@ class Category extends Model
 
     public function isVIsible()
     {
+        return true;
         return $this->posts()->count() > 0;
     }
 

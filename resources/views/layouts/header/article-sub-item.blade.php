@@ -7,11 +7,11 @@
                     {{ $item->name }}
                 </a>
                 {{-- $item->childIsVisible() --}}
-                @if ($item->children->count() > 0)
+                @if ($item->children()->count() > 0)
                     <span class="submenu-arrow"></span>
                     <ul style="display: block" class="submenu">
                         @include('layouts.header.article-sub-item', [
-                            'categoreis' => $item->children,
+                            'categoreis' => $item->children()->get(),
                             'category' => $item,
                         ])
                     </ul>

@@ -90,7 +90,7 @@
                         @include('layouts.header.mobile_menu_item', [
                             'link' => $category->link(),
                             'parentLink' => $category->link(),
-                            'categoreis' => $category->children,
+                            'categoreis' => $category->children()->get(),
                             'title' => $category->name,
                             'parentName' => $title,
                             'id' => 'products_' . $category->id,

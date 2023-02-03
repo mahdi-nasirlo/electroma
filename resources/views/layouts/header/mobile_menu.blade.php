@@ -311,7 +311,31 @@
                  'id' => 'products',
              ])
          @endif
+         @if ($courses->get()->count() > 0)
+             <li class="has-submenu">
+                 <a href="#" data-submenu="course">
+                     دوره های آموزشی
+                 </a>
 
+                 <div id="course" class="submenu">
+                     <div class="submenu-header">
+                         <a href="#" data-submenu-close="course">منو اصلی</a>
+                     </div>
+
+                     <label>دوره آموزشی</label>
+
+                     <ul>
+                         @foreach ($courses->get() as $course)
+                             <li>
+                                 <a href="{{ route('course.single', $course) }}">
+                                     {{ $course->title }}
+                                 </a>
+                             </li>
+                         @endforeach
+                     </ul>
+                 </div>
+             </li>
+         @endif
          @if ($category->count() > 0)
              @include('layouts.header.mobile_menu_item', [
                  'categoreis' => $category,
