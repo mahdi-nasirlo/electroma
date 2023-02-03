@@ -6,7 +6,7 @@
                 <div class="page-next-level">
                     <h4 class="title"> {{ isset($name) ? $name : 'وبلاگ' }} </h4>
                     @if (isset($article))
-                        <ul class="list-unstyled mt-4">
+                        <ul class="list-unstyled mt-4 ps-0">
                             <li class="list-inline-item h6 date text-muted pe-2 ">
                                 <x-icon-o-clock />
                                 {{ $article->read_time }} زمان مطالعه
@@ -21,12 +21,17 @@
                             </li>
                         </ul>
                     @endif
-                    @if (isset($category) or isset($string))
+
+                    @isset($string)
+                        @include('blog::hero.navigation-hero', [
+                            'string' => $string,
+                        ])
+                    @endisset
+                    @isset($category)
                         @include('blog::hero.navigation-hero', [
                             'category' => isset($category) ? $category : null,
-                            'string' => isset($string) ? $string : null,
                         ])
-                    @endif
+                    @endisset
                 </div>
             </div>
         </div>
