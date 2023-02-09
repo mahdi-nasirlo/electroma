@@ -15,7 +15,7 @@
             <li>
                 <a class="px-1 d-flex justify-content-between bg-soft-warning" href="{{ route('filament.auth.login') }}">
                     ورود / ثبت نام
-                    <i class="uil uil-arrow-left d-flex align-items-center"></i>
+                    <x-icon-o-login />
                 </a>
             </li>
         @endguest

@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Infographic;
 use Filament\Facades\Filament;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
@@ -46,15 +48,15 @@ class AppServiceProvider extends ServiceProvider
             // Filament::registerViteTheme('resources/css/vendor/filament.css');
         });
 
-        // if (Schema::hasTable("infographics")) {
-        //     $data = Infographic::all(['name', 'content'])
-        //         // ->whereIn("name", ['location'])
-        //         ->keyBy("name")
-        //         ->toArray();
+        if (Schema::hasTable("infographics")) {
+            $data = Infographic::all(['name', 'content'])
+                // ->whereIn("name", ['location'])
+                ->keyBy("name")
+                ->toArray();
 
-        //     view()->composer('*', function ($view) use ($data) {
-        //         $view->with('information', $data);
-        //     });
-        // }
+            view()->composer('*', function ($view) use ($data) {
+                $view->with('information', $data);
+            });
+        }
     }
 }

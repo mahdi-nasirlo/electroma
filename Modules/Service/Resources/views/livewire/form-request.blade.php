@@ -27,7 +27,7 @@
                 <div style="display: block" class="mb-3 input-group has-validation">
                     <label class="form-label">موبایل شما <span class="text-danger">*</span></label>
                     <div class="form-icon position-relative">
-                        <i class="uil uil-mobile-vibrate feather feather-mail fea icon-sm icons"></i>
+                        <x-font-mobile class="icons" style="right: 8px" />
                         <input wire:model="mobile" value="{{ old('mobile') }}" name="mobile" id="email"
                             type="text" class="form-control ps-5 @error('mobile') is-invalid @enderror"
                             aria-describedby="validationServerUsernameFeedbackmobiel" placeholder="موبایل :">
