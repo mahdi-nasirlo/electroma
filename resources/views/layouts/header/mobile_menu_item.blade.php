@@ -80,7 +80,7 @@
                     <a href="#" data-submenu-close="{{ $id }}">{{ $parentName }} </a>
                 </div>
 
-                <label>{{ $title }}</label>
+                <label class="mx-1">{{ $title }}</label>
 
                 <ul>
 

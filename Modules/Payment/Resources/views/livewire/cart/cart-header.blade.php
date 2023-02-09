@@ -5,31 +5,6 @@
             $countOfCart = (int) $cart->getDetails()->items_count;
             $totalPrice = (int) $cart->getDetails()->total;
         @endphp
-        <style>
-            .cartBtn {
-                background-color: #555;
-                color: white;
-                text-decoration: none;
-                padding: 15px 26px;
-                position: relative;
-                display: inline-block;
-                border-radius: 2px;
-            }
-
-            .cartBtn:hover {
-                background: red;
-            }
-
-            .cartBtn .badge {
-                position: absolute;
-                top: -10px;
-                right: -10px;
-                padding: 5px 8px;
-                border-radius: 50%;
-                background: var(--orange);
-                color: white;
-            }
-        </style>
         <li class="has-submenu parent-menu-item d-flex ms-1">
             <div class="dropdown">
                 <button style="box-shadow: none" type="button" class="btn px-2 py-1 mt-3 btn-soft-primary cartBtn"

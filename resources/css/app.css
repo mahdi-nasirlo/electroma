@@ -134,3 +134,27 @@
     height: auto;
     object-fit: contain;
 }
+
+.cartBtn {
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+    padding: 15px 26px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.cartBtn:hover {
+    background: red;
+}
+
+.cartBtn .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: white;
+}

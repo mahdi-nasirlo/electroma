@@ -11,16 +11,6 @@
                 <livewire:search />
             </a>
         </li>
-        @guest
-            <li>
-                <a class="px-1 d-flex justify-content-between bg-soft-warning" href="{{ route('filament.auth.login') }}">
-                    ورود / ثبت نام
-                    <x-icon-o-login />
-                </a>
-            </li>
-        @endguest
-        {{-- <livewire:cart::زشقفcart-header /> --}}
-
         @if (!request()->routeIs('service.index') and Route::has('service.index'))
             <li>
                 <a class="text-warning " href="{{ route('service.index') }}">
@@ -29,6 +19,17 @@
                 </a>
             </li>
         @endif
+        @guest
+            <li>
+                <a class="px-1 d-flex justify-content-between bg-soft-warning" href="{{ route('filament.auth.login') }}">
+                    ورود / ثبت نام
+                    <x-icon-o-login />
+                </a>
+            </li>
+        @endguest
+
+        <livewire:payment::cart.mobile-cart />
+
         @auth
             @if (auth()->user()->canAccessFilament())
                 <li>
