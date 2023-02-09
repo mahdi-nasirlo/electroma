@@ -6,8 +6,8 @@
                 ->get()
             : $product;
 @endphp
-@if ($products->isNotEmpty())
-    <div class="row mb-4 pt-4 shadow border rounded-4">
+@if (!$products->isEmpty())
+    <div class="row mb-4 pt-2 mt-3 border rounded-3">
         <div class="col-12">
             <h5 class="mb-0">{{ $label }}</h5>
         </div>

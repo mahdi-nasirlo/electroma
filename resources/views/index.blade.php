@@ -60,15 +60,16 @@
             'product' => \Modules\Shop\Entities\Product::orderBy('created_at', 'desc')->take(8)->get(),
         ])
 
+        @include('index.info-banner', [
+            'banners' => $infoBanner,
+        ])
+
         @include('index.product-related', [
             'name' => 'most-buy-product',
             'label' => 'پرفروش ترین محصولات',
             'product' => \Modules\Shop\Entities\Product::withCount('orders')->orderBy('orders_count', 'DESC')->take(8)->get(),
         ])
 
-        @include('index.info-banner', [
-            'banners' => $infoBanner,
-        ])
     </section>
     @if ($posts->count() > 4)
         <section style="margin-top: 80px 0" class="bg-light pt-4">

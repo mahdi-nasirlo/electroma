@@ -151,15 +151,12 @@ class BannerResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('alt'),
-                ImageColumn::make('path'),
-                Tables\Columns\TextColumn::make('bannerable_type'),
-                Tables\Columns\TextColumn::make('bannerable_id'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
+                Tables\Columns\TextColumn::make('name')
+                    ->label('نام بنر'),
+                Tables\Columns\TextColumn::make('alt')
+                    ->label('توضیحات بنر(سئو)'),
+                ImageColumn::make('path')
+                    ->label("عکس بنر"),
             ])
             ->filters([
                 //
