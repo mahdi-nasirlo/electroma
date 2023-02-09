@@ -1631,7 +1631,7 @@ button:not(:disabled) {
     box-shadow: none;
 }
 .accordion .accordion-item .accordion-button:before {
-    content: "\F0143";
+    /* content: "\F0143"; */
     display: block;
     font-family: "Material Design Icons";
     font-size: 16px;
@@ -1644,12 +1644,36 @@ button:not(:disabled) {
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
+
+.accordion .accordion-item .accordion-button svg {
+    /* content: "\F0143"; */
+    display: block;
+    font-family: "Material Design Icons";
+    font-size: 16px;
+    color: #2f55d4;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
 .accordion .accordion-item .accordion-button.collapsed {
     background-color: #fff;
     color: #3c4858 !important;
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
+
+.accordion .accordion-item .accordion-button.collapsed svg {
+    top: 15px;
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    color: #3c4858 !important;
+}
+
 .accordion .accordion-item .accordion-button.collapsed:before {
     top: 15px;
     -webkit-transform: rotate(-180deg);

@@ -5,9 +5,9 @@
                 <div class="section-title text-md-start text-center">
                     <h4 style="font-weight: 500" class="title mb-4">سر فصل های دوره {{ $course->title }}</h4>
 
-                    <ul class="list-unstyled text-muted mt-4 mb-0">
+                    <ul class="list-unstyled text-muted mt-4 mb-0 ps-0 ps-sm-4">
                         @foreach ($course->attributes as $key => $value)
-                            <li class="mb-0">
+                            <li class="mb-0 text-start">
                                 <span class="text-orange h5 me-2">
                                     <x-font-check-circle />
                                 </span>
@@ -28,6 +28,7 @@
                                     data-bs-toggle="collapse" data-bs-target="#collapse-{{ $loop->index }}"
                                     aria-expanded="true" aria-controls="collapse-{{ $loop->index }}">
                                     {{ $question['question'] }}
+                                    <x-icon-o-chevron-down />
                                 </button>
                             </h2>
                             <div id="collapse-{{ $loop->index }}" class="accordion-collapse border-0 collapse"

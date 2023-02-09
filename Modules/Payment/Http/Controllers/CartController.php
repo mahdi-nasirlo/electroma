@@ -19,7 +19,9 @@ class CartController extends Controller
 {
     public function index()
     {
-        return view('payment::Cart\index');
+
+        // return view()->exists("payment::cart.index");
+        return view('payment::cart.index');
     }
 
     public function profile()
