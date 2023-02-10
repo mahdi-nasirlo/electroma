@@ -49,6 +49,18 @@ class Category extends Model
         return $this->children->count() > 0;
     }
 
+    public function getChildrenIds(&$arr)
+    {
+        $children = $this->children;
+        foreach ($children as $child) {
+            if ($child->children->count() > 0) {
+                $arr[] = $child->id;
+                $child->getChildrenIds($arr);
+            } else
+                array_push($arr, $child->id);
+        }
+    }
+
     protected static function newFactory()
     {
         return \Modules\Shop\Database\factories\CategoryFactory::new();
