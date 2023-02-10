@@ -41,22 +41,22 @@ class AppServiceProvider extends ServiceProvider
                 'خدمات'
             ]);
 
-            Filament::registerStyles([
-                Vite::asset('resources/css/font.css')
-            ]);
-
-            // Filament::registerViteTheme('resources/css/vendor/filament.css');
+            // if (config('app.env') !== 'build') {
+            //     Filament::registerViteTheme('resources/css/filament.css');
+            // }
         });
 
-        if (Schema::hasTable("infographics")) {
-            $data = Infographic::all(['name', 'content'])
-                // ->whereIn("name", ['location'])
-                ->keyBy("name")
-                ->toArray();
+        if (config('app.env') !== 'build') {
+            if (Schema::hasTable("infographics")) {
+                $data = Infographic::all(['name', 'content'])
+                    // ->whereIn("name", ['location'])
+                    ->keyBy("name")
+                    ->toArray();
 
-            view()->composer('*', function ($view) use ($data) {
-                $view->with('information', $data);
-            });
+                view()->composer('*', function ($view) use ($data) {
+                    $view->with('information', $data);
+                });
+            }
         }
     }
 }
