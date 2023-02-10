@@ -41,6 +41,9 @@ class AppServiceProvider extends ServiceProvider
                 'خدمات'
             ]);
 
+            Filament::registerStyles([
+                Vite::asset('resources/css/font.css')
+            ]);
             // if (config('app.env') !== 'build') {
             //     Filament::registerViteTheme('resources/css/filament.css');
             // }

@@ -19,6 +19,7 @@ use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\HtmlString;
 use Modules\Blog\Entities\Category as EntitiesCategory;
 use Modules\Blog\Entities\Post as EntitiesPost;
@@ -153,6 +154,14 @@ class BannerResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label('نام بنر'),
+                TextColumn::make('collection')->enum([
+                    'carousel' => 'بنر کروسل',
+                    'small-banner' => 'بنر کوچک',
+                    'medium-banner' => 'بنر های متوسط',
+                    'categories-banner' =>  'بنر دسته بندی',
+                    'info-banner' => 'بنر اطلاعات'
+                ])
+                    ->label('محل قرار گیری'),
                 Tables\Columns\TextColumn::make('alt')
                     ->label('توضیحات بنر(سئو)'),
                 ImageColumn::make('path')

@@ -6,6 +6,7 @@ use App\Admin\Resources\Shop\ProductResource\RelationManagers\CommentsRelationMa
 use App\Admin\Resources\Shop\ProductResource\Pages;
 use App\Admin\Resources\Shop\ProductResource\RelationManagers;
 use App\Admin\Resources\Shop\ProductResource\RelationManagers\AttributesRelationManager;
+use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
 use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDateTimePicker;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Filament\Forms;
@@ -304,17 +305,18 @@ class ProductResource extends Resource
                     ->sortable()
                     ->url(fn (Product $record) => route("shop.product.single", $record))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('gallery'),
-                Tables\Columns\TextColumn::make('cover'),
-                Tables\Columns\TextColumn::make('price'),
-                Tables\Columns\TextColumn::make('inventory'),
-                Tables\Columns\TextColumn::make('published_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('content'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
+                Tables\Columns\TextColumn::make('slug')
+                    ->label('url'),
+                // Tables\Columns\TextColumn::make('gallery'),
+                ImageColumn::make('cover')
+                    ->label('کاور'),
+                Tables\Columns\TextColumn::make('price')
+                    ->label('قیمت (تومان)')
+                    ->formatStateUsing(fn (string $state): string => number_format($state)),
+                Tables\Columns\TextColumn::make('inventory')
+                    ->label('موجودی'),
+                JalaliDateTimeColumn::make('updated_at')
+                    ->label('آخرین بروزرسانی')
                     ->dateTime(),
             ])
             ->filters([

@@ -56,7 +56,7 @@
                             <div class="row">
                                 @if ($products->isNotEmpty())
                                     @foreach ($products as $product)
-                                        <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+                                        <div class="col-lg-4 col-md-6 col-6 mt-4 pt-2">
                                             @include('shop::product-list.product-cart', [
                                                 'product' => $product,
                                             ])
