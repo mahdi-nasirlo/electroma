@@ -1,7 +1,7 @@
 <div class="row my-4">
     @if ($banners->count())
         @foreach ($banners as $banner)
-            <div class="col-3">
+            <div class="col-6 col-md-4 col-lg-3">
                 <div class="d-flex my-2 me-1">
                     <div
                         class="w-100 card border-0 text-center features feature-clean course-feature p-2 overflow-hidden shadow">

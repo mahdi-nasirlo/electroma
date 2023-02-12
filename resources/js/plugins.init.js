@@ -109,11 +109,11 @@ if (document.getElementsByClassName("tiny-three-item").length > 0) {
             },
 
             767: {
-                items: 2,
+                items: 3,
             },
 
             320: {
-                items: 1,
+                items: 2,
             },
         },
     });
@@ -252,7 +252,7 @@ if (document.getElementsByClassName("most-buy-product").length > 0) {
         gutter: 12,
         responsive: {
             992: {
-                items: 5,
+                items: 4,
             },
 
             767: {
@@ -261,6 +261,35 @@ if (document.getElementsByClassName("most-buy-product").length > 0) {
 
             320: {
                 items: 2,
+            },
+        },
+    });
+}
+
+if (document.getElementsByClassName("last-blog-post").length > 0) {
+    var slider = tns({
+        container: ".last-blog-post",
+        controls: false,
+        mouseDrag: true,
+        loop: true,
+        rewind: true,
+        autoplay: true,
+        autoplayButtonOutput: false,
+        autoplayTimeout: 3000,
+        navPosition: "bottom",
+        speed: 400,
+        gutter: 12,
+        responsive: {
+            992: {
+                items: 4,
+            },
+
+            767: {
+                items: 3,
+            },
+
+            320: {
+                items: 1,
             },
         },
     });

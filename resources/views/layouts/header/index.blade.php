@@ -1,4 +1,4 @@
-<header class="border-bottom">
+<header class="border-bottom bg-white shadow">
     @include('layouts.header.top-header')
 
     <div id="topnav" class="topnav">

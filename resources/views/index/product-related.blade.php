@@ -12,7 +12,7 @@
             <h5 class="mb-0">{{ $label }}</h5>
         </div>
 
-        <div class="col-12 mt-4">
+        <div class="col-12 my-4">
             <div class="{{ $name }}">
                 @foreach ($products as $product)
                     <div class="tiny-slide">

@@ -37,8 +37,11 @@
     @if ($banners->count() > 0)
         @foreach ($banners as $banner)
             <div class="tiny-slide rounded-md">
-                <img class="rounded-md" style="height: 495px;object-fit: cover; width: 100%"
-                    src="/storage/{{ $banner->path }}" alt="">
+                <div style="flex-direction: column;" class="bg-white mb-2 me-1 d-flex justify-content-center shadow">
+                    <img style="margin: 0 auto;max-width: 80px; max-height: 80px;" class="rounded-md"
+                        src="/storage/{{ $banner->path }}" alt="">
+                    <span class="text-center">{{ $banner->bannerable->name }}</span>
+                </div>
             </div>
         @endforeach
     @else

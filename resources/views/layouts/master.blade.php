@@ -21,7 +21,7 @@
     @yield('style')
 </head>
 
-<body>
+<body class="bg-light">
     <!-- Loader -->
     <div id="preloader">
         <div id="status">
