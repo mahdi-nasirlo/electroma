@@ -6,18 +6,19 @@
                     <x-icon-o-phone class="mx-1" style="margin: 2px 0" />
                     تلفن پشتیبانی
                 </span>
-                <span class="d-none d-sm-flex px-1">
-                    {{-- {!! $information['mobile_support']['content'] !!} --}}
+                <span class="d-none d-sm-flex px-1 mt-1">
+                    {!! $information['mobile_support']['content'] !!}
                 </span>
             </div>
-            <div class="px-1" style="direction: rtl">
-                {{-- {!! $information['phone_support']['content'] !!} --}}
+            <div class="px-1 mt-1" style="direction: rtl">
+                {!! $information['phone_support']['content'] !!}
             </div>
         </div>
 
         <div class="">
-            <a style="display: flex;align-items: center;"class="text-white d-flex">
-                {{-- href="{{ strip_tags($information['location']['content']) }}" --}}
+            <a style="display: flex;align-items: center;"class="text-white d-flex"
+                href="{{ strip_tags($information['location']['content']) }}">
+
                 <x-icon-o-location-marker class="mx-1" style="margin: 2px 0" />
                 نشانی
                 <span class="d-none d-sm-flex px-1">

@@ -1,4 +1,4 @@
-<div class="card shop-list border-0 position-relative">
+<div class="card shop-list border-0 position-relative shadow mb-1">
     <div class="shop-image position-relative overflow-hidden rounded shadow">
         <a href="{{ route('shop.product.single', $product) }}">
             <img src="{{ $product->getCoverUrl() }}" class="img-fluid" alt="">
@@ -43,13 +43,14 @@
     </div>
     <div style="display: flex !important;flex-direction: column;align-items: center;"
         class="card-body content pt-3 p-2">
-        <a href="{{ route('shop.product.single', $product) }}" class="text-warning product-name h6 mb-0 text-center">
+        <a href="{{ route('shop.product.single', $product) }}" style="height: 66px"
+            class="text-warning product-name h6 mb-0 text-center">
             @if (isset($product->name))
                 {{ $product->name }}
             @endif
         </a>
-        <div class="mt-3">
-            <h6 class="text-muted small fst-italic mb-0">
+        <div class="mt-3 pt-3">
+            <h6 class="text-muted small fst-italic mb-0 text-center">
                 @if ($product->discountItem)
                     {{ number_format($product->discounted_price) }} <del
                         class="text-danger ms-1">{{ number_format($product->price) }}</del> تومان
@@ -59,12 +60,20 @@
             </h6>
 
             @if (isset($product->rate))
-                <ul style="display: flex; flex-direction: row" class="list-unstyled text-warning mb-0">
+                <ul style="display: flex; flex-direction: row"
+                    class="list-unstyled text-warning mb-0 p-0 justify-content-center">
 
                     @for ($i = 0; $i < 5; $i++)
-                        <li class="list-inline-item"><i
-                                class="mdi mdi-star @if ($i > $product->rate - 1) mdi-star-outline @endif"></i>
+                        <li class="list-inline-item">
+                            @if ($i > $product->rate - 1)
+                                <x-font-star-o style="width: 18px;height: 18px;" />
+                            @else
+                                <x-font-star style="width: 18px;height: 18px;" />
+                            @endif
                         </li>
+                        {{-- <li class="list-inline-item"><i
+                                class="mdi mdi-star @if ($i > $product->rate - 1) mdi-star-outline @endif"></i>
+                        </li> --}}
                     @endfor
                 </ul>
             @endif

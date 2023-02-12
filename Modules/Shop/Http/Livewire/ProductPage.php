@@ -15,7 +15,7 @@ class ProductPage extends Component
     public function mount()
     {
         $cartItems = collect(Cart::name("shopping")->getItems([
-            'associated_class' => 'App\Models\Shop\Product',
+            'associated_class' => 'Modules\Shop\Entities\Product;',
             'id' => $this->product->id
         ]));
 
@@ -42,7 +42,7 @@ class ProductPage extends Component
     public function addToCart()
     {
         $cart = collect(Cart::name("shopping")->getItems([
-            'associated_class' => 'App\Models\Shop\Product',
+            'associated_class' => 'Modules\Shop\Entities\Product;',
             'id' => $this->product->id
         ]));
 

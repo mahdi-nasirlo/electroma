@@ -28,7 +28,7 @@
 @endif --}}
 
 
-<div class="row mb-4 pt-4 rounded-4">
+<div class="row mb-4 py-4 rounded-4">
     <div class="col-12">
         <h5 class="mb-0">{{ $label }}</h5>
     </div>

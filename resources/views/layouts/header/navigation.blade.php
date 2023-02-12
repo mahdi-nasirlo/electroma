@@ -1,4 +1,4 @@
-<div class="container-xl d-none justify-content-between pb-1 topnav d-md-flex">
+<div id="navigation" class="container-xl d-none justify-content-between pb-1 topnav d-md-flex">
     <ul style="margin-right: -22px" class="navigation-menu menu-tow justify-content-end">
 
         @include('layouts.header.mega-sub-menu')
@@ -36,21 +36,21 @@
         @endif
 
 
-        {{-- @if ($pages->count())
-                        <li class="has-submenu parent-menu-item">
-                            <a href="javascript:void(0)">لینک های مفید
-                            </a>
-                            <span class="menu-arrow"></span>
+        @if ($pages->count())
+            <li class="has-submenu parent-menu-item">
+                <a href="javascript:void(0)">لینک های مفید
+                </a>
+                <span class="menu-arrow"></span>
 
-                            <ul class="submenu">
-                                @foreach ($pages as $page)
-                                    <li class="has-submenu parent-menu-item">
-                                        <a href="{{ route('pages', $page) }}"> {{ $page->name }} </a>
-                                    </li>
-                                @endforeach
-                            </ul>
+                <ul class="submenu">
+                    @foreach ($pages as $page)
+                        <li class="has-submenu parent-menu-item">
+                            <a href="{{ route('pages', $page) }}"> {{ $page->name }} </a>
                         </li>
-                    @endif --}}
+                    @endforeach
+                </ul>
+            </li>
+        @endif
     </ul>
     @if (!request()->routeIs('service.index') and Route::has('service.index'))
         <a class="px-0" href="{{ route('service.index') }}">

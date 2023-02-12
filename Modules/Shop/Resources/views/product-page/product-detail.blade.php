@@ -13,14 +13,14 @@
 
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-5">
+            <div class="col-md-5 pt-sm-5">
                 @include('shop::product-page.product-gallery')
             </div>
             <!--end col-->
 
             <div class="col-md-7 mt-4 mt-sm-0 pt-2 pt-sm-0">
                 <div class="section-title ms-md-4">
-                    <h4 class="title mt-3">
+                    <h4 class="title mt-5">
                         {{ $product->name }}
                     </h4>
                     <h5 class="text-muted">
@@ -35,8 +35,12 @@
                         <div class="d-flex justify-content-between">
                             <ul class="list-unstyled text-warning h5 mb-0 d-flex p-0">
                                 @for ($i = 0; $i < 5; $i++)
-                                    <li class="list-inline-item"><i
-                                            class="mdi mdi-star @if ($i > $product->rate - 1) mdi-star-outline @endif"></i>
+                                    <li class="list-inline-item">
+                                        @if ($i > $product->rate - 1)
+                                            <x-font-star-o />
+                                        @else
+                                            <x-font-star />
+                                        @endif
                                     </li>
                                 @endfor
                             </ul>

@@ -9,7 +9,7 @@
                       <div class="md:w-1/2 w-full font-semibold">برای ثبت دیدگاه وارد حساب کاربری شوید !</div>
                       <div class="md:w-1/2 w-full text-left">
                           <a href="#" class="text-white font-semibold">ورود / ثبت نام</a>
-                          <x-font-o-arrow-sm-left class="text-white" />
+                          <x-icon-o-arrow-sm-left class="text-white" />
                       </div>
                   </div> --}}
                         <div class="alert bg-warning d-flex justify-content-between mt-2" role="alert">
@@ -17,7 +17,7 @@
                             </div>
                             <div class="md:w-1/2 w-full text-left">
                                 <a href="#" class="text-white font-semibold">ورود / ثبت نام</a>
-                                <x-font-o-arrow-sm-left class="text-white" />
+                                <x-icon-o-arrow-sm-left class="text-white" />
                             </div>
                         </div>
                     @endguest
@@ -47,7 +47,10 @@
                         <ul class="media-list list-unstyled mb-0">
                             @foreach ($comments as $comment)
                                 @if ($comment->is_visible)
-                                    @livewire('comment-message', ['comment' => $comment, 'model' => $model])
+                                    @include('blog::comment-message', [
+                                        'comment' => $comment,
+                                        'model' => $model,
+                                    ])
                                 @endif
                             @endforeach
                         </ul>

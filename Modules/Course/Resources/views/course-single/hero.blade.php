@@ -1,7 +1,7 @@
         <!-- Hero Start -->
-        <section class="bg-half-170 py-5 border-bottom d-table w-100" id="home">
+        <section class="bg-half-170 pt-0 py-5 border-bottom d-table w-100" id="home">
             <div class="container-xlg px-2 mx-sm-3">
-                <div class="row align-items-center">
+                <div class="row w-100 align-items-center">
                     <div class="col-lg-6 col-md-7">
                         <div class="title-heading mt-4">
                             <div class="alert alert-white alert-pills shadow mb-1" role="alert">
@@ -29,12 +29,12 @@
                             </div>
                             <h1 class="heading mb-3">
                                 {{ $course->title }}
-                                {{-- پیشرو در تجارت دیجیتال برای --}}
-                                {{-- <span class="text-primary typewrite" data-period="2000"
+                                {{-- پیشرو در تجارت دیجیتال برای
+                                <span class="text-primary typewrite" data-period="2000"
                                     data-type='[ "آژانسی", "نرم افزار", "تکنولوژی", "استدیو", "اپ وب" ]'>
                                     <span class="wrap"></span>
-                                </span> --}}
-                                {{-- با بهترین امکانات --}}
+                                </span>
+                                با بهترین امکانات --}}
                             </h1>
                             @if ($course->short_desc)
                                 <p class="para-desc text-muted">

@@ -4,14 +4,15 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>لندریک - قالب چندمنظوره ای مدرن html</title>
-    {{-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
-    <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern" />
-    <meta name="author" content="JafarAbbasi" />
-    <meta name="email" content="jabasi26@gmail.com" /> --}}
-    {{-- <meta name="website" content="https://www.rtl-theme.com/author/tn_plugin/" /> --}}
-    {{-- <meta name="Version" content="v3.2.1" /> --}}
+    {!! SEO::generate(true) !!}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="الکتروما - brarghkarsho" />
+    <meta name="language" content="fa" />
+    <meta name="theme-color" content="#0d6efd">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="website" content="https://www.barghkarsho.com/" />
+    <meta name="Version" content="v1" />
+    
     <!-- favicon -->
     <link rel="shortcut icon" href="/static/favicon.ico">
 
@@ -20,7 +21,7 @@
     @yield('style')
 </head>
 
-<body>
+<body class="bg-light">
     <!-- Loader -->
     <div id="preloader">
         <div id="status">
@@ -44,7 +45,9 @@
         <x-icon-o-arrow-sm-up data-feather="arrow-up" class="icons h-75 w-75" />
     </a>
     <!-- Back to top -->
+    @include('layouts.click_to_chat')
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     @yield('script')
     @vite('resources/js/app.js')
     @livewireScripts

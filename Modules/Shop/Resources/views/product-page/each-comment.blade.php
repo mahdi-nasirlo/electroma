@@ -19,29 +19,23 @@
                                 </a>
                             </h6>
                             <small class="text-muted">
-                                {{ $comment->create_at }}
-                                {{ \Morilog\Jalali\Jalalian::forge($comment->create_at)->ago() }}
+                                {{ \Morilog\Jalali\Jalalian::forge($comment->created_at)->ago() }}
                             </small>
                         </div>
                     </div>
                     @if ($comment->rating)
                         <ul class="list-unstyled mb-0">
-                            @php
-                                $i = 0;
-                            @endphp
-                            @while ($i < 4)
-                                <li class="list-inline-item"><i
-                                        class="mdi {{ $i < $comment->rating ? 'mdi-star' : 'mdi-star-outline' }} text-warning"></i>
-                                </li>
-                                @php
-                                    $i = $i + 1;
-                                @endphp
-                            @endwhile
-
-                            <li class="list-inline-item">
-                                <x-font-star-o class="mdi mdi-star-outline text-warning"
-                                    style="width: 17px;height: 17px;" />
-                            </li>
+                            <ul class="list-unstyled text-warning h5 mb-0 d-flex p-0">
+                                @for ($i = 0; $i < 5; $i++)
+                                    <li class="list-inline-item">
+                                        @if ($i > $comment->rating - 1)
+                                            <x-font-star-o style="width: 15px;height: 15px;" />
+                                        @else
+                                            <x-font-star style="width: 15px;height: 15px;" />
+                                        @endif
+                                    </li>
+                                @endfor
+                            </ul>
                         </ul>
                     @endif
                 </div>

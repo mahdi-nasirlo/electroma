@@ -62,23 +62,25 @@
 @else
 @endif --}}
 
+
 @if ($title)
     @if ($categoreis->isEmpty())
         <li>
-            <a href="#">
+            <a href="{{ isset($link) ? $link : '#' }}">
                 {{ $title }}
             </a>
         </li>
     @else
         <li class="has-submenu">
-            <a href="#" data-submenu="{{ $id }}">{{ $title }}</a>
+            <a href="{{ isset($parentLink) ? $parentLink : '#' }}"
+                data-submenu="{{ $id }}">{{ $title }}</a>
 
             <div id="{{ $id }}" class="submenu">
                 <div class="submenu-header">
-                    <a href="#" data-submenu-close="{{ $id }}">{{ $parentName }}</a>
+                    <a href="#" data-submenu-close="{{ $id }}">{{ $parentName }} </a>
                 </div>
 
-                <label>{{ $title }}</label>
+                <label class="mx-1">{{ $title }}</label>
 
                 <ul>
 
@@ -86,7 +88,9 @@
                         {{-- TODO FIX DISPLY CONDITION --}}
                         {{-- @if ($category->is_visible and $category->isVisible()) --}}
                         @include('layouts.header.mobile_menu_item', [
-                            'categoreis' => $category->children,
+                            'link' => $category->link(),
+                            'parentLink' => $category->link(),
+                            'categoreis' => $category->children()->get(),
                             'title' => $category->name,
                             'parentName' => $title,
                             'id' => 'products_' . $category->id,

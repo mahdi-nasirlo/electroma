@@ -3,15 +3,15 @@
 namespace Modules\Shop\Http\Livewire;
 
 use Livewire\Component;
-use App\Http\Filters\AttributesFilter;
-use App\Http\Filters\Order;
-use App\Http\Filters\Search;
 use Illuminate\Pipeline\Pipeline;
 // use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
 use Modules\Shop\Entities\Category;
 use Modules\Shop\Entities\Product;
+use Modules\Shop\Http\Filters\AttributesFilter;
+use Modules\Shop\Http\Filters\Order;
+use Modules\Shop\Http\Filters\Search;
 
 class ProductList extends Component
 {
@@ -45,29 +45,40 @@ class ProductList extends Component
 
     public function render()
     {
-        // $category = $this->category;
 
-        // $array = array();
-        // $this->category->getChildrenIds($array);
-        // // dd($array);
+        $array = array();
+        $this->category->getChildrenIds($array);
 
         $products =
-            Product::query()->get();
-        // app(Pipeline::class)
-        // ->send(
-        //     Product::query()
-        //         ->whereIn("category_id", $array)
-        //         ->orWhere('category_id', $this->category->id)
-        //         ->with(['attributes'])
-        // )
-        // ->through([
-        //     new Order($this->order),
-        //     new AttributesFilter($this->filter),
-        //     new Search($this->search),
-        // ])
-        // ->thenReturn()
-        // // ->get()
-        // ->paginate(20);
+            app(Pipeline::class)
+            ->send(
+                Product::query()
+                    ->whereIn("category_id", $array)
+                    ->orWhere('category_id', $this->category->id)
+                    ->with(['attributes'])
+            )
+            ->through([
+                new Order($this->order),
+                new AttributesFilter($this->filter),
+                new Search($this->search),
+            ])
+            ->thenReturn()
+            ->paginate(20);
+
+        app(Pipeline::class)
+            ->send(
+                Product::query()
+                    ->whereIn("category_id", $array)
+                    ->orWhere('category_id', $this->category->id)
+                    ->with(['attributes'])
+            )
+            ->through([
+                new Order($this->order),
+                new AttributesFilter($this->filter),
+                new Search($this->search),
+            ])
+            ->thenReturn()
+            ->paginate(20);
 
         return view('shop::livewire.product-list', compact('products'));
     }

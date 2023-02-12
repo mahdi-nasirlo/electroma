@@ -190,6 +190,8 @@ return [
         'link' => 'لینک',
         'topic' => 'موضوع',
         'newPassword' => 'گذرواژه جدید',
-        'confirmationPassword' => 'تایید گذرواژه'
+        'confirmationPassword' => 'تایید گذرواژه',
+        'comment' => 'دیدگاه',
+        'rating' => 'امتیاز'
     ],
 ];

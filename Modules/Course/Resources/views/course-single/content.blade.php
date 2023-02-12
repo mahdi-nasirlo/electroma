@@ -1,8 +1,8 @@
 <div class="container-lg my-4">
     <div class="row justify-content-center">
-        <div style="padding-bottom: 16px !important" class="card bg-light rounded shadow border-0 py-2">
-            <div class="card-body py-3">
-                <div class="mt-2 content bg-white p-3 rounded-2">
+        <div style="padding-bottom: 16px !important" class="card bg-light rounded shadow border-0 px-1 px-sm-3 py-2">
+            <div class="card-body p-0 py-2">
+                <div class="mt-2 content bg-white p-md-3 p-1 rounded-2">
                     {!! $course->desc !!}
                 </div>
             </div>

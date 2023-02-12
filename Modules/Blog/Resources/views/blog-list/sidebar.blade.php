@@ -16,23 +16,25 @@
             <!-- SEARCH -->
 
             <!-- Categories -->
-            <div class="widget mb-4 pb-2">
-                <h5 class="widget-title">دسته بندیها</h5>
-                <ul class="list-unstyled mt-4 mb-0 blog-categories">
-                    @foreach ($cats as $cat)
-                        @if ($cat->posts->count() > 0)
+            @if ($cats->isNotEmpty())
+                <div class="widget mb-4 pb-2">
+                    <h5 class="widget-title">دسته بندیها</h5>
+                    <ul class="list-unstyled mt-4 mb-0 blog-categories">
+
+                        @foreach ($cats as $cat)
                             <li>
-                                <a href="{{ route('blog.article.list', $cat) }}">
+                                <a href="{{ $cat->posts->count() > 0 ? route('blog.article.list', $cat) : '#' }}">
                                     {{ $cat->name }}
                                 </a>
                                 <span class="float-end">
                                     {{ $cat->posts->count() }}
                                 </span>
                             </li>
-                        @endif
-                    @endforeach
-                </ul>
-            </div>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <!-- Categories -->
 
             <!-- پست های اخیر -->

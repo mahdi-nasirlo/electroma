@@ -1,12 +1,13 @@
-<header class="border-bottom">
+<header class="border-bottom bg-white shadow">
     @include('layouts.header.top-header')
 
     <div id="topnav" class="topnav">
-        <div class="container-xl d-flex justify-content-between">
+        <div class="container-xl d-flex justify-content-between ">
             <!-- Logo container-->
             <div class="d-flex">
                 <a class="logo" href="/">
-                    <img style="width: 30%;height: auto;" src="/static/logo.png" alt="Logo" height="100">
+                    <img class="my-1" style="width: 30%;height: auto;" src="/static/logo.png" alt="Logo"
+                        height="100">
                 </a>
             </div>
             <!--end login button-->
@@ -84,7 +85,7 @@
                         @else
                             <a class="p-0" href="{{ route('filament.auth.login') }}">
                                 <button class="btn px-2 py-1 btn-soft-primary cartBtn shadow-none">
-                                    <x-icon-s-login />
+                                    <x-icon-o-login />
                                 </button>
                             </a>
                         @endauth
@@ -100,7 +101,9 @@
         <!--end container-->
     </div>
     @php
-        $shopCategoies = \Modules\Shop\Entities\Category::where('is_visible', true)->get();
+        $shopCategoies = \Modules\Shop\Entities\Category::where('is_visible', true)
+            ->get()
+            ->toTree();
         
         $courses = \Modules\Course\Entities\Course::where('published_at', '<', now())->where('inventory', '>', 0);
         
@@ -112,10 +115,10 @@
         // $categoreis = \Modules\Blog\Entities\Category::all()
         //     ->where('is_visible', true)
         //     ->where('parent_id', 0);
-        
-        // $pages = \App\Models\Page::all();
-        
-        $category = \Modules\Blog\Entities\Category::where('is_visible', true)->get();
+        $pages = \Modules\Information\Entities\Page::get(['name', 'slug', 'id']);
+        $category = \Modules\Blog\Entities\Category::where('is_visible', true)
+            ->get()
+            ->toTree();
     @endphp
     @include('layouts.header.navigation')
     @include('layouts.header.mobile_menu')

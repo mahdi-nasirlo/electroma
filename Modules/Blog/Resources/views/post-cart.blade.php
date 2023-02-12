@@ -1,13 +1,14 @@
-   <div class="col-lg-6 col-md-12 mb-4 pb-2">
+   <div class="col-12 col-lg-3 col-md-6 mb-4 pb-2">
        <div class="card blog rounded border-0 shadow">
            <div class="position-relative">
-               <img height="200px" src="{{ asset('/storage/' . $post->image) }}" class="card-img-top rounded-top"
-                   alt="..." />
+               <img height="200px" style="object-fit: cover" src="{{ asset('/storage/' . $post->image) }}"
+                   class="card-img-top rounded-top" alt="..." />
                <div class="overlay rounded-top bg-dark"></div>
            </div>
            <div class="card-body content">
                <h5>
-                   <a href="{{ route('blog.article.single', $post) }}" class="card-title title text-dark">
+                   <a href="{{ route('blog.article.single', $post) }}" style="height: 66px"
+                       class="card-title title text-dark">
                        {{ $post->title }}
                    </a>
                </h5>
