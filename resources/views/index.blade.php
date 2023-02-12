@@ -100,7 +100,7 @@
                                             </div>
                                             <div class="card-body content">
                                                 <h5>
-                                                    <a href="{{ route('blog.article.single', $post) }}"
+                                                    <a href="{{ route('blog.article.single', $post) }}" style="height: 66px"
                                                         class="card-title title text-dark">
                                                         {{ $post->title }}
                                                     </a>
