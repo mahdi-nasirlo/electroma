@@ -3,7 +3,7 @@
 
         @include('layouts.header.mega-sub-menu')
 
-        @if ($shopCategoies->count() > 0)
+        {{-- @if ($shopCategoies->count() > 0)
             <li class="has-submenu parent-parent-menu-item">
                 <a href="javascript:void(0)">مجله تخصصی تعمیرات </a>
                 <span class="menu-arrow"></span>
@@ -11,7 +11,7 @@
                     @include('layouts.header.article-sub-item', ['categoreis' => $shopCategoies->toTree()])
                 </ul>
             </li>
-        @endif
+        @endif --}}
 
         @if ($courses->count() > 0)
             <li class="has-submenu parent-parent-menu-item">
