@@ -6,9 +6,5 @@
             "name": "data",
             "mountTo": "storage"
         }
-    ],
-    "laravel": {
-        "configCache": true,
-        "routeCache": true
-    }
+    ]
 }

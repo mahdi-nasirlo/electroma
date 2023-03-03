@@ -21,7 +21,7 @@
     @yield('style')
 </head>
 
-<body style="background: #f7f7f7">
+<body style="background: #f7f7f7ad">
     <!-- Loader -->
     <div id="preloader">
         <div id="status">

@@ -131,6 +131,11 @@ class Product extends Model implements HasMedia, UseCartable
         return $this->belongsTo(DiscountItem::class, "discount_id");
     }
 
+    public function discountItems()
+    {
+        return $this->belongsTo(DiscountItem::class, "discount_id");
+    }
+
     protected static function newFactory()
     {
         return \Modules\Shop\Database\factories\ProductFactory::new();

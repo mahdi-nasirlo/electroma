@@ -61,6 +61,13 @@ class Category extends Model
         }
     }
 
+    public function categoryLink()
+    {
+        // ($this->isVIsible() and $this->is_visible) ?
+        return  route('shop.product.list', $this);
+        //  : "javascript:void(0)";
+    }
+
     protected static function newFactory()
     {
         return \Modules\Shop\Database\factories\CategoryFactory::new();
