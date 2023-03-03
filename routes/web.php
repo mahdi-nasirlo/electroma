@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Blog\Entities\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +14,6 @@ use Modules\Blog\Entities\Category;
 */
 
 Route::get('/', function () {
+    // dd(EntitiesCategory::find(1)->children);
     return view('index');
 })->name('home');

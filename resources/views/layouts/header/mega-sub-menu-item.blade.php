@@ -1,5 +1,5 @@
 @foreach ($categoreis as $category)
-    @if ($category->is_visible)
+    @if (!$category->children()->get()->isEmpty())
         {{-- @if ($category->childIsVisible()) --}}
         <li class="has-megasubmenu">
             <a style="align-items: center;" class="dropdown-item d-flex justify-content-between align-item-center"
@@ -9,7 +9,7 @@
             </a>
             <div class="megasubmenu dropdown-menu">
                 <div class="row">
-                    @foreach ($category->children as $parent)
+                    @foreach ($category->children()->get() as $parent)
                         <div class="col-6">
                             <a style="align-items: center;"
                                 class="d-flex align-center justify-content-between align-item-center"
@@ -17,7 +17,7 @@
                                 <h6 class="title">
                                     {{ $parent->name }}
                                 </h6>
-                                <x-icon-o-chevron-left />
+                                {{-- <x-icon-o-chevron-left /> --}}
                             </a>
                             <ul class="list-unstyled bg-light">
                                 @foreach ($parent->children as $child)
