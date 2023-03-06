@@ -12,6 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="website" content="https://www.barghkarsho.com/" />
     <meta name="Version" content="v1" />
+    <meta name="robots" content="noindex, nofollow" />
 
     <!-- favicon -->
     <link rel="shortcut icon" href="/static/favicon.ico">

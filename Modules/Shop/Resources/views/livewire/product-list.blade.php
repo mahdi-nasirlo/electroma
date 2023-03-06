@@ -9,10 +9,8 @@
 
                     <div class="col-lg-9 col-md-8 col-12 mt-5 pt-2 mt-sm-0 pt-sm-0">
                         <div class="row align-items-center">
-                            <div class="col-lg-8 col-md-7">
-                                <div class="section-title">
-                                    {{-- {{ $products->links() }} --}}
-                                </div>
+                            <div class="col-lg-8 col-md-7 d-flex align-item-center">
+                                {{ $products->links('shop::vendor.livewire.tailwind') }}
                             </div>
                             <!--end col-->
 
@@ -25,8 +23,8 @@
                                             <select wire:model='order' class="form-select form-control"
                                                 aria-label="Default select example" id="Sortbylist-job">
                                                 <option value="last" selected="">مرتب سازی بر اساس آخرین</option>
-                                                <option value="popular">مرتب سازی بر اساس محبوبیت</option>
-                                                <option value="rating">مرتب سازی بر اساس رتبه بندی</option>
+                                                <option value="popular">مرتب سازی بر اساس پر فروش ترین</option>
+                                                <option value="rating">مرتب سازی بر اساس پیشنهاد کاربران</option>
                                                 <option value="priceASC">مرتب سازی بر اساس قیمت: کم به زیاد</option>
                                                 <option value="priceDEC">مرتب سازی بر اساس قیمت: زیاد به کم</option>
                                             </select>
@@ -48,7 +46,6 @@
 
 
                         <div wire:loading.block>
-                            {{-- <livewire:shop::skelton /> --}}
                             @include('shop::components.skelton')
                         </div>
                         <div wire:loading.remove>
@@ -71,7 +68,7 @@
 
 
                             <div>
-                                {{-- {{ $products->links('shop::vendor.livewire.bootstrap') }} --}}
+                                {{ $products->links('shop::vendor.livewire.bootstrap') }}
                             </div>
 
                         </div>

@@ -15,24 +15,12 @@ class ShopController extends Controller
 {
     public function list(Category $category)
     {
-        SEOMeta::setTitle($category->seo->title ?? $category->title)
+
+        SEOMeta::setTitle($category->seo->title ?? $category->name)
             ->addMeta("article:published_time", $category->created_at)
             ->addMeta("revised", $category->updated_at)
-            ->addMeta("author",  $category->seo->author ??  $category->user->name . " ," . $category->user->email)
-            ->addMeta("designer", env("DESIGNER"))
-            ->addMeta("owner", $category->user->name)
-            // ->addKeyword($categoryTags)
-            ->addMeta("category", $category->category->name);
-
-        // OpenGraph::setTitle($category->seo->title ?? $category->title)
-        //     ->setDescription($category->seo->description)
-        //     ->setType('article')
-        //     ->setArticle([
-        //         'published_time' => $category->created_at,
-        //         'modified_time' => $category->updated_at,
-        //         'author' => $category->seo->author ??  $category->user->name,
-        //         'tag' => $categoryTags
-        //     ]);
+            ->addMeta("designer", env("DESIGNER"));
+            // ->addKeyword($category->tags(true));
 
         return view('shop::product-list.index', compact('category'));
     }

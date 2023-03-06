@@ -158,3 +158,13 @@
     background: var(--orange);
     color: white;
 }
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.breadcrumb-item {
+    flex: 0 0 auto;
+}

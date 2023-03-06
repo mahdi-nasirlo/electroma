@@ -63,7 +63,7 @@ class ProductList extends Component
                 new Search($this->search),
             ])
             ->thenReturn()
-            ->paginate(20);
+            ->paginate(4);
 
         app(Pipeline::class)
             ->send(
