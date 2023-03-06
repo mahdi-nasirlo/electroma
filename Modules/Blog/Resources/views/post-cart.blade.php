@@ -1,4 +1,4 @@
-   <div class="col-12 col-lg-3 col-md-6 mb-4 pb-2">
+   <div class="{{ $class }}">
        <div class="card blog rounded border-0 shadow">
            <div class="position-relative">
                <img height="200px" style="object-fit: cover" src="{{ asset('/storage/' . $post->image) }}"
