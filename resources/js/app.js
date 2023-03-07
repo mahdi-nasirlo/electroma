@@ -30,10 +30,9 @@ if (document.getElementById("topnav")) {
     });
 }
 
-// window.addEventListener("resize", function() {
-//     "use strict";
-//     window.location.reload();
-// });
+//=========================================//
+/*            02) Mega Menu                */
+//=========================================//
 
 document.addEventListener("DOMContentLoaded", function () {
     /////// Prevent closing from hover inside dropdown
@@ -84,3 +83,32 @@ document.addEventListener("DOMContentLoaded", function () {
     // end if innerWidth
 });
 // DOMContentLoaded  end
+
+//=========================================//
+/*          03) Equalization card          */
+//=========================================//
+
+function equalize(cardName) {
+    // Get all the cards
+    var cards = document.querySelectorAll(`.${cardName}`);
+
+    // Get the height of the tallest card
+    var maxHeight = 0;
+
+    for (var i = 0; i < cards.length; i++) {
+        if (cards[i].clientHeight > maxHeight) {
+            maxHeight = cards[i].clientHeight;
+        }
+    }
+
+    // Set the height of all the cards to the height of the tallest card
+    for (var i = 0; i < cards.length; i++) {
+        cards[i].style.height = maxHeight + "px";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    equalize("product-card");
+    equalize("last-post-card");
+    equalize("category-banner");
+});

@@ -1,5 +1,5 @@
-<div class="col-lg-3 col-md-4 col-12">
-    <div class="card border-0 sidebar sticky-bar">
+<div style="height: fit-content" class="col-lg-3 col-md-4 col-12 bg-white shadow rounded-md">
+    <div class="card border-0 sidebar my-2">
         <div class="card-body p-0">
             <!-- SEARCH -->
             <div class="widget">

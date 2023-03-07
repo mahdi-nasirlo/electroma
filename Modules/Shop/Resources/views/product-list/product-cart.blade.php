@@ -1,7 +1,7 @@
-<div class="card shop-list border-0 position-relative shadow mb-1">
+<div style="margin-right: 1px;" class="card shop-list border-0 rounded position-relative shadow mb-1">
     <div class="shop-image position-relative overflow-hidden rounded shadow">
         <a href="{{ route('shop.product.single', $product) }}">
-            <img src="{{ $product->getCoverUrl() }}" class="img-fluid" alt="">
+            <img src="{{ $product->getCoverUrl() }}" class="img-fluid" style="width: 100%" alt="">
         </a>
         @if (isset($product->cover_hover))
             <a href="{{ route('shop.product.single', $product) }}" class="overlay-work">
@@ -41,15 +41,15 @@
             </ul>
         @endif
     </div>
-    <div style="display: flex !important;flex-direction: column;align-items: center;"
-        class="card-body content pt-3 p-2">
-        <a href="{{ route('shop.product.single', $product) }}" style="height: 66px"
+    <div style="display: flex !important;flex-direction: column;align-items: center;justify-content: space-between;"
+        class="card-body pt-3 p-2 product-card">
+        <a href="{{ route('shop.product.single', $product) }}" {{-- style="height: 66px"  content  --}}
             class="text-warning product-name h6 mb-0 text-center">
             @if (isset($product->name))
                 {{ $product->name }}
             @endif
         </a>
-        <div class="mt-3 pt-3">
+        <div class="mt-3 pt-3 w-100 d-flex justify-content-between">
             <h6 class="text-muted small fst-italic mb-0 text-center">
                 @if ($product->discountItem)
                     {{ number_format($product->discounted_price) }} <del
@@ -66,9 +66,9 @@
                     @for ($i = 0; $i < 5; $i++)
                         <li class="list-inline-item">
                             @if ($i > $product->rate - 1)
-                                <x-font-star-o style="width: 18px;height: 18px;" />
+                                <x-font-star-o style="width: 14px;height: 14px;" />
                             @else
-                                <x-font-star style="width: 18px;height: 18px;" />
+                                <x-font-star style="width: 14px;height: 14px;" />
                             @endif
                         </li>
                         {{-- <li class="list-inline-item"><i
