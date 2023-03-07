@@ -5,12 +5,26 @@
         </a>
     </div>
 
+
     <ul>
         <li>
             <a>
                 <livewire:search />
             </a>
         </li>
+        @auth
+            <li class="bottom-username-element d-flex justify-content-between bg-soft-blue py-3 w-full">
+                <span class="ps-1">
+                    {{ auth()->user()->name }} خوش آمدید
+                </span>
+                <button style="width: 24%;text-align: left" class="dropdown-item text-dark p-0 w-10 text-left me-1"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                        class="uil uil-sign-out-alt align-middle me-1"></i> خروج </button>
+                <form id="logout-form" action="{{ route('filament.auth.logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
+        @endauth
         @if (!request()->routeIs('service.index') and Route::has('service.index'))
             <li>
                 <a class="text-warning " href="{{ route('service.index') }}">
@@ -28,7 +42,7 @@
             </li>
         @endguest
 
-        <livewire:payment::cart.mobile-cart />
+
 
         @auth
             @if (auth()->user()->canAccessFilament())
@@ -40,14 +54,14 @@
                 </li>
             @endif
             <li class="has-submenu">
-                <a href="#" data-submenu="stores">
+                <a href="#" data-submenu="userPanel">
                     <x-icon-o-user />
                     پنل کاربری
                 </a>
 
-                <div id="stores" class="submenu">
+                <div id="userPanel" class="submenu">
                     <div class="submenu-header">
-                        <a href="#" data-submenu-close="stores">منو اصلی</a>
+                        <a href="#" data-submenu-close="userPanel">منو اصلی</a>
                     </div>
 
                     <label>پنل کاربری</label>
@@ -74,6 +88,7 @@
                 </div>
             </li>
         @endauth
+        <livewire:payment::cart.mobile-cart />
         @if ($shopCategoies->count() > 0)
             @include('layouts.header.mobile_menu_item', [
                 'categoreis' => $shopCategoies,
@@ -139,19 +154,6 @@
                 </div>
             </li>
         @endif
-        @auth
-            <li class="d-flex justify-content-between bg-soft-blue py-2" style="position: absolute;bottom: 0;width: 100%">
-                <span class="ps-1">
-                    {{ auth()->user()->name }} خوش آمدید
-                </span>
-                <button style="width: 24%;text-align: left" class="dropdown-item text-dark p-0 w-10 text-left me-1"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                        class="uil uil-sign-out-alt align-middle me-1"></i> خروج </button>
-                <form id="logout-form" action="{{ route('filament.auth.logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </li>
-        @endauth
     </ul>
 </div>
 
