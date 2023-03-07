@@ -7,7 +7,7 @@
         @endphp
         <li class="has-submenu parent-menu-item d-flex ms-1">
             <div class="dropdown">
-                <button style="box-shadow: none" type="button" class="btn px-2 py-1 mt-3 btn-soft-primary cartBtn"
+                <button style="box-shadow: none" type="button" class="btn px-2 py-1 mt-3 btn-soft-primary cartBtn rounded"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <x-icon-o-shopping-cart />
 
