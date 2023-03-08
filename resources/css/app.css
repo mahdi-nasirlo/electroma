@@ -168,3 +168,11 @@
 .breadcrumb-item {
     flex: 0 0 auto;
 }
+
+.fill-white {
+    fill: aliceblue;
+}
+
+.fill-primary {
+    fill: blue;
+}

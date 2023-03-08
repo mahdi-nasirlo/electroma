@@ -80,11 +80,18 @@
             <div class="widget">
                 <h5 class="widget-title">دنبال کردن ما</h5>
                 <ul class="list-unstyled social-icon mb-0 ps-0 mt-2">
-                    <a href="">
+                    <a href="{{ Helper::information('instalgram_link') }}">
                         <x-font-instagram class="text-primary list-inline-item" />
                     </a>
-                    <a href="">
-                        <x-font-telegram class="text-primary list-inline-item" style="padding: 3px" />
+                    <a href="{{ Helper::information('telegram_link') }}">
+                        <x-font-telegram class="text-primary list-inline-item"
+                            style="padding: 3px; margin-right: 4px" />
+                    </a>
+                    <a href="{{ Helper::information('whatsapp_link') }}">
+                        <x-font-whatsapp class="text-primary list-inline-item" style="padding: 1px" />
+                    </a>
+                    <a href="{{ Helper::information('aparat_link') }}">
+                        <x-font-aparat class="text-primary list-inline-item fill-primary" style="padding: 1px" />
                     </a>
                 </ul>
                 <!--end icon-->

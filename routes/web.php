@@ -1,5 +1,6 @@
 <?php
 
+use App\Helpers\Helper;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // dd(EntitiesCategory::find(1)->children);
     return view('index');
 })->name('home');

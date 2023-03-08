@@ -6,12 +6,12 @@
                     {{-- <img src="images/logo-light.png" alt="" height="24"> --}}
                 </a>
                 <p class="mt-4">
-                    {!! $information['footer_gooal']['content'] !!}
+                    {!! Helper::information('footer_goal') !!}
                 </p>
                 <ul class="list-unstyled social-icon foot-social-icon mb-0 mt-4">
 
                     <li class="list-inline-item">
-                        <a href="{{ strip_tags($information['instagram_link']['content']) }}" class="rounded">
+                        <a href="{{ strip_tags(Helper::information('instagram_link')) }}" class="rounded">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="feather feather-instagram fea icon-sm fea-social">
@@ -22,20 +22,21 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="list-inline-item"><a href="{{ strip_tags($information['linkdin_link']['content']) }}"
-                            class="rounded"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="feather feather-linkedin fea icon-sm fea-social">
-                                <path
-                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
-                                </path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg></a></li>
+                    <li class="list-inline-item"><a href="{{ strip_tags(Helper::information('telegram_link')) }}"
+                            class="rounded">
+                            <x-font-telegram class="list-inline-item fill-white"
+                                style="padding: 3px; margin-right: 4px" />
+                        </a>
+                    </li>
                     <li class="list-inline-item">
-                        <a href="{{ strip_tags($information['telegram_link']['content']) }}" class="rounded">
-                            <i class="uil uil-telegram-alt"></i>
+                        <a href="{{ strip_tags(Helper::information('aparat_link')) }}" class="rounded">
+                            <x-font-aparat class="list-inline-item fill-white" style="padding: 1px" />
+
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="{{ strip_tags(Helper::information('whatsapp_link')) }}" class="rounded">
+                            <x-font-whatsapp class="text-white list-inline-item fill-white" style="padding: 1px" />
                         </a>
                     </li>
                 </ul>

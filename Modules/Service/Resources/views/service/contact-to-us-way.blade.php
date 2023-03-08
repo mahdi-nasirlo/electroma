@@ -7,8 +7,8 @@
                 </div>
                 <div class="content mt-3">
                     <h5 class="fw-bold">تلفن </h5>
-                    <a href="tel:{{ strip_tags($information['mobile_support']['content']) }}"
-                        class="text-primary">{!! $information['mobile_support']['content'] !!}</a>
+                    <a href="tel:{{ strip_tags(Helper::information('mobile_support')) }}"
+                        class="text-primary">{!! Helper::information('mobile_support') !!}</a>
                 </div>
             </div>
         </div>
@@ -23,9 +23,9 @@
                 <div class="content mt-3">
                     <h5 class="fw-bold">موقعیت </h5>
                     <p class="text-muted">
-                        {!! $information['location_text']['content'] !!}
+                        {!! Helper::information('location_text') !!}
                     </p>
-                    <a href="{{ strip_tags($information['location']['content']) }}" data-type="iframe"
+                    <a href="{{ strip_tags(Helper::information('location')) }}" data-type="iframe"
                         class="video-play-icon text-primary lightbox">نمایش در گوگل</a>
                 </div>
             </div>

@@ -7,17 +7,17 @@
                     تلفن پشتیبانی
                 </span>
                 <span class="d-none d-sm-flex px-1 mt-1">
-                    {!! $information['mobile_support']['content'] !!}
+                    {!! Helper::information('mobile_support') !!}
                 </span>
             </div>
             <div class="px-1 mt-1" style="direction: rtl">
-                {!! $information['phone_support']['content'] !!}
+                {!! Helper::information('phone_support') !!}
             </div>
         </div>
 
         <div class="">
             <a style="display: flex;align-items: center;"class="text-white d-flex"
-                href="{{ strip_tags($information['location']['content']) }}">
+                href="{{ strip_tags(Helper::information('location')) }}">
 
                 <x-icon-o-location-marker class="mx-1" style="margin: 2px 0" />
                 نشانی
