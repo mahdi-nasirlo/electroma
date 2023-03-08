@@ -2,12 +2,15 @@
     @if ($banners->count() > 0)
         @foreach ($banners as $banner)
             <div class="tiny-slide">
-                <div style="flex-direction: column;margin-right: 1px;"
-                    class="bg-white mb-2 me-1 d-flex justify-content-center rounded shadow category-banner">
-                    <img style="margin: 0 auto;max-width: 80px; max-height: 80px;" src="/storage/{{ $banner->path }}"
-                        alt="">
-                    <span class="text-center">{{ $banner->bannerable->name }}</span>
-                </div>
+                <a class="text-body" href="{{ $banner->getLink() }}">
+                    <div style="flex-direction: column;margin-right: 1px;"
+                        class="bg-white mb-2 me-1 d-flex justify-content-center rounded shadow category-banner">
+                        <img style="margin: 0 auto;max-width: 80px; max-height: 80px;" src="/storage/{{ $banner->path }}"
+                            alt="">
+                        <span
+                            class="text-center">{{ $banner->name ? $banner->name : $banner->shopCategory->name }}</span>
+                    </div>
+                </a>
             </div>
         @endforeach
     @else
