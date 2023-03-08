@@ -50,13 +50,17 @@
                                 <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 pb-3"
                                     style="width: 200px; margin: 0px;">
 
+                                    <a class="dropdown-item">
+                                        <strong> {{ auth()->user()->name }}</strong>
+                                    </a>
+                                    <div class="dropdown-divider border-top"></div>
                                     @if (auth()->user()->canAccessFilament())
                                         <a class="dropdown-item text-danger "
                                             href="{{ route('filament.pages.dashboard') }}">
                                             <x-icon-o-view-grid-add />
                                             </i> پنل مدیریت
                                         </a>
-                                        <hr class="my-1">
+                                        <div class="dropdown-divider border-top"></div>
                                     @endif
 
                                     <a class="dropdown-item text-dark"
@@ -84,7 +88,7 @@
                             </div>
                         @else
                             <a class="p-0" href="{{ route('filament.auth.login') }}">
-                                <button class="btn px-2 py-1 btn-soft-primary cartBtn shadow-none">
+                                <button class="btn px-2 py-1 btn-soft-primary cartBtn shadow-none rounded">
                                     <x-icon-o-login />
                                 </button>
                             </a>
