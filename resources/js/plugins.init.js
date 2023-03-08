@@ -143,7 +143,7 @@ if (document.getElementsByClassName("related_product").length > 0) {
             },
 
             320: {
-                items: 3,
+                items: 2,
             },
         },
     });

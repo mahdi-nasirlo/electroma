@@ -9,7 +9,6 @@ use RalphJSmit\Laravel\SEO\Support\HasSEO;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-// TODO: add slug
 class Category extends Model
 {
     use HasFactory, HasSEO;

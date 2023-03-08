@@ -17,34 +17,16 @@
             <!-- Categories -->
             @if ($category->hasChilde())
                 <div class="widget mt-4 pt-2">
-                    <h5 class="widget-title">دسته بندیها </h5>
+                    <h5 class="widget-title">دسته بندی ها </h5>
                     <ul class="list-unstyled mt-4 mb-0 blog-categories">
                         @foreach ($category->children as $item)
-                            <li><a href="jvascript:void(0)">{{ $item->name }}</a></li>
+                            <li><a href="{{ route('shop.product.list', $item) }}">{{ $item->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
             @endif
 
             <!-- Categories -->
-
-            <!-- color -->
-
-            {{-- @foreach ($category->attributes as $attribute)
-                <div class="bg-light mt-4 p-3 pt-2 rounded-2 widget">
-                    <h5 class="widget-title">{{ $attribute->name }}</h5>
-                    <ul class="list-unstyled mt-4 mb-0 blog-categories">
-                        @foreach ($attribute->values as $item)
-                            <li>
-                                <input name="ss" wire:model='filter' type="checkbox"
-                                    value="{{ $item }}.{{ $attribute->name }}">
-                                <a href="jvascript:void(0)">{{ $item }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endforeach --}}
-
 
             @include('shop::product-list.sidbar-attribute-items')
 
@@ -93,8 +75,3 @@
     </div>
 </div>
 <!--end col-->
-
-<!--
-    FIXME product related category list of link
-    TODO make limit for display to product with order count
--->
