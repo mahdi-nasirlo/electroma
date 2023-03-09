@@ -6,16 +6,10 @@ use App\Admin\Resources\Shop\OrderResource\Pages;
 use App\Admin\Resources\Shop\OrderResource\Pages\ViewOrder;
 use App\Admin\Resources\Shop\OrderResource\RelationManagers\CoursesRelationManager;
 use App\Admin\Resources\Shop\OrderResource\RelationManagers\MyPaymentsRelationManager;
-use Filament\Forms;
+use App\Admin\Resources\Shop\OrderResource\RelationManagers\ProductsRelationManager;
 use Filament\Tables\Actions\Action;
-use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Placeholder;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\TextInput\Mask;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -137,6 +131,7 @@ class OrderResource extends Resource
     {
         return [
             CoursesRelationManager::class,
+            ProductsRelationManager::class,
             MyPaymentsRelationManager::class,
         ];
     }
