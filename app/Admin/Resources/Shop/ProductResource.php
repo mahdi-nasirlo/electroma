@@ -152,32 +152,32 @@ class ProductResource extends Resource
                 ->suffix('تومان')
                 ->rules(['integer', 'min:0'])
                 ->required(),
-            // Forms\Components\Select::make('discount_id')
-            //     ->label("تخفیف")
-            //     ->relationship('discountItem', 'percent')
-            //     ->nullable()
-            //     ->createOptionForm([
-            //         Forms\Components\Grid::make()
-            //             ->schema([
-            //                 TextInput::make("percent")
-            //                     ->label("درصد")
-            //                     ->numeric()
-            //                     ->maxValue(100)
-            //                     ->minValue(0)
-            //                     ->suffix('%')
-            //                     ->required()
-            //                     ->default(0),
-            //                 JalaliDateTimePicker::make("expired_at")
-            //                     ->required()
-            //                     ->label("تاریخ انقضا")
-            //             ])
-            //             ->columns([
-            //                 'sm' => 2,
-            //             ])
-            //             ->columnSpan([
-            //                 'sm' => 2,
-            //             ]),
-            //     ]),
+            Forms\Components\Select::make('discount_id')
+                ->label("تخفیف")
+                ->relationship('discountItem', 'percent')
+                ->nullable()
+                ->createOptionForm([
+                    Forms\Components\Grid::make()
+                        ->schema([
+                            TextInput::make("percent")
+                                ->label("درصد")
+                                ->numeric()
+                                ->maxValue(100)
+                                ->minValue(0)
+                                ->suffix('%')
+                                ->required()
+                                ->default(0),
+                            JalaliDateTimePicker::make("expired_at")
+                                ->required()
+                                ->label("تاریخ انقضا")
+                        ])
+                        ->columns([
+                            'sm' => 2,
+                        ])
+                        ->columnSpan([
+                            'sm' => 2,
+                        ]),
+                ]),
             Select::make('category_id')
                 ->label('دسته بندی')
                 ->required()
