@@ -20,9 +20,14 @@ class ShopController extends Controller
             ->addMeta("article:published_time", $category->created_at)
             ->addMeta("revised", $category->updated_at)
             ->addMeta("designer", env("DESIGNER"));
-            // ->addKeyword($category->tags(true));
+        // ->addKeyword($category->tags(true));
 
         return view('shop::product-list.index', compact('category'));
+    }
+
+    public function search()
+    {
+        // return view("shop::product-list.search");
     }
 
     public function show(Product $product)
