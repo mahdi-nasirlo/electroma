@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
+use Filament\Http\Responses\Auth\Contracts\LoginResponse as LoginResponseContract;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -48,6 +49,8 @@ class AppServiceProvider extends ServiceProvider
             //     Filament::registerViteTheme('resources/css/filament.css');
             // }
         });
+
+        $this->app->bind(LoginResponseContract::class, \App\Http\Responses\LoginResponse::class);
 
         if (config('app.env') !== 'build') {
             if (Schema::hasTable("infographics")) {
