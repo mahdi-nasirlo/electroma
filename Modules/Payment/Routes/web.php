@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 use Modules\Payment\Http\Controllers\CartController;
 
 Route::prefix('payment')->name('payment.')->group(function () {
-    Route::get('/payment/order/{order}', [CartController::class, 'payment'])->name('index');
-    Route::get('/payment/callback', [CartController::class, 'callback'])->name('callback');
+    Route::get('/order/{order}', [CartController::class, 'payment'])->name('index');
+    Route::get('/callback', [CartController::class, 'callback'])->name('callback');
+    Route::get('/success/{order}', [CartController::class, 'success'])->name('success');
 });
+
 Route::prefix('cart')->name('cart.')->group(function () {
     Route::get("/", [CartController::class, 'index'])->name("index");
     Route::get("/order/{order}", [CartController::class, "paymentPage"])->name("address");

@@ -161,6 +161,11 @@
                                 </tbody>
                             </table>
 
+                            @if (session()->has('delivery_error'))
+                                <div style="margin-top: 10px" class="text-danger">
+                                    {{ session('delivery_error') }}
+                                </div>
+                            @endif
                             @if ($deliveries->count())
                                 <div class="text-muted h6 mt-4">
                                     روش ارسال

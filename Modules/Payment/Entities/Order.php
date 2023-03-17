@@ -18,7 +18,9 @@ class Order extends Model
         'price',
         'user_id',
         'course_id',
-        'discount_percent'
+        'discount_percent',
+        'address_id',
+        'delivery_id'
     ];
 
     protected $appends = [
@@ -36,6 +38,11 @@ class Order extends Model
         return $this->attributes['price'] - env("DELIVERY_PRICE");
     }
 
+    public function delivery()
+    {
+        return $this->belongsTo(Delivery::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -48,7 +55,12 @@ class Order extends Model
 
     public function products()
     {
-        return $this->morphedByMany(Product::class, 'orderable');
+        return $this->morphedByMany(Product::class, 'orderable')->withPivot('price');
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
     }
 
     public function payments()

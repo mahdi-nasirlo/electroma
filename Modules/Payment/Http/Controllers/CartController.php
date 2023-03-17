@@ -9,6 +9,8 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
+use Jackiedo\Cart\Facades\Cart;
 use Modules\Payment\Entities\Order;
 use Modules\Payment\Entities\Payment as EntitiesPayment;
 use Shetabit\Multipay\Exceptions\InvalidPaymentException;
@@ -100,8 +102,10 @@ class CartController extends Controller
                 'status' => 'paid'
             ]);
 
-            session()->flash("message", "پرداخت با موفقیت انجام شد , خرید شما حداکثر 2 تا 3 روز کاری دیگر ارسال خواهد شد .");
-            return 'ممنون از خرید شما';
+
+
+
+            return redirect(route('payment.success', $payment->order))->with('message', true);
             // return redirect(Route("profile", ['tab' => "order"]));
         } catch (InvalidPaymentException $exception) {
             /**
@@ -113,7 +117,7 @@ class CartController extends Controller
 
             session()->flash("error", $exception->getMessage() . " ( پرداخت ناموفق ) ");
 
-            return redirect(route("profile", ['tab' => "order"]));
+            return redirect(route('payment.success', $payment->order));
         }
     }
 
@@ -134,6 +138,38 @@ class CartController extends Controller
 
         // Gate::authorize("view-payment", $order); , ['order' => $order]
 
+        $items = collect(Cart::name("shopping")->getItems());
+
+        if ($items->isEmpty()) {
+            return redirect(route('cart.index'));
+        }
+
         return view("payment::cart.guestPay");
+    }
+
+    public function success(Order $order)
+    {
+        if (!Session::has('message')) {
+            return abort(404);
+        }
+
+        $data = null;
+
+        if ($address = $order->address) {
+            $data = $order->address->toArray();
+        } else {
+            $user = $order->user;
+
+            $data = [
+                'last_name' => $user->name,
+                'state' => $user->state,
+                'city' => $user->city,
+                'address' => $user->address,
+                'post' => $user->post,
+                'mobile' => $user->mobile
+            ];
+        }
+
+        return view('payment::message.success', compact('data', 'order'));
     }
 }

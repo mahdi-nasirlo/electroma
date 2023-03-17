@@ -40,10 +40,15 @@ class Payment extends Component
     {
         $this->validate();
 
+        if (!$this->selectedDelivery) {
+            return session()->flash('delivery_error', 'لطفا نوع حمل و نقل را تعیین کنید.');
+        }
+
         $finalPrice = $this->totalPrice + $this->deliveryPrice - $this->discount_value;
 
         $order = [
             'price' => $finalPrice,
+            'delivery_id' => $this->selectedDelivery,
             'status' => 'unpaid'
         ];
 
@@ -70,13 +75,15 @@ class Payment extends Component
             return [
                 'orderable_id' => $item->get('id'),
                 'orderable_type' => get_class($item->getModel()),
-                'price' => $item->getModel()->price
+                'price' => $item->getPrice()
             ];
         })->toArray();
 
         $order->orderItems()->createMany($cartItems);
 
         Cart::clearItems();
+
+        Cookie::forget('cart_discount_id');
 
         $this->emit('addressUpdate');
 
