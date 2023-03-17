@@ -23,16 +23,19 @@
 </head>
 
 <body style="background: #f7f7f7ad">
-    <!-- Loader -->
-    <div id="preloader">
-        <div id="status">
-            <div class="spinner">
-                <div class="double-bounce1"></div>
-                <div class="double-bounce2"></div>
+
+    @production
+        <!-- Loader -->
+        <div id="preloader">
+            <div id="status">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Loader -->
+        <!-- Loader -->
+    @endproduction
     @include('layouts.header.index')
 
     @yield('content')
@@ -47,7 +50,7 @@
     </a>
     <!-- Back to top -->
     @include('layouts.footer.index')
-    @include('layouts.click_to_chat')
+    {{-- @include('layouts.click_to_chat') --}}
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     @yield('script')
     @vite('resources/js/app.js')

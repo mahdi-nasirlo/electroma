@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-
-
-            $table->bigInteger('price');
-            $table->enum('status', ['unpaid', 'paid', 'preparation', 'posted', 'received']);
-            $table->string('tracking_serial')->nullable();
-
+            $table->string("mobile")->nullable();
+            $table->string("state")->nullable();
+            $table->string("city")->nullable();
+            $table->string("post")->nullable();
+            $table->string("address")->nullable();
+            $table->string("last_name")->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('addresses');
     }
 };

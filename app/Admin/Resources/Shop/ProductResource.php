@@ -152,6 +152,27 @@ class ProductResource extends Resource
                 ->suffix('تومان')
                 ->rules(['integer', 'min:0'])
                 ->required(),
+            Repeater::make('tiered_price')
+                ->label('قیمت همکار')
+                ->schema([
+                    TextInput::make('price')
+                        ->mask(
+                            fn (Mask $mask) => $mask
+                                ->numeric()
+                                ->thousandsSeparator(','), // Add a separator for thousands.
+                        )
+                        ->label('قیمت')
+                        ->numeric()
+                        ->suffix('تومان')
+                        ->rules(['integer', 'min:0'])
+                        ->required(),
+                    TextInput::make('quantity')
+                        ->label('تعداد')
+                        ->numeric()
+                        ->rules(['integer', 'min:0'])
+                        ->required(),
+                ])
+                ->columns(2),
             Forms\Components\Select::make('discount_id')
                 ->label("تخفیف")
                 ->relationship('discountItem', 'percent')

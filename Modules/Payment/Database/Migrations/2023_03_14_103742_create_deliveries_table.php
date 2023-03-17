@@ -13,17 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-
-
-            $table->bigInteger('price');
-            $table->enum('status', ['unpaid', 'paid', 'preparation', 'posted', 'received']);
-            $table->string('tracking_serial')->nullable();
-
+            $table->string('name');
+            $table->bigInteger('price')->default(0);
+            $table->string('take_time')->nullable();
+            $table->boolean('status')->default(false);
+            $table->bigInteger('free_con')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('deliveries');
     }
 };

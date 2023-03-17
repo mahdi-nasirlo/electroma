@@ -19,8 +19,6 @@ class CartController extends Controller
 {
     public function index()
     {
-
-        // return view()->exists("payment::cart.index");
         return view('payment::cart.index');
     }
 
@@ -67,12 +65,12 @@ class CartController extends Controller
         }
 
 
-        if ($payment->order->user->id !== Auth::id()) {
-            return view('error');
-        }
+        // if ($payment->order->user->id !== Auth::id()) {
+        //     return view('error');
+        // }
 
 
-        Log::debug("call back  ::  " . $payment->resnumber . "    ******    " . $request->payment);
+        // Log::debug("call back  ::  " . $payment->resnumber . "    ******    " . $request->payment);
 
 
         // You need to verify the payment to ensure the invoice has been paid successfully.
@@ -88,6 +86,12 @@ class CartController extends Controller
                 ]);
             });
 
+            $payment->order->products->map(function ($product) {
+                $product->update([
+                    'inventory' => $product->inventory - 1
+                ]);
+            });
+
             $payment->update([
                 'status' => true
             ]);
@@ -97,7 +101,8 @@ class CartController extends Controller
             ]);
 
             session()->flash("message", "پرداخت با موفقیت انجام شد , خرید شما حداکثر 2 تا 3 روز کاری دیگر ارسال خواهد شد .");
-            return redirect(Route("profile", ['tab' => "order"]));
+            return 'ممنون از خرید شما';
+            // return redirect(Route("profile", ['tab' => "order"]));
         } catch (InvalidPaymentException $exception) {
             /**
         when payment is not verified, it will throw an exception.
@@ -120,5 +125,15 @@ class CartController extends Controller
         Gate::authorize("view-payment", $order);
 
         return view("payment::cart.payment", ['order' => $order]);
+    }
+
+    public function guestUserPay()
+    {
+        // SEOMeta::setTitle("صندوق")
+        //     ->addMeta("designer", env("DESIGNER"));
+
+        // Gate::authorize("view-payment", $order); , ['order' => $order]
+
+        return view("payment::cart.guestPay");
     }
 }

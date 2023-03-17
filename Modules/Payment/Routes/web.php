@@ -19,9 +19,9 @@ Route::prefix('payment')->name('payment.')->group(function () {
     Route::get('/payment/callback', [CartController::class, 'callback'])->name('callback');
 });
 Route::prefix('cart')->name('cart.')->group(function () {
-
     Route::get("/", [CartController::class, 'index'])->name("index");
-    Route::get("/order/{order}", [CartController::class, "paymentPage"])->name("address")->middleware("auth");
+    Route::get("/order/{order}", [CartController::class, "paymentPage"])->name("address");
+    Route::get("/order", [CartController::class, "guestUserPay"])->name("guestPay");
 });
 
 Route::get('profile', [CartController::class, 'profile'])->middleware('auth')->name("profile");

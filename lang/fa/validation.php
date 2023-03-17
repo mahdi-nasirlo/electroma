@@ -192,6 +192,8 @@ return [
         'newPassword' => 'گذرواژه جدید',
         'confirmationPassword' => 'تایید گذرواژه',
         'comment' => 'دیدگاه',
-        'rating' => 'امتیاز'
+        'rating' => 'امتیاز',
+        'post' => 'کد پستی',
+        'code' => 'کد تخفیف'
     ],
 ];
