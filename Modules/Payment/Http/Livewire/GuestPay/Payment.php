@@ -81,12 +81,6 @@ class Payment extends Component
 
         $order->orderItems()->createMany($cartItems);
 
-        Cart::clearItems();
-
-        Cookie::forget('cart_discount_id');
-
-        $this->emit('addressUpdate');
-
         return redirect(route("payment.index", $order));
     }
 

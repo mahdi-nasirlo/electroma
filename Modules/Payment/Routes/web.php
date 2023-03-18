@@ -17,7 +17,8 @@ use Modules\Payment\Http\Controllers\CartController;
 Route::prefix('payment')->name('payment.')->group(function () {
     Route::get('/order/{order}', [CartController::class, 'payment'])->name('index');
     Route::get('/callback', [CartController::class, 'callback'])->name('callback');
-    Route::get('/success/{order}', [CartController::class, 'success'])->name('success');
+    Route::get('/successful/{order}', [CartController::class, 'successful'])->name('successful');
+    Route::get('/unsuccessful/{order}', [CartController::class, 'unsuccessful'])->name('unsuccessful');
 });
 
 Route::prefix('cart')->name('cart.')->group(function () {

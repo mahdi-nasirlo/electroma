@@ -2,6 +2,7 @@
 
 use App\Helpers\Helper;
 use Illuminate\Support\Facades\Route;
+use Modules\Payment\Entities\Payment;
 
 /*
 |--------------------------------------------------------------------------

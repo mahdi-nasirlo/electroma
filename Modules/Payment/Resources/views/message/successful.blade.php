@@ -97,7 +97,7 @@
                     <td style="padding: 24px;">
                         <div
                             style="display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 6px; box-shadow: 0 0 3px rgba(60, 72, 88, 0.15);">
-                            <table cellpadding="0" cellspacing="0">
+                            <table style="width: 100%" cellpadding="0" cellspacing="0">
                                 <thead class="bg-light">
                                     <tr>
                                         <th scope="col"

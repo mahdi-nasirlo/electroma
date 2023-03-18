@@ -7,6 +7,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -82,15 +83,18 @@ class CartController extends Controller
             $receipt = Payment::amount($payment->order->total_price)->transactionId($payment->resnumber)->verify();
 
 
+            // dd($payment->order, $payment->order->products);
+
             $payment->order->courses->map(function ($course) {
                 $course->update([
                     'inventory' => $course->inventory - 1
                 ]);
             });
 
+
             $payment->order->products->map(function ($product) {
                 $product->update([
-                    'inventory' => $product->inventory - 1
+                    'inventory' => --$product->inventory
                 ]);
             });
 
@@ -103,9 +107,11 @@ class CartController extends Controller
             ]);
 
 
+            Cart::clearItems();
 
+            Cookie::forget('cart_discount_id');
 
-            return redirect(route('payment.success', $payment->order))->with('message', true);
+            return redirect(route('payment.successful', $payment->order))->with('message', true);
             // return redirect(Route("profile", ['tab' => "order"]));
         } catch (InvalidPaymentException $exception) {
             /**
@@ -116,8 +122,7 @@ class CartController extends Controller
             // echo $exception->getMessage();
 
             session()->flash("error", $exception->getMessage() . " ( پرداخت ناموفق ) ");
-
-            return redirect(route('payment.success', $payment->order));
+            return redirect(route('payment.unsuccessful', $payment->order));
         }
     }
 
@@ -147,11 +152,11 @@ class CartController extends Controller
         return view("payment::cart.guestPay");
     }
 
-    public function success(Order $order)
+    public function successful(Order $order)
     {
-        if (!Session::has('message')) {
-            return abort(404);
-        }
+        // if (!Session::has('message')) {
+        //     return abort(404);
+        // }
 
         $data = null;
 
@@ -169,6 +174,34 @@ class CartController extends Controller
                 'mobile' => $user->mobile
             ];
         }
+
+        return view('payment::message.successful', compact('data', 'order'));
+    }
+
+    public function unsuccessful(Order $order)
+    {
+        // if (!Session::has('message')) {
+        //     return abort(404);
+        // }
+
+        // $data = null;
+
+        // if ($address = $order->address) {
+        //     $data = $order->address->toArray();
+        // } else {
+        //     $user = $order->user;
+
+        //     $data = [
+        //         'last_name' => $user->name,
+        //         'state' => $user->state,
+        //         'city' => $user->city,
+        //         'address' => $user->address,
+        //         'post' => $user->post,
+        //         'mobile' => $user->mobile
+        //     ];
+        // }
+
+        return 'پرداخت ناموفق';
 
         return view('payment::message.success', compact('data', 'order'));
     }
