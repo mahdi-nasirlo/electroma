@@ -94,7 +94,7 @@ class CartController extends Controller
 
             $payment->order->products->map(function ($product) {
                 $product->update([
-                    'inventory' => --$product->inventory
+                    'inventory' => $product->inventory - 1
                 ]);
             });
 
@@ -121,8 +121,7 @@ class CartController extends Controller
              **/
             // echo $exception->getMessage();
 
-            session()->flash("error", $exception->getMessage() . " ( پرداخت ناموفق ) ");
-            return redirect(route('payment.unsuccessful', $payment->order));
+            return redirect(route('payment.unsuccessful', $payment->order))->with('error', $exception->getMessage() . " (پرداخت ناموفق) ");
         }
     }
 
@@ -154,9 +153,11 @@ class CartController extends Controller
 
     public function successful(Order $order)
     {
-        // if (!Session::has('message')) {
-        //     return abort(404);
-        // }
+        session()->reflash();
+
+        if (!Session::has('message')) {
+            return abort(404);
+        }
 
         $data = null;
 
@@ -178,31 +179,14 @@ class CartController extends Controller
         return view('payment::message.successful', compact('data', 'order'));
     }
 
-    public function unsuccessful(Order $order)
+    public function unsuccessful()
     {
-        // if (!Session::has('message')) {
-        //     return abort(404);
-        // }
+        session()->reflash();
 
-        // $data = null;
+        if (!Session::has('error')) {
+            return abort(404);
+        }
 
-        // if ($address = $order->address) {
-        //     $data = $order->address->toArray();
-        // } else {
-        //     $user = $order->user;
-
-        //     $data = [
-        //         'last_name' => $user->name,
-        //         'state' => $user->state,
-        //         'city' => $user->city,
-        //         'address' => $user->address,
-        //         'post' => $user->post,
-        //         'mobile' => $user->mobile
-        //     ];
-        // }
-
-        return 'پرداخت ناموفق';
-
-        return view('payment::message.success', compact('data', 'order'));
+        return view('payment::message.unsuccessful');
     }
 }

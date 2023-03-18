@@ -81,11 +81,11 @@
                                     <x-icon-o-arrow-sm-left />
                                 </a>
 
-                                @if ($order->canAccessToPayment())
+                                {{-- @if ($order->canAccessToPayment())
                                     <a href="{{ route('cart.address', $order) }}" class="text-success pe-2">
                                         پرداخت
                                     </a>
-                                @endif
+                                @endif --}}
 
 
                                 <!-- Modal Content Start -->

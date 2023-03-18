@@ -23,7 +23,7 @@ Route::prefix('payment')->name('payment.')->group(function () {
 
 Route::prefix('cart')->name('cart.')->group(function () {
     Route::get("/", [CartController::class, 'index'])->name("index");
-    Route::get("/order/{order}", [CartController::class, "paymentPage"])->name("address");
+    // Route::get("/order/{order}", [CartController::class, "paymentPage"])->name("address");
     Route::get("/order", [CartController::class, "guestUserPay"])->name("guestPay");
 });
 

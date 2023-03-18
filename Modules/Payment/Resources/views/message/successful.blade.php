@@ -1,7 +1,14 @@
 @extends('payment::message.html')
 
 @section('content')
-    <div style="margin: 50px 0;">
+    <div style="max-width: 375px;margin: 0 auto">
+        <div style="display: flex; justify-content: end; margin-bottom: 7px; margin-top: 25px;">
+            <a href="{{ route('home') }}">
+                <x-font-angle-left style="width: 40px;height: 40px;" />
+            </a>
+        </div>
+    </div>
+    <div>
         <table cellpadding="0" cellspacing="0"
             style="direction: rtl; text-align: right; font-size: 15px; font-weight: 400; max-width: 600px; border: none; margin: 0 auto; border-radius: 6px; overflow: hidden; background-color: #fff; box-shadow: 0 0 3px rgba(60, 72, 88, 0.15);">
             <thead>
