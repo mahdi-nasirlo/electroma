@@ -64,7 +64,7 @@ class CartItem extends Component
         $price_levels = collect($product->tiered_price);
 
         $selected_level = $price_levels->first(function ($level) {
-            return $this->count >= $level['quantity'];
+            return $this->count > $level['quantity'] and $level['price'] < $this->product->price;
         });
 
         return $selected_level ? $selected_level['price'] : $product->discounted_price;

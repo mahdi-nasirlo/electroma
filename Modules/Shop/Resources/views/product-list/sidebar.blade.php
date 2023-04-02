@@ -40,7 +40,7 @@
 
             @if (\Modules\Payment\Entities\Order::count())
                 <!-- Top Products -->
-                <div class="widget mt-4 pt-2">
+                <div class="widget mt-2 pt-2">
                     <h5 class="widget-title">محصولات برتر </h5>
                     <ul class="list-unstyled mb-0 p-0">
                         @foreach ($topProducts as $product)

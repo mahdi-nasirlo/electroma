@@ -8,6 +8,7 @@ use App\Admin\Resources\Shop\ProductResource\RelationManagers;
 use App\Admin\Resources\Shop\ProductResource\RelationManagers\AttributesRelationManager;
 use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
 use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDateTimePicker;
+use Closure;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -148,6 +149,7 @@ class ProductResource extends Resource
                         ->thousandsSeparator(','), // Add a separator for thousands.
                 )
                 ->label('قیمت')
+                ->reactive()
                 ->numeric()
                 ->suffix('تومان')
                 ->rules(['integer', 'min:0'])
@@ -162,6 +164,7 @@ class ProductResource extends Resource
                                 ->thousandsSeparator(','), // Add a separator for thousands.
                         )
                         ->label('قیمت')
+                        ->minValue(fn (Closure $get) => $get('price'))
                         ->numeric()
                         ->suffix('تومان')
                         ->rules(['integer', 'min:0'])
