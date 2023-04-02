@@ -1,7 +1,7 @@
  <!-- BLog Start -->
  <div class="col-lg-8 col-md-6">
      <div class="row">
-         <div class="px-4 card-body content">
+         <div style="position: absolute" class="px-4 card-body content pt-0">
              {!! $category->description !!}
          </div>
          @foreach ($posts as $post)
