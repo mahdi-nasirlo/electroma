@@ -14,7 +14,7 @@
     <div class="container-xl mt-sm-4">
         <div class="row">
             <div class="col-lg-8">
-                <div class="pb-3 px-2 bg-white rounded-md shadow-sm">
+                <div class="pb-3 px-2 mt-4 mt-md-0 bg-white rounded-md shadow-sm">
                     <div class="row">
                         <div class="col-lg-5">
                             @include('shop::product-page.product-gallery')
@@ -94,7 +94,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="shadow border rounded-md pt-4 bg-white">
-                    <ul class="nav nav-pills shadow flex-column flex-sm-row d-md-inline-flex mb-0 p-1 bg-white rounded position-relative overflow-hidden"
+                    <ul class="ms-0 ms-sm-2 nav nav-pills shadow flex-column flex-sm-row d-md-inline-flex mb-0 p-1 bg-white rounded position-relative overflow-hidden"
                         id="pills-tab" role="tablist">
                         <li class="nav-item m-1">
                             <a class="nav-link py-2 px-5 active rounded" id="description-data" data-bs-toggle="pill"
@@ -155,8 +155,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="card shad p-3 rounded tab-pane fade" id="review" role="tabpanel"
-                            aria-labelledby="review-comments">
+                        <div class="card shad p-3 rounded tab-pane fade bg-soft-primary mx-3" id="review"
+                            role="tabpanel" aria-labelledby="review-comments">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <ul class="media-list list-unstyled mb-0 ps-0">
