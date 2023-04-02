@@ -1,5 +1,5 @@
 <div>
-    <div class="subcribe-form w-100 ">
+    <div style="position: relative" class="subcribe-form w-100 ">
         <input wire:model='string' class="form-control rounded-md shadow py-2 search-input" placeholder="جستو جو ...."
             required="" aria-describedby="newssubscribebtn">
         <button style=" padding: 6px 7px;" type="submit" class="btn btn-primary d-flex align-item-center">

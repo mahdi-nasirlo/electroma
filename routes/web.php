@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\Helper;
+use App\Http\Controllers\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
 use Modules\Payment\Entities\Payment;
 
@@ -18,3 +19,6 @@ use Modules\Payment\Entities\Payment;
 Route::get('/', function () {
     return view('index');
 })->name('home');
+
+Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name("auth.google");
+Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name("auth.google.callback");
