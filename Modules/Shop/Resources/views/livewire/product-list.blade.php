@@ -1,10 +1,11 @@
 <div>
     <div>
-        @include('blog::hero.index', ['name' => $category->name, 'title' => 'فروشگاه'])
-        <section class="section">
+        @include('shop::navigation.navigation-hero', [
+            'category' => isset($category) ? $category : null,
+        ])
+        <section class="section pt-md-3">
             <div class="container">
                 <div class="row">
-
                     @include('shop::product-list.sidebar')
 
                     <div class="col-lg-9 col-md-8 col-12 mt-5 pt-2 mt-sm-0 pt-sm-0">
