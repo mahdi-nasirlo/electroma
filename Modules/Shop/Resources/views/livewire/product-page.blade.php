@@ -83,7 +83,7 @@
             </a>
         </div>
         @if (session()->has('cart_message'))
-            <div class="badge bg-soft-{{ session('cart_message')['status'] }} me-2 mt-3 my-2 p-2 text-lg-start w-100">
+            <div class="badge bg-soft-{{ session('cart_message')['status'] }} me-2 mt-3 my-2 p-2 text-start w-100">
                 {{ session('cart_message')['text'] }}
             </div>
         @endif

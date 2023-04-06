@@ -29,13 +29,14 @@
              {{ number_format($product->price) }} تومان
          @endif
      </td>
-     <td class="text-center qty-icons d-flex justify-content-center" style="padding-top: 18px; border-style: none;">
+     <td>
          <button wire:click='decrement' onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
              class="btn btn-icon btn-soft-primary minus">-</button>
          <input wire:model.debounce='count' wire:change='changeQuantity' min="1" max="{{ $product->inventory }}"
              name="quantity" type="number" class="btn btn-icon btn-soft-primary qty-btn quantity">
          <button wire:click='increment' onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
              class="btn btn-icon btn-soft-primary plus">+</button>
+         </div>
      </td>
      <td class="text-center fw-bold">
          {{ number_format((int) $new_price * (int) $count) }} تومان
