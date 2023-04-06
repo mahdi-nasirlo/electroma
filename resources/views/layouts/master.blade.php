@@ -50,7 +50,7 @@
     </a>
     <!-- Back to top -->
     @include('layouts.footer.index')
-    {{-- @include('layouts.click_to_chat') --}}
+    @include('layouts.click_to_chat')
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     @yield('script')
     @vite('resources/js/app.js')
