@@ -1,4 +1,4 @@
- <tr class="shop-list">
+ <tr style="{{ $is_removed ? 'display: none;' : '' }}" class="shop-list">
      <td class="h6">
          <a wire:click.prevent="removeCart" href="javascript:void(0)" class="text-danger">
              <span wire:loading.remove>X</span>

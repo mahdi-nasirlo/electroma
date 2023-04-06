@@ -14,6 +14,7 @@ class CartItem extends Component
     public $product;
     public $hash;
     public $new_price;
+    public $is_removed = false;
 
     public $count = 1;
 
@@ -39,6 +40,8 @@ class CartItem extends Component
 
         Cart::name('shopping')->removeItem($hash);
         $this->emit('cartUpdated');
+
+        $this->is_removed = true;
     }
 
     public function increment()
