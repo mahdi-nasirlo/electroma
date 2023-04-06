@@ -16,9 +16,7 @@
             <div class="{{ $name }}">
                 @foreach ($products as $product)
                     <div class="tiny-slide">
-                        @include('shop::product-list.product-cart', [
-                            'product' => $product,
-                        ])
+                        <livewire:shop::product-cart :product="$product" />
                     </div>
                 @endforeach
             </div>

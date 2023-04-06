@@ -17,7 +17,7 @@ class ProductPage extends Component
         $cartItems = $this->cartItem();
 
         if ($cartItems)
-            $this->count = (int) $cartItems->get('quantity');
+            $this->count = $cartItems->get('quantity');
         else
             $this->count = 1;
 
