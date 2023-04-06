@@ -18,7 +18,7 @@
                 {{ number_format($product->price) }} تومان
             @endif --}}
         </h5>
-        @if ($count > 1 and $new_price < $product->price)
+        @if ($count > 1)
             <span style="align-items: center;"
                 class="mb-1 text-black-50 d-flex align-item-center mx-2">{{ $count . ' عدد = ' . number_format($new_price * $count) }}</span>
         @endif

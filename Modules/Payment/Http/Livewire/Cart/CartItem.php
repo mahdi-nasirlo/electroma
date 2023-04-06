@@ -61,7 +61,7 @@ class CartItem extends Component
     {
         $product = $this->product;
 
-        $price_levels = collect($product->tiered_price);
+        $price_levels = collect($product->tiered_price)->sortByDesc('quantity');
 
         $selected_level = $price_levels->first(function ($level) {
             return $this->count > $level['quantity'] and $level['price'] < $this->product->price;
