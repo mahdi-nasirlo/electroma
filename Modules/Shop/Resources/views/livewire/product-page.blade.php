@@ -69,8 +69,9 @@
             <div class="qty-icons d-flex">
                 <button wire:click='decrement' onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                     class="btn btn-icon btn-soft-primary minus">-</button>
-                <input wire:model='count' min="1" max="{{ $product->inventory }}" name="quantity" value="1"
-                    type="number" class="btn btn-icon btn-soft-primary qty-btn quantity">
+                <input type="number" wire:model.lazy='count' wire:blur="changeQuantity" min="1"
+                    max="{{ $product->inventory }}" name="quantity" value="1" type="number"
+                    class="btn btn-icon btn-soft-primary qty-btn quantity">
                 <button wire:click='increment' onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                     class="btn btn-icon btn-soft-primary plus">+</button>
             </div>
@@ -81,6 +82,11 @@
                 </div>
             </a>
         </div>
+        @if (session()->has('cart_message'))
+            <div class="badge bg-soft-{{ session('cart_message')['status'] }} me-2 mt-3 my-2 p-2 text-lg-start w-100">
+                {{ session('cart_message')['text'] }}
+            </div>
+        @endif
     </div>
     <!--end col-->
 </div>

@@ -16,12 +16,12 @@ class ProductPage extends Component
     {
         $cartItems = $this->cartItem();
 
-        $this->updateNewPrice();
-
         if ($cartItems)
-            $this->count = $cartItems->get('quantity');
+            $this->count = (int) $cartItems->get('quantity');
         else
             $this->count = 1;
+
+        $this->updateNewPrice();
     }
 
     protected function cartItem()
@@ -46,6 +46,21 @@ class ProductPage extends Component
             $this->count--;
             $this->updateNewPrice();
         }
+    }
+
+    public function changeQuantity()
+    {
+        if ($this->product->inventory < $this->count) {
+            $this->count = $this->product->inventory;
+
+            session()->flash('cart_message', ['status' => 'danger', 'text' => 'موجودی کالا کافی نمی باشد.']);
+        } elseif ($this->count < 0) {
+            $this->count = 1;
+
+            session()->flash('cart_message', ['status' => 'danger', 'text' => 'مقدار نامعتبر است.']);
+        }
+
+        $this->updateNewPrice();
     }
 
     private function updateNewPrice()
@@ -81,6 +96,12 @@ class ProductPage extends Component
         }
 
         $this->emit('cartUpdated');
+
+        if ($this->cartItem()) {
+            session()->flash('cart_message', ['status' => 'success', 'text' => 'تعداد محصول در سبد خرید به (' . $this->count . ' عدد) با موفقیت بروزرسانی شد.']);
+        } else {
+            session()->flash('cart_message', ['status' => 'success', 'text' => 'محصول (' . $this->count . ' عدد) با موفقیت اضافه شد.']);
+        }
     }
 
     private function updateQuantity()

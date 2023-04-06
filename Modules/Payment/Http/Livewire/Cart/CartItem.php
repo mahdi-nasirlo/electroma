@@ -70,6 +70,21 @@ class CartItem extends Component
         return $selected_level ? $selected_level['price'] : $product->discounted_price;
     }
 
+    public function changeQuantity()
+    {
+        if ($this->product->inventory < $this->count) {
+            $this->count = (int) $this->product->inventory;
+
+            session()->flash('cart_message', ['status' => 'danger', 'text' => 'موجودی کالا کافی نمی باشد.']);
+        } elseif ($this->count < 0) {
+            $this->count = 1;
+
+            session()->flash('cart_message', ['status' => 'danger', 'text' => 'مقدار نامعتبر است.']);
+        }
+
+        $this->getNewPrice();
+    }
+
     private function updateQuantity()
     {
         $new_price = $this->getNewPrice();

@@ -78,7 +78,7 @@ class ProductList extends Component
                 new Search($this->search),
             ])
             ->thenReturn()
-            ->paginate(20);
+            ->paginate(12);
 
         return view('shop::livewire.product-list', compact('products'));
     }

@@ -32,12 +32,12 @@
      <td class="text-center qty-icons d-flex justify-content-center" style="padding-top: 18px; border-style: none;">
          <button wire:click='decrement' onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
              class="btn btn-icon btn-soft-primary minus">-</button>
-         <input wire:model='count' min="1" max="{{ $product->inventory }}" name="quantity" type="number"
-             class="btn btn-icon btn-soft-primary qty-btn quantity">
+         <input wire:model.debounce='count' wire:change='changeQuantity' min="1" max="{{ $product->inventory }}"
+             name="quantity" type="number" class="btn btn-icon btn-soft-primary qty-btn quantity">
          <button wire:click='increment' onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
              class="btn btn-icon btn-soft-primary plus">+</button>
      </td>
      <td class="text-center fw-bold">
-         {{ number_format($new_price * $count) }} تومان
+         {{ number_format((int) $new_price * (int) $count) }} تومان
      </td>
  </tr>
