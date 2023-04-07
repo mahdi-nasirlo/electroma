@@ -10,7 +10,6 @@
 /*********************************/
 /*         INDEX                 */
 /*================================
- *     01.  Loader               *
  *     02.  Toggle Menus         *
  *     03.  Active Menu          *
  *     04.  Clickable Menu       *
@@ -19,21 +18,6 @@
  *     06.  DD Menu              *
  *     06.  Active Sidebar Menu  *
  ================================*/
-
-window.addEventListener("load", fn, false);
-
-//  window.onload = function loader() {
-function fn() {
-    // Preloader
-    if (document.getElementById("preloader")) {
-        setTimeout(() => {
-            document.getElementById("preloader").style.visibility = "hidden";
-            document.getElementById("preloader").style.opacity = "0";
-        }, 350);
-    }
-    // Menus
-    activateMenu();
-}
 
 //Menu
 // Toggle menu

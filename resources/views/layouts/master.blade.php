@@ -24,18 +24,6 @@
 
 <body style="background: #f7f7f7ad">
 
-    @production
-        <!-- Loader -->
-        <div id="preloader">
-            <div id="status">
-                <div class="spinner">
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                </div>
-            </div>
-        </div>
-        <!-- Loader -->
-    @endproduction
     @include('layouts.header.index')
 
     @yield('content')
