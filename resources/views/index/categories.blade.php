@@ -1,4 +1,4 @@
-<div class="tiny-three-item mt-5">
+<div style="display: flex;" class="tiny-three-item mt-5">
     @if ($banners->count() > 0)
         @foreach ($banners as $banner)
             <div class="tiny-slide">
