@@ -28,6 +28,7 @@
         "jeffgreco13/filament-breezy": "v1.4.10.1",
         "kalnoy/nestedset": "^6.0",
         "laravel/framework": "^9.19",
+        "laravel/octane": "^1.5",
         "laravel/sanctum": "^3.0",
         "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.7",
