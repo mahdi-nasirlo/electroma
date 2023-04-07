@@ -42,7 +42,7 @@
         @endif
     </div>
     <div style="display: flex !important;flex-direction: column;align-items: center;justify-content: space-between;"
-        class="card-body pt-3 p-2 product-card">
+        class="card-body pt-3 p-1 p-md-2 product-card">
         <a href="{{ route('shop.product.single', $product) }}" {{-- style="height: 66px"  content  --}}
             class="text-warning product-name h6 mb-0 text-center">
             @if (isset($product->name))
@@ -50,7 +50,7 @@
             @endif
         </a>
         <div class="mt-3 pt-3 w-100 d-flex justify-content-between">
-            <h6 class="text-muted small fst-italic mb-0 text-center">
+            <h6 class="text-muted small fst-italic mb-0 text-start">
                 @if ($product->discountItem)
                     {{ number_format($product->discounted_price) }} <del
                         class="text-danger ms-1">{{ number_format($product->price) }}</del> تومان
@@ -61,7 +61,7 @@
 
             @if (isset($product->rate))
                 <ul style="display: flex; flex-direction: row"
-                    class="list-unstyled text-warning mb-0 p-0 justify-content-center">
+                    class="list-unstyled d-none d-md-flex text-warning mb-0 p-0 justify-content-center">
 
                     @for ($i = 0; $i < 5; $i++)
                         <li class="list-inline-item">
@@ -79,12 +79,12 @@
             @endif
         </div>
         <div style="cursor: pointer;" wire:click='addToCart'
-            class="w-100 rounded-md text-center py-1 text-white {{ $has_inventory ? 'bg-warning' : 'bg-soft-warning' }}">
+            class="w-100 rounded-md text-center py-1 my-2 text-white {{ $has_inventory ? 'bg-warning' : 'bg-soft-warning' }}">
             افزودن به سبد خرید
             <div style="width: 25px; height: 25px" wire:loading class="spinner-grow btn-group" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
-            <span wire:loading.remove>
+            <span class="d-none d-md-inline" wire:loading.remove>
                 <x-icon-s-shopping-cart />
             </span>
         </div>

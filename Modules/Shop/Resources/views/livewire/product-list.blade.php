@@ -17,7 +17,7 @@
 
 
 
-                            <div class="col-lg-4 col-md-5 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                            <div class="col-lg-4 col-md-5 mt-sm-0 pt-2 pt-sm-0">
                                 <div class="d-flex justify-content-md-between align-items-center">
                                     <div class="form custom-form">
                                         <div class="mb-0">
@@ -51,10 +51,10 @@
                         </div>
                         <div wire:loading.remove>
 
-                            <div class="row">
+                            <div class="row gx-3 gy-3 mt-3">
                                 @if ($products->isNotEmpty())
                                     @foreach ($products as $product)
-                                        <div class="col-lg-4 col-md-6 col-6 mt-4 pt-2">
+                                        <div class="col-lg-4 col-md-6 col-6 ">
                                             <livewire:shop::product-cart :product="$product" />
                                         </div>
                                     @endforeach
