@@ -50,7 +50,7 @@
 @else
     <div class="d-flex justify-content-center flex-column">
         <img style="margin: 0 auto" class="w-25
-            " src="/static/none-comment.png">
+            " src="{{ asset('/static/none-comment.png') }}">
         <small class="text-center">دیدگاهی وجود ندارد.</small>
         <strong class="text-center font-bold">اولین نفری باشید که دیدگاه ثبت می کنید.</strong>
     </div>

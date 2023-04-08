@@ -5,7 +5,7 @@
         </a>
         @if (isset($product->cover_hover))
             <a href="{{ route('shop.product.single', $product) }}" class="overlay-work">
-                <img src="/storage/{{ $product->cover_hover }}" class="img-fluid" alt="">
+                <img src="{{ asset('/storage/' . $product->cover_hover) }}" class="img-fluid" alt="">
             </a>
         @endif
         @if (!isset($product->inventory))

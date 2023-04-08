@@ -125,7 +125,7 @@ class Product extends Model implements HasMedia, UseCartable
         if (empty($this->cover))
             return "/placeholder.webp";
         else
-            return "/storage/" . $this->cover;
+            return asset("/storage/" . $this->cover);
     }
 
     public function discountItem()
