@@ -11,7 +11,7 @@
     @for ($i = 0; $i < 4; $i++)
         <div class="col-3 mt-5">
             <img style="width: 100%; height: 100%;object-fit: fill ;border-radius: 7px; {{ $style ?? '' }}"
-                src="/placeholder.webp" alt="">
+                data-src="{{ asset('/placeholder.webp') }}" alt="">
         </div>
     @endfor
 @endif

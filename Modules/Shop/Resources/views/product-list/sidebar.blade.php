@@ -46,7 +46,7 @@
                         @foreach ($topProducts as $product)
                             <li class="d-flex align-items-center">
                                 <a href="{{ route('shop.product.single', $product) }}">
-                                    <img src="{{ $product->getCoverUrl() }}"
+                                    <img data-src="{{ $product->getCoverUrl() }}"
                                         class="img-fluid avatar avatar-small rounded shadow" style="height:auto;"
                                         alt="">
                                 </a>

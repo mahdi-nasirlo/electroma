@@ -112,3 +112,33 @@ document.addEventListener("DOMContentLoaded", function () {
     equalize("last-post-card");
     equalize("category-banner");
 });
+
+//=========================================//
+/*         04) lazy load image             */
+//=========================================//
+
+const images = document.querySelectorAll("img[data-src]");
+
+const loadImage = (image) => {
+    image.setAttribute("src", image.getAttribute("data-src"));
+    image.onload = () => {
+        image.removeAttribute("data-src");
+    };
+    console.log(image.getAttribute("data-src"));
+};
+
+const handleIntersection = (entries, observer) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const image = entry.target;
+            loadImage(image);
+            observer.unobserve(image);
+        }
+    });
+};
+
+const observer = new IntersectionObserver(handleIntersection, {
+    rootMargin: "0px 0px 100% 0px",
+});
+
+images.forEach((img) => observer.observe(img));

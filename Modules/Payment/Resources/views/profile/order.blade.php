@@ -103,7 +103,7 @@
                                                     @foreach ($order->products as $product)
                                                         <a href="{{ route('shop.product.single', $product) }}"
                                                             class="d-flex align-items-center my-2">
-                                                            <img src="{{ $product->getCoverUrl() }}"
+                                                            <img data-src="{{ $product->getCoverUrl() }}"
                                                                 class="shadow rounded" style="max-height: 100px;"
                                                                 alt="">
                                                             <div class="flex-1 text-start ms-3">
@@ -125,7 +125,7 @@
                                                     @foreach ($order->courses as $course)
                                                         <a href="{{ route('course.single', $course) }}"
                                                             class="d-flex align-items-center">
-                                                            <img src="{{ asset('/storage/' . $course->image) }}"
+                                                            <img data-src="{{ asset('/storage/' . $course->image) }}"
                                                                 class="shadow rounded" style="max-height: 100px;"
                                                                 alt="">
                                                             <div class="flex-1 text-start ms-3">

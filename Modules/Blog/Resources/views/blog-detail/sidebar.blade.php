@@ -40,7 +40,7 @@
                          @foreach ($lastArticles->get() as $lastArticle)
                              <div class="clearfix post-recent d-flex items-center align-items-center">
                                  <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img
-                                             alt="img" src="{{ asset('/storage/' . $lastArticle->image) }}"
+                                             alt="img" data-src="{{ asset('/storage/' . $lastArticle->image) }}"
                                              class="img-fluid rounded"></a>
                                  </div>
                                  <div class="post-recent-content float-start">

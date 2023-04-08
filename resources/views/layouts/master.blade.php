@@ -43,17 +43,6 @@
     @yield('script')
     @vite('resources/js/app.js')
     @livewireScripts
-    {{-- <!-- javascript -->
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- Icons -->
-    <script src="js/feather.min.js"></script>
-    <!-- Switcher -->
-    <script src="js/switcher.js"></script>
-    <!-- Main Js -->
-    <script src="js/plugins.init.js"></script>
-    <!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
-    <script src="js/app.js"></script>
-    <!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. --> --}}
 </body>
 
 </html>

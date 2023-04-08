@@ -31,7 +31,7 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <a href="{{ route('course.single', $cartItem->getModel()) }}">
-                                                <img src="{{ asset('/storage/' . $cartItem->getModel()->image) }}"
+                                                <img data-src="{{ asset('/storage/' . $cartItem->getModel()->image) }}"
                                                     alt="{{ $cartItem->getModel()->title }}"
                                                     class="img-fluid avatar avatar-small rounded shadow"
                                                     style="height:auto;">

@@ -4,14 +4,14 @@
             <div class="tiny-slide rounded-md">
                 <a href="{{ $banner->getLink() }}">
                     <img class="rounded-md" style="height: auto;object-fit: cover; width: 100%"
-                        src="/storage/{{ $banner->path }}" alt="">
+                        data-src="{{ asset('/storage/' . $banner->path) }}" alt="">
                 </a>
             </div>
         @endforeach
     @else
         @for ($i = 0; $i < 2; $i++)
             <div class="tiny-slide rounded-md">
-                <img class="rounded-md" style="height: auto;object-fit: cover; width: 100%" src="/placeholder.webp"
+                <img class="rounded-md" style="height: auto;object-fit: cover; width: 100%" data-src="/placeholder.webp"
                     alt="">
             </div>
         @endfor

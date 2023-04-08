@@ -26,7 +26,7 @@
                                         </svg>
                                     </span>
                                     <span class="text-muted d-none d-md-inline-block">{{ $nextRecorde->name }}</span>
-                                    <img src="{{ $nextRecorde->getCoverUrl() }}"
+                                    <img data-src="{{ $nextRecorde->getCoverUrl() }}"
                                         class="avatar avatar-small rounded shadow ms-2" style="height:auto;"
                                         alt="">
                                 </a>
@@ -44,7 +44,7 @@
                             @if ($preRecorde)
                                 <a href="{{ route('shop.product.single', $preRecorde) }}"
                                     class="text-dark align-items-center">
-                                    <img src="{{ $preRecorde->getCoverUrl() }}"
+                                    <img data-src="{{ $preRecorde->getCoverUrl() }}"
                                         class="avatar avatar-small rounded shadow me-2" style="height:auto;"
                                         alt="">
                                     <span class="text-muted d-none d-md-inline-block">{{ $preRecorde->name }}</span>

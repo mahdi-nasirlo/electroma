@@ -6,8 +6,8 @@
             <!-- Logo container-->
             <div class="d-flex">
                 <a class="logo" href="/">
-                    <img class="my-1" style="width: 30%;height: auto;" src="/static/logo.png" alt="Logo"
-                        height="100">
+                    <img class="my-1" style="width: 30%;height: auto;" src="{{ asset('/static/logo.png') }}"
+                        alt="Logo" height="100">
                 </a>
             </div>
             <!--end login button-->

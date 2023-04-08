@@ -7,7 +7,8 @@
                         <div
                             class="w-100 card border-0 text-center features feature-clean course-feature p-2 overflow-hidden shadow">
                             <div class="icons text-primary text-center mx-auto">
-                                <img width="80" height="80" src="/storage/{{ $banner->path }}" alt="">
+                                <img width="80" height="80" data-src="{{ asset('/storage/' . $banner->path) }}"
+                                    alt="">
                             </div>
                             <div class="card-body p-0 mt-2">
                                 <a class="title h5 text-dark ">
@@ -25,7 +26,7 @@
                 <div
                     class="w-100 card border-0 text-center features feature-clean course-feature p-2 overflow-hidden shadow">
                     <div class="icons text-primary text-center mx-auto">
-                        <img width="80" height="80" src="/placeholder.webp" alt="">
+                        <img width="80" height="80" data-src="/placeholder.webp" alt="">
                     </div>
                 </div>
             </div>

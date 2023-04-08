@@ -9,7 +9,7 @@
      <td>
          <div class="d-flex align-items-center">
              <a href="{{ route('shop.product.single', $product) }}">
-                 <img src="{{ $product->getCoverUrl() }}" alt="{{ $product->name }}"
+                 <img data-src="{{ $product->getCoverUrl() }}" alt="{{ $product->name }}"
                      class="img-fluid avatar avatar-small rounded shadow" style="height:auto;">
              </a>
              <a class="text-secendry mx-2 text-body" href="{{ route('shop.product.single', $product) }}">

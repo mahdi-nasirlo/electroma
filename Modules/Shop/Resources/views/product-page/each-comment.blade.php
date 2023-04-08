@@ -6,7 +6,7 @@
                     <div class="d-flex align-items-center">
                         <a class="pe-3" href="#">
                             @if ($comment->user->avatar)
-                                <img src="{{ asset($comment->user->avatar ? '/storage/' . $comment->user->avatar : '/theme/images/Sample.png') }}"
+                                <img data-src="{{ asset($comment->user->avatar ? '/storage/' . $comment->user->avatar : '/theme/images/Sample.png') }}"
                                     class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
                             @else
                                 <x-icon-o-user />
@@ -49,8 +49,7 @@
     @endforeach
 @else
     <div class="d-flex justify-content-center flex-column">
-        <img style="margin: 0 auto" class="w-25
-            " src="{{ asset('/static/none-comment.png') }}">
+        <img style="margin: 0 auto" class="w-25" data-src="{{ asset('/static/none-comment.png') }}">
         <small class="text-center">دیدگاهی وجود ندارد.</small>
         <strong class="text-center font-bold">اولین نفری باشید که دیدگاه ثبت می کنید.</strong>
     </div>

@@ -1,13 +1,5 @@
 @extends('layouts.master')
 
-@section('script')
-    {{-- <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script> --}}
-
-
-    <!-- favicon -->
-    {{-- <link rel="shortcut icon" href="/images/favicon.ico"> --}}
-@endsection
-
 @section('content')
     @include('course::course-single.hero', ['cours' => $course])
     @include('course::course-single.future')

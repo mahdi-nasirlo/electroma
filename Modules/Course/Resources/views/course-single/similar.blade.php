@@ -15,7 +15,7 @@
                 <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 mb-5">
                     <div class="card courses-desc overflow-hidden rounded shadow border-0">
                         <div class="position-relative d-block overflow-hidden">
-                            <img src="{{ asset('/storage/' . $item->image) }}" class="img-fluid rounded-top mx-auto"
+                            <img data-src="{{ asset('/storage/' . $item->image) }}" class="img-fluid rounded-top mx-auto"
                                 alt="">
                             <div class="overlay-work bg-dark"></div>
                             <a href="javascript:void(0)" class="text-white h6 preview">نمایش <i

@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-12 text-center">
-                    <img src="/static/404.svg" class="img-fluid" alt="">
+                    <img data-src="{{ asset('/static/404.svg') }}" class="img-fluid" alt="">
                     <div class="text-uppercase display-3">
                         <div class="px-4 text-lg text-gray-500 border-r border-gray-400 tracking-wider">
                             @yield('code')

@@ -1,7 +1,7 @@
 <div class="zeynep right">
     <div class="d-flex">
         <a class="logo" href="/">
-            <img src="/static/logo.png" alt="Logo" height="100">
+            <img src="{{ asset('/static/logo.png') }}" alt="Logo" height="100">
         </a>
     </div>
 

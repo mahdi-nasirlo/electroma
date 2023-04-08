@@ -13,8 +13,9 @@
                 @foreach ($result as $item)
                     <div class="px-2 py-3 bg-white text-primary d-flex align-items-center">
                         <a href="{{ route('shop.product.single', $item) }}">
-                            <img src="{{ $item->getCoverUrl() }}" class="img-fluid avatar avatar-small rounded shadow"
-                                style="height:auto;" alt="">
+                            <img data-src="{{ $item->getCoverUrl() }}"
+                                class="img-fluid avatar avatar-small rounded shadow" style="height:auto;"
+                                alt="">
                         </a>
                         <span class="d-flex ms-1">
                             <a href="{{ route('shop.product.single', $item) }}">
