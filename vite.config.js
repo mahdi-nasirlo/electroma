@@ -7,7 +7,6 @@ export default defineConfig({
             input: [
                 "resources/css/app.css",
                 "resources/js/app.js",
-                "resources/css/tiny-slider.css",
                 "resources/js/tiny-slider.js",
                 "resources/css/font.css",
                 // "resources/css/filament.css",
