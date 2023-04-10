@@ -2,16 +2,12 @@
 
 namespace App\Admin\Resources\Shop\OrderResource\RelationManagers;
 
-use App\Models\MyPayment;
-use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
-use Filament\Tables;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Modules\Payment\Entities\Payment;
 
 class MyPaymentsRelationManager extends RelationManager
 {
@@ -46,7 +42,7 @@ class MyPaymentsRelationManager extends RelationManager
                     ->formatStateUsing(fn (string $state): string => number_format($state) . " تومان"),
                 TextColumn::make("order.user.name")
                     ->label("کاربر")
-                    ->url(fn (MyPayment $record): string => route("filament.resources.shop/customers.edit", $record->order->user)),
+                    ->url(fn (Payment $record): string => route("filament.resources.shop/customers.edit", $record->order->user)),
                 BooleanColumn::make("status")->label("وضعیت پرداخت")
             ]);
     }

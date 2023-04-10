@@ -4,7 +4,7 @@
             <div class="d-flex align-items-center">
                 <a class="pe-3" href="#">
                     @if ($comment->user->avatar)
-                        <img class="w-10 h-10 p-1 rounded" src="{{ $comment->user->avatar }}" alt="Bordered avatar">
+                        <img class="w-10 h-10 p-1 rounded" data-src="{{ $comment->user->avatar }}" alt="Bordered avatar">
                     @else
                         <div class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded dark:bg-gray-600">
                             <svg style="width: 20px;color: rgb(255, 115, 0)" class="" fill="currentColor"

@@ -8,6 +8,7 @@ use App\Admin\Resources\Shop\ProductResource\RelationManagers;
 use App\Admin\Resources\Shop\ProductResource\RelationManagers\AttributesRelationManager;
 use Ariaieboy\FilamentJalaliDatetime\JalaliDateTimeColumn;
 use Ariaieboy\FilamentJalaliDatetimepicker\Forms\Components\JalaliDateTimePicker;
+use Closure;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -148,36 +149,59 @@ class ProductResource extends Resource
                         ->thousandsSeparator(','), // Add a separator for thousands.
                 )
                 ->label('قیمت')
+                ->reactive()
                 ->numeric()
                 ->suffix('تومان')
                 ->rules(['integer', 'min:0'])
                 ->required(),
-            // Forms\Components\Select::make('discount_id')
-            //     ->label("تخفیف")
-            //     ->relationship('discountItem', 'percent')
-            //     ->nullable()
-            //     ->createOptionForm([
-            //         Forms\Components\Grid::make()
-            //             ->schema([
-            //                 TextInput::make("percent")
-            //                     ->label("درصد")
-            //                     ->numeric()
-            //                     ->maxValue(100)
-            //                     ->minValue(0)
-            //                     ->suffix('%')
-            //                     ->required()
-            //                     ->default(0),
-            //                 JalaliDateTimePicker::make("expired_at")
-            //                     ->required()
-            //                     ->label("تاریخ انقضا")
-            //             ])
-            //             ->columns([
-            //                 'sm' => 2,
-            //             ])
-            //             ->columnSpan([
-            //                 'sm' => 2,
-            //             ]),
-            //     ]),
+            Repeater::make('tiered_price')
+                ->label('قیمت همکار')
+                ->schema([
+                    TextInput::make('price')
+                        ->mask(
+                            fn (Mask $mask) => $mask
+                                ->numeric()
+                                ->thousandsSeparator(','), // Add a separator for thousands.
+                        )
+                        ->label('قیمت')
+                        ->minValue(fn (Closure $get) => $get('price'))
+                        ->numeric()
+                        ->suffix('تومان')
+                        ->rules(['integer', 'min:0'])
+                        ->required(),
+                    TextInput::make('quantity')
+                        ->label('تعداد')
+                        ->numeric()
+                        ->rules(['integer', 'min:0'])
+                        ->required(),
+                ])
+                ->columns(2),
+            Forms\Components\Select::make('discount_id')
+                ->label("تخفیف")
+                ->relationship('discountItem', 'percent')
+                ->nullable()
+                ->createOptionForm([
+                    Forms\Components\Grid::make()
+                        ->schema([
+                            TextInput::make("percent")
+                                ->label("درصد")
+                                ->numeric()
+                                ->maxValue(100)
+                                ->minValue(0)
+                                ->suffix('%')
+                                ->required()
+                                ->default(0),
+                            JalaliDateTimePicker::make("expired_at")
+                                ->required()
+                                ->label("تاریخ انقضا")
+                        ])
+                        ->columns([
+                            'sm' => 2,
+                        ])
+                        ->columnSpan([
+                            'sm' => 2,
+                        ]),
+                ]),
             Select::make('category_id')
                 ->label('دسته بندی')
                 ->required()

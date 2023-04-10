@@ -1,5 +1,5 @@
-<div class="col-lg-3 col-md-4 col-12">
-    <div class="card border-0 sidebar sticky-bar">
+<div style="height: fit-content" class="col-lg-3 col-md-4 col-12 bg-white shadow rounded-md">
+    <div class="card border-0 sidebar my-2">
         <div class="card-body p-0">
             <!-- SEARCH -->
             <div class="widget">
@@ -17,34 +17,16 @@
             <!-- Categories -->
             @if ($category->hasChilde())
                 <div class="widget mt-4 pt-2">
-                    <h5 class="widget-title">دسته بندیها </h5>
+                    <h5 class="widget-title">دسته بندی ها </h5>
                     <ul class="list-unstyled mt-4 mb-0 blog-categories">
                         @foreach ($category->children as $item)
-                            <li><a href="jvascript:void(0)">{{ $item->name }}</a></li>
+                            <li><a href="{{ route('shop.product.list', $item) }}">{{ $item->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
             @endif
 
             <!-- Categories -->
-
-            <!-- color -->
-
-            {{-- @foreach ($category->attributes as $attribute)
-                <div class="bg-light mt-4 p-3 pt-2 rounded-2 widget">
-                    <h5 class="widget-title">{{ $attribute->name }}</h5>
-                    <ul class="list-unstyled mt-4 mb-0 blog-categories">
-                        @foreach ($attribute->values as $item)
-                            <li>
-                                <input name="ss" wire:model='filter' type="checkbox"
-                                    value="{{ $item }}.{{ $attribute->name }}">
-                                <a href="jvascript:void(0)">{{ $item }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endforeach --}}
-
 
             @include('shop::product-list.sidbar-attribute-items')
 
@@ -58,13 +40,13 @@
 
             @if (\Modules\Payment\Entities\Order::count())
                 <!-- Top Products -->
-                <div class="widget mt-4 pt-2">
+                <div class="widget mt-2 pt-2">
                     <h5 class="widget-title">محصولات برتر </h5>
                     <ul class="list-unstyled mb-0 p-0">
                         @foreach ($topProducts as $product)
                             <li class="d-flex align-items-center">
                                 <a href="{{ route('shop.product.single', $product) }}">
-                                    <img src="{{ $product->getCoverUrl() }}"
+                                    <img data-src="{{ $product->getCoverUrl() }}"
                                         class="img-fluid avatar avatar-small rounded shadow" style="height:auto;"
                                         alt="">
                                 </a>
@@ -93,8 +75,3 @@
     </div>
 </div>
 <!--end col-->
-
-<!--
-    FIXME product related category list of link
-    TODO make limit for display to product with order count
--->

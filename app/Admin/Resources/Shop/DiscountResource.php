@@ -175,7 +175,7 @@ class DiscountResource extends Resource
             Select::make("type")
                 ->label("نحوه تخفیف")
                 ->options([
-                    'value_pre_product' => "تخفیف درصدی هر محصول",
+                    // 'value_pre_product' => "تخفیف درصدی هر محصول",
                     "value" => "تخفیف ثابت کل سبد خرید ",
                     "percent" => "تخفیف درصدی کل سبد خرید"
                 ])
@@ -190,52 +190,52 @@ class DiscountResource extends Resource
                         ->numeric()
                         ->thousandsSeparator(',')
                 )
-                ->label(fn (Closure $get) => $get("type") !== 'value' ? "مقدار تخفیف" : "درصد تخفیف")
+                ->label(fn (Closure $get) => $get("type") !== 'value' ? "درصد تخفیف" : "مقدار تخفیف")
                 ->numeric()
                 ->suffix(fn (Closure $get) => $get("type") == 'value' ? "تومان" : "درصد %")
-                ->maxValue(fn (Closure $get) => $get("type") !== 'value' ? null : 100)
+                ->maxValue(fn (Closure $get) => $get("type") !== 'value' ? 100 : null)
                 ->minValue(fn (Closure $get) => $get("type") == 'value' ? 10000 : 0)
                 ->rules(['integer'])
                 ->required(),
 
-            Placeholder::make('توضیحات')
-                ->hidden(fn (Closure $get) => $get('type') !== 'value_pre_product')
-                ->content('در صورت وارد نکردن هیچ کدام از موارد زیر کد تخفیف روی همه ی موارد سبد خرید اجرا میشود.'),
+            // Placeholder::make('توضیحات')
+            //     ->hidden(fn (Closure $get) => $get('type') !== 'value_pre_product')
+            //     ->content('در صورت وارد نکردن هیچ کدام از موارد زیر کد تخفیف روی همه ی موارد سبد خرید اجرا میشود.'),
 
-            Section::make("محدودیت محصولات")
-                ->schema([
-                    Select::make('shop_category')
-                        ->multiple()
-                        ->label("دسته بندی ها")
-                        ->preload()
-                        ->relationship('discountCategories', 'name'),
+            // Section::make("محدودیت محصولات")
+            //     ->schema([
+            //         Select::make('shop_category')
+            //             ->multiple()
+            //             ->label("دسته بندی ها")
+            //             ->preload()
+            //             ->relationship('discountCategories', 'name'),
 
-                    Select::make('products')
-                        ->multiple()
-                        ->label("محصولات")
-                        ->preload()
-                        ->relationship('discountProducts', 'name'),
+            //         Select::make('products')
+            //             ->multiple()
+            //             ->label("محصولات")
+            //             ->preload()
+            //             ->relationship('discountProducts', 'name'),
 
-                    Select::make('course')
-                        ->multiple()
-                        ->label("دوره ها")
-                        ->preload()
-                        ->relationship('discountCourses', 'title'),
-                ])
-                ->hidden(fn (Closure $get) => $get('type') !== 'value_pre_product'),
+            //         Select::make('course')
+            //             ->multiple()
+            //             ->label("دوره ها")
+            //             ->preload()
+            //             ->relationship('discountCourses', 'title'),
+            //     ])
+            //     ->hidden(fn (Closure $get) => $get('type') !== 'value_pre_product'),
             Section::make('محدودیت کاربران')
                 ->schema([
-                    Select::make('discountUser')
-                        ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->name} _ {$record->email}")
-                        ->hidden(fn (Closure $get) => $get('type') !== 'value_pre_product')
-                        ->multiple()
-                        ->label("کاربرانی که قبلا ثبت نام کرده اند")
-                        ->preload()
-                        ->relationship('discountUsers', 'name'),
+                    // Select::make('discountUser')
+                    //     ->getOptionLabelFromRecordUsing(fn (Model $record) => "{$record->name} _ {$record->email}")
+                    //     // ->hidden(fn (Closure $get) => $get('type') !== 'value_pre_product')
+                    //     ->multiple()
+                    //     ->label("کاربرانی که قبلا ثبت نام کرده اند")
+                    //     ->preload()
+                    //     ->relationship('discountUsers', 'name'),
 
-                    TagsInput::make('mobiles')
-                        ->hidden(fn (Closure $get) => $get('type') !== 'value_pre_product')
-                        ->label('شماره موبایل های مجاز'),
+                    // TagsInput::make('mobiles')
+                    //     // ->hidden(fn (Closure $get) => $get('type') !== 'value_pre_product')
+                    //     ->label('شماره موبایل های مجاز'),
 
 
                     TextInput::make('limit_on_use')
@@ -244,11 +244,11 @@ class DiscountResource extends Resource
                         ->numeric()
                         ->minValue(0),
 
-                    TextInput::make('limit_of_user_use')
-                        ->label('محدودیت استفاده کد تخفیف به ازای هر کاربر')
-                        ->placeholder('استفاده نامحدود')
-                        ->numeric()
-                        ->minValue(0),
+                    // TextInput::make('limit_of_user_use')
+                    //     ->label('محدودیت استفاده کد تخفیف به ازای هر کاربر')
+                    //     ->placeholder('استفاده نامحدود')
+                    //     ->numeric()
+                    //     ->minValue(0),
                 ]),
 
 

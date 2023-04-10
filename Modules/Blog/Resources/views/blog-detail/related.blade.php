@@ -5,7 +5,10 @@
 
             <div class="row">
                 @foreach ($related as $item)
-                    @include('blog::post-cart', ['post' => $item])
+                    @include('blog::post-cart', [
+                        'post' => $item,
+                        'class' => 'col-12 col-md-6 mb-4 pb-2 test',
+                    ])
                 @endforeach
             </div>
         </div>

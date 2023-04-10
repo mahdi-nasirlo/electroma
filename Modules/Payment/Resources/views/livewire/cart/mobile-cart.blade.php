@@ -26,7 +26,7 @@
                             <li class="px-1">
                                 <a href="{{ route('shop.product.single', $cart->getModel()) }}"
                                     class="d-flex align-items-center">
-                                    <img src="{{ asset('/storage/' . $cart->getModel()->cover) }}"
+                                    <img data-src="{{ asset('/storage/' . $cart->getModel()->cover) }}"
                                         class="shadow rounded" style="max-height: 64px;" alt="">
                                     <div class="flex-1 text-start ms-3">
                                         <h6 class="text-dark mb-0">
@@ -48,7 +48,7 @@
                             <li class="px-1">
                                 <a href="{{ route('course.single', $cart->getModel()) }}"
                                     class="d-flex align-items-center my-4">
-                                    <img src="{{ asset('/storage/' . $cart->getModel()->image) }}"
+                                    <img data-src="{{ asset('/storage/' . $cart->getModel()->image) }}"
                                         class="shadow rounded" style="max-height: 30px;" alt="">
                                     <div class="flex-1 text-start ms-3">
                                         <h6 class="text-dark mb-0">{{ $cart->getModel()->title }}</h6>

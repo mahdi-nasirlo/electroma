@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-lg-6 col-md-5 mt-4 pt-2 mt-sm-0 pt-sm-0">
                         <div class="position-relative pt-3">
-                            <img src="{{ asset('/storage/' . $course->image) }}"
+                            <img data-src="{{ asset('/storage/' . $course->image) }}"
                                 class="rounded img-fluid mx-auto d-block" alt="">
                         </div>
                     </div>

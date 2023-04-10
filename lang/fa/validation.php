@@ -120,7 +120,7 @@ return [
     'uploaded' => 'آپلود گزینه :attribute شکست خورد',
     'url' => 'فرمت :attribute اشتباه است',
     'uuid' => 'گزینه :attribute باید یک UUID صحیح باشد',
-
+    'not-found' => 'صفحه‌ای که دنبال آن بودید پیدا نشد!',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -192,6 +192,8 @@ return [
         'newPassword' => 'گذرواژه جدید',
         'confirmationPassword' => 'تایید گذرواژه',
         'comment' => 'دیدگاه',
-        'rating' => 'امتیاز'
+        'rating' => 'امتیاز',
+        'post' => 'کد پستی',
+        'code' => 'کد تخفیف'
     ],
 ];

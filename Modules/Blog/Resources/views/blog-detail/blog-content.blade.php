@@ -1,6 +1,6 @@
 <div class="col-lg-9 col-12">
     <div class="card blog blog-detail border rounded">
-        <img src="{{ asset('storage/' . $article->image) }}" class="img-fluid rounded-top" alt="">
+        <img data-src="{{ asset('storage/' . $article->image) }}" class="img-fluid rounded-top" alt="">
         <div class="card-body content">
             <div class="d-flex justify-between">
                 <h6>

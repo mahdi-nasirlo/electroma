@@ -1,5 +1,6 @@
 <?php
 
 return [
-    "group" => "سطوح دسترسی"
+    "group" => "سطوح دسترسی",
+    "shield" => true
 ];

@@ -1,6 +1,9 @@
 <?php
 
+use App\Helpers\Helper;
+use App\Http\Controllers\GoogleAuthController;
 use Illuminate\Support\Facades\Route;
+use Modules\Payment\Entities\Payment;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // dd(EntitiesCategory::find(1)->children);
     return view('index');
 })->name('home');
+
+Route::get('/auth/google', [GoogleAuthController::class, 'redirect'])->name("auth.google");
+Route::get('/auth/google/callback', [GoogleAuthController::class, 'callback'])->name("auth.google.callback");

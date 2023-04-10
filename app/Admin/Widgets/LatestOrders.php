@@ -28,12 +28,12 @@ class LatestOrders extends BaseWidget
             Action::make('view')
                 ->label("جزئیات")
                 ->color('info')
-                ->icon('heroicon-o-eye')
-                ->url(fn (Order $record): string => route('filament.resources.shop/orders.view', $record)),
+                ->icon('heroicon-o-eye'),
+            // ->url(fn (Order $record): string => route('filament.resources.shop/orders.view', $record)),
             Action::make('address')
                 ->label("اطلاعات پست")
                 ->color('success')
-                ->url(fn (Order $record): string => route("filament.resources.shop/customers.edit", $record->user))
+            // ->url(fn (Order $record): string => route("filament.resources.shop/customers.edit", $record->user))
         ];
     }
 

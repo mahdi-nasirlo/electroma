@@ -12,6 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="website" content="https://www.barghkarsho.com/" />
     <meta name="Version" content="v1" />
+    <meta name="robots" content="noindex, nofollow" />
 
     <!-- favicon -->
     <link rel="shortcut icon" href="/static/favicon.ico">
@@ -22,16 +23,7 @@
 </head>
 
 <body style="background: #f7f7f7ad">
-    <!-- Loader -->
-    <div id="preloader">
-        <div id="status">
-            <div class="spinner">
-                <div class="double-bounce1"></div>
-                <div class="double-bounce2"></div>
-            </div>
-        </div>
-    </div>
-    <!-- Loader -->
+
     @include('layouts.header.index')
 
     @yield('content')
@@ -51,17 +43,6 @@
     @yield('script')
     @vite('resources/js/app.js')
     @livewireScripts
-    {{-- <!-- javascript -->
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- Icons -->
-    <script src="js/feather.min.js"></script>
-    <!-- Switcher -->
-    <script src="js/switcher.js"></script>
-    <!-- Main Js -->
-    <script src="js/plugins.init.js"></script>
-    <!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
-    <script src="js/app.js"></script>
-    <!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. --> --}}
 </body>
 
 </html>

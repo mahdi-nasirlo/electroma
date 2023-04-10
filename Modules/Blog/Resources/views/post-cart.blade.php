@@ -1,7 +1,7 @@
-   <div class="col-12 col-lg-3 col-md-6 mb-4 pb-2">
-       <div class="card blog rounded border-0 shadow">
+   <div class="{{ isset($class) ? $class : '' }} class">
+       <div class="card blog rounded border-0 shadow last-post-card">
            <div class="position-relative">
-               <img height="200px" style="object-fit: cover" src="{{ asset('/storage/' . $post->image) }}"
+               <img height="200px" style="object-fit: cover" data-src="{{ asset('/storage/' . $post->image) }}"
                    class="card-img-top rounded-top" alt="..." />
                <div class="overlay rounded-top bg-dark"></div>
            </div>

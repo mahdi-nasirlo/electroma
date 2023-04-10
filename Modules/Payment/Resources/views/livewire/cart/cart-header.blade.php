@@ -7,7 +7,7 @@
         @endphp
         <li class="has-submenu parent-menu-item d-flex ms-1">
             <div class="dropdown">
-                <button style="box-shadow: none" type="button" class="btn px-2 py-1 mt-3 btn-soft-primary cartBtn"
+                <button style="box-shadow: none" type="button" class="btn px-2 py-1 mt-3 btn-soft-primary cartBtn rounded"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <x-icon-o-shopping-cart />
 
@@ -23,7 +23,7 @@
                                 @if ($cart->getModel() instanceof \Modules\Shop\Entities\Product)
                                     <a href="{{ route('shop.product.single', $cart->getModel()) }}"
                                         class="d-flex align-items-center">
-                                        <img src="{{ asset('/storage/' . $cart->getModel()->cover) }}"
+                                        <img data-src="{{ asset('/storage/' . $cart->getModel()->cover) }}"
                                             class="shadow rounded" style="max-height: 64px;" alt="">
                                         <div class="flex-1 text-start ms-3">
                                             <h6 class="text-dark mb-0">
@@ -40,25 +40,10 @@
                                         <h6 class="text-dark mb-0">
                                             {{ number_format((int) $cart->getModel()->discounted_price) }} تومان</h6>
                                     </a>
-                                    {{-- <a href="{{ route('shop.product.single', $cart->getModel()) }}" class="d-flex align-items-center my-4">
-        <img src="{{ asset('/storage/' . $cart->getModel()->cover) }}" class="shadow rounded" style="max-height: 30px;"
-            alt="">
-        <div class="flex-1 text-start ms-3">
-            <h6 class="text-dark mb-0">{{ $cart->getModel()->name }}</h6>
-            @if ($cart->getModel()->discountItem)
-                <p class="text-muted mb-0">{{ number_format((int) $cart->getModel()->price) }}
-                    هزار
-                    تومان</p>
-            @endif
-        </div>
-        <h6 class="text-dark mb-0">
-            {{ number_format((int) $cart->getModel()->discounted_price) }} × {{ $cart->get('quantity') }} تومان
-        </h6>
-    </a> --}}
                                 @else
                                     <a href="{{ route('course.single', $cart->getModel()) }}"
                                         class="d-flex align-items-center my-4">
-                                        <img src="{{ asset('/storage/' . $cart->getModel()->image) }}"
+                                        <img data-src="{{ asset('/storage/' . $cart->getModel()->image) }}"
                                             class="shadow rounded" style="max-height: 30px;" alt="">
                                         <div class="flex-1 text-start ms-3">
                                             <h6 class="text-dark mb-0">{{ $cart->getModel()->title }}</h6>

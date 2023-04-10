@@ -31,4 +31,6 @@
         <a class="text-primary-600 hover:text-primary-700"
             href="{{ route(config('filament-breezy.route_group_prefix') . 'password.request') }}">{{ __('filament-breezy::default.login.forgot_password_link') }}</a>
     </div>
+
+    <x-buttons />
 </x-filament-breezy::auth-card>

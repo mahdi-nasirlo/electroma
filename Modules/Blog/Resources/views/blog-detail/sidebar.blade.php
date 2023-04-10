@@ -40,7 +40,7 @@
                          @foreach ($lastArticles->get() as $lastArticle)
                              <div class="clearfix post-recent d-flex items-center align-items-center">
                                  <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img
-                                             alt="img" src="{{ asset('/storage/' . $lastArticle->image) }}"
+                                             alt="img" data-src="{{ asset('/storage/' . $lastArticle->image) }}"
                                              class="img-fluid rounded"></a>
                                  </div>
                                  <div class="post-recent-content float-start">
@@ -69,16 +69,24 @@
                  </div>
              </div>
 
-             <div class="widget mt-4">
+             <div class="widget">
                  <h5 class="widget-title">دنبال کردن ما</h5>
                  <ul class="list-unstyled social-icon mb-0 ps-0 mt-2">
-                     <a href="">
+                     <a href="{{ Helper::information('instalgram_link') }}">
                          <x-font-instagram class="text-primary list-inline-item" />
                      </a>
-                     <a href="">
-                         <x-font-telegram class="text-primary list-inline-item" style="padding: 3px" />
+                     <a href="{{ Helper::information('telegram_link') }}">
+                         <x-font-telegram class="text-primary list-inline-item"
+                             style="padding: 3px; margin-right: 4px" />
+                     </a>
+                     <a href="{{ Helper::information('whatsapp_link') }}">
+                         <x-font-whatsapp class="text-primary list-inline-item" style="padding: 1px" />
+                     </a>
+                     <a href="{{ Helper::information('aparat_link') }}">
+                         <x-font-aparat class="text-primary list-inline-item fill-primary" style="padding: 1px" />
                      </a>
                  </ul>
+                 <!--end icon-->
              </div>
          </div>
      </div>

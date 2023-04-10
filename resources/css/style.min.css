@@ -550,7 +550,10 @@ small {
     font-size: 90%;
 }
 .card .card-body {
+    display: flex;
     padding: 1.5rem;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .component-wrapper .title {
     font-size: 20px;
@@ -4480,7 +4483,7 @@ p {
     z-index: 2;
 }
 .shop-list .qty-btn {
-    pointer-events: none;
+    pointer-events: pointer;
     width: 65px;
     padding-right: 12px;
 }

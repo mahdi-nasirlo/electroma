@@ -100,7 +100,8 @@ if (document.getElementsByClassName("tiny-three-item").length > 0) {
         autoplay: true,
         autoplayButtonOutput: false,
         autoplayTimeout: 3000,
-        navPosition: "bottom",
+        // navPosition: "bottom",
+        nav: false,
         speed: 400,
         gutter: 12,
         responsive: {
@@ -142,7 +143,7 @@ if (document.getElementsByClassName("related_product").length > 0) {
             },
 
             320: {
-                items: 3,
+                items: 2,
             },
         },
     });
@@ -252,7 +253,7 @@ if (document.getElementsByClassName("most-buy-product").length > 0) {
         gutter: 12,
         responsive: {
             992: {
-                items: 4,
+                items: 5,
             },
 
             767: {

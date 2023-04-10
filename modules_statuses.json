@@ -4,5 +4,6 @@
     "Payment": true,
     "Course": true,
     "Service": true,
-    "Information": true
+    "Information": true,
+    "AddAddressIdColumnToOrdersTable": true
 }

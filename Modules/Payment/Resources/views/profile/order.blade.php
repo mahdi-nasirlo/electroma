@@ -71,7 +71,7 @@
                                 {{ number_format($order->total_price) }} هزار تومان
                             @endif --}}
                                 <span class="text-muted">برای
-                                    {{ $order->courses()->count() }} موارد</span>
+                                    {{ $order->courses()->count() + $order->products()->count() }} موارد</span>
                             </td>
                             <td>
 
@@ -81,11 +81,11 @@
                                     <x-icon-o-arrow-sm-left />
                                 </a>
 
-                                @if ($order->canAccessToPayment())
+                                {{-- @if ($order->canAccessToPayment())
                                     <a href="{{ route('cart.address', $order) }}" class="text-success pe-2">
                                         پرداخت
                                     </a>
-                                @endif
+                                @endif --}}
 
 
                                 <!-- Modal Content Start -->
@@ -99,15 +99,15 @@
                                                     aria-label="بستن"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="bg-white p-3 rounded box-shadow">
+                                                <div style="overflow-x: scroll" class="bg-white p-3 rounded box-shadow">
                                                     @foreach ($order->products as $product)
                                                         <a href="{{ route('shop.product.single', $product) }}"
-                                                            class="d-flex align-items-center">
-                                                            <img src="{{ $product->getCoverUrl() }}"
+                                                            class="d-flex align-items-center my-2">
+                                                            <img data-src="{{ $product->getCoverUrl() }}"
                                                                 class="shadow rounded" style="max-height: 100px;"
                                                                 alt="">
                                                             <div class="flex-1 text-start ms-3">
-                                                                <h6 class="text-dark mb-0">{{ $product->name }}
+                                                                <h6 class="text-dark mb-0 mx-2">{{ $product->name }}
                                                                 </h6>
                                                                 @if ($product->discountItem)
                                                                     <p class="text-muted mb-0">
@@ -125,7 +125,7 @@
                                                     @foreach ($order->courses as $course)
                                                         <a href="{{ route('course.single', $course) }}"
                                                             class="d-flex align-items-center">
-                                                            <img src="{{ asset('/storage/' . $course->image) }}"
+                                                            <img data-src="{{ asset('/storage/' . $course->image) }}"
                                                                 class="shadow rounded" style="max-height: 100px;"
                                                                 alt="">
                                                             <div class="flex-1 text-start ms-3">

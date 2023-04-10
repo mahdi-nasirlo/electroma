@@ -7,8 +7,11 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
+use Jackiedo\Cart\Facades\Cart;
 use Modules\Payment\Entities\Order;
 use Modules\Payment\Entities\Payment as EntitiesPayment;
 use Shetabit\Multipay\Exceptions\InvalidPaymentException;
@@ -19,8 +22,6 @@ class CartController extends Controller
 {
     public function index()
     {
-
-        // return view()->exists("payment::cart.index");
         return view('payment::cart.index');
     }
 
@@ -67,12 +68,12 @@ class CartController extends Controller
         }
 
 
-        if ($payment->order->user->id !== Auth::id()) {
-            return view('error');
-        }
+        // if ($payment->order->user->id !== Auth::id()) {
+        //     return view('error');
+        // }
 
 
-        Log::debug("call back  ::  " . $payment->resnumber . "    ******    " . $request->payment);
+        // Log::debug("call back  ::  " . $payment->resnumber . "    ******    " . $request->payment);
 
 
         // You need to verify the payment to ensure the invoice has been paid successfully.
@@ -82,9 +83,18 @@ class CartController extends Controller
             $receipt = Payment::amount($payment->order->total_price)->transactionId($payment->resnumber)->verify();
 
 
+            // dd($payment->order, $payment->order->products);
+
             $payment->order->courses->map(function ($course) {
                 $course->update([
                     'inventory' => $course->inventory - 1
+                ]);
+            });
+
+
+            $payment->order->products->map(function ($product) {
+                $product->update([
+                    'inventory' => $product->inventory - 1
                 ]);
             });
 
@@ -96,8 +106,13 @@ class CartController extends Controller
                 'status' => 'paid'
             ]);
 
-            session()->flash("message", "پرداخت با موفقیت انجام شد , خرید شما حداکثر 2 تا 3 روز کاری دیگر ارسال خواهد شد .");
-            return redirect(Route("profile", ['tab' => "order"]));
+
+            Cart::clearItems();
+
+            Cookie::forget('cart_discount_id');
+
+            return redirect(route('payment.successful', $payment->order))->with('message', true);
+            // return redirect(Route("profile", ['tab' => "order"]));
         } catch (InvalidPaymentException $exception) {
             /**
         when payment is not verified, it will throw an exception.
@@ -106,9 +121,7 @@ class CartController extends Controller
              **/
             // echo $exception->getMessage();
 
-            session()->flash("error", $exception->getMessage() . " ( پرداخت ناموفق ) ");
-
-            return redirect(route("profile", ['tab' => "order"]));
+            return redirect(route('payment.unsuccessful', $payment->order))->with('error', $exception->getMessage() . " (پرداخت ناموفق) ");
         }
     }
 
@@ -120,5 +133,60 @@ class CartController extends Controller
         Gate::authorize("view-payment", $order);
 
         return view("payment::cart.payment", ['order' => $order]);
+    }
+
+    public function guestUserPay()
+    {
+        // SEOMeta::setTitle("صندوق")
+        //     ->addMeta("designer", env("DESIGNER"));
+
+        // Gate::authorize("view-payment", $order); , ['order' => $order]
+
+        $items = collect(Cart::name("shopping")->getItems());
+
+        if ($items->isEmpty()) {
+            return redirect(route('cart.index'));
+        }
+
+        return view("payment::cart.guestPay");
+    }
+
+    public function successful(Order $order)
+    {
+        session()->reflash();
+
+        if (!Session::has('message')) {
+            return abort(404);
+        }
+
+        $data = null;
+
+        if ($address = $order->address) {
+            $data = $order->address->toArray();
+        } else {
+            $user = $order->user;
+
+            $data = [
+                'last_name' => $user->name,
+                'state' => $user->state,
+                'city' => $user->city,
+                'address' => $user->address,
+                'post' => $user->post,
+                'mobile' => $user->mobile
+            ];
+        }
+
+        return view('payment::message.successful', compact('data', 'order'));
+    }
+
+    public function unsuccessful()
+    {
+        session()->reflash();
+
+        if (!Session::has('error')) {
+            return abort(404);
+        }
+
+        return view('payment::message.unsuccessful');
     }
 }

@@ -5,8 +5,6 @@
 @endsection
 
 @section('head')
-    <script src="/static/assets/tiny-slider.css"></script>
-
     <style>
         .disabled-pagination .tns-nav {
             display: none;
@@ -26,7 +24,7 @@
         $mediumBanner = $banners->where('collection', 'medium-banner');
         $categoriesBanner = $banners->where('collection', 'categories-banner');
         $infoBanner = $banners->where('collection', 'info-banner');
-        $posts = \Modules\Blog\Entities\Post::latest()->take(4);
+        $posts = \Modules\Blog\Entities\Post::latest()->take(7);
     @endphp
     <section class="container-lg px-md-4">
         <div style="margin-top: 20px">
@@ -74,13 +72,6 @@
     @if ($posts->count() > 3)
         <section style="margin-top: 80px 0" class="bg-light pt-4">
             <div class="container-xxl">
-                {{-- <strong class="my-4">آخرین مقالات</strong>
-                <div class="row pt-2">
-                    @foreach ($posts->get() as $post)
-                        @include('blog::post-cart', ['post' => $post])
-                    @endforeach
-                    <!--end col-->
-                </div> --}}
                 <div class="row mb-4 py-4 rounded-4">
                     <div class="col-12">
                         <h5 class="mb-0">اخرین مقالات</h5>
@@ -90,11 +81,11 @@
                         <div class="last-blog-post">
                             @foreach ($posts->get() as $post)
                                 <div class="tiny-slide">
-                                    <div class="mb-4 pb-2">
-                                        <div class="card blog rounded border-0 shadow">
+                                    <div class="mb-4 pb-2 last-post-card">
+                                        <div class="card blog rounded border-0 shadow last-post-card">
                                             <div class="position-relative">
-                                                <img height="200px" style="object-fit: fill;"
-                                                    src="{{ asset('/storage/' . $post->image) }}"
+                                                <img height="200px" style="object-fit: cover;"
+                                                    data-src="{{ asset('/storage/' . $post->image) }}"
                                                     class="card-img-top rounded-top" alt="..." />
                                                 <div class="overlay rounded-top bg-dark"></div>
                                             </div>

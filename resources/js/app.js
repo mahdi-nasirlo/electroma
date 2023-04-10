@@ -30,10 +30,9 @@ if (document.getElementById("topnav")) {
     });
 }
 
-// window.addEventListener("resize", function() {
-//     "use strict";
-//     window.location.reload();
-// });
+//=========================================//
+/*            02) Mega Menu                */
+//=========================================//
 
 document.addEventListener("DOMContentLoaded", function () {
     /////// Prevent closing from hover inside dropdown
@@ -84,3 +83,62 @@ document.addEventListener("DOMContentLoaded", function () {
     // end if innerWidth
 });
 // DOMContentLoaded  end
+
+//=========================================//
+/*          03) Equalization card          */
+//=========================================//
+
+function equalize(cardName) {
+    // Get all the cards
+    var cards = document.querySelectorAll(`.${cardName}`);
+
+    // Get the height of the tallest card
+    var maxHeight = 0;
+
+    for (var i = 0; i < cards.length; i++) {
+        if (cards[i].clientHeight > maxHeight) {
+            maxHeight = cards[i].clientHeight;
+        }
+    }
+
+    // Set the height of all the cards to the height of the tallest card
+    for (var i = 0; i < cards.length; i++) {
+        cards[i].style.height = maxHeight + "px";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    equalize("product-card");
+    equalize("last-post-card");
+    equalize("category-banner");
+});
+
+//=========================================//
+/*         04) lazy load image             */
+//=========================================//
+
+const images = document.querySelectorAll("img[data-src]");
+
+const loadImage = (image) => {
+    image.setAttribute("src", image.getAttribute("data-src"));
+    image.onload = () => {
+        image.removeAttribute("data-src");
+    };
+    console.log(image.getAttribute("data-src"));
+};
+
+const handleIntersection = (entries, observer) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const image = entry.target;
+            loadImage(image);
+            observer.unobserve(image);
+        }
+    });
+};
+
+const observer = new IntersectionObserver(handleIntersection, {
+    rootMargin: "0px 0px 100% 0px",
+});
+
+images.forEach((img) => observer.observe(img));

@@ -2,6 +2,8 @@
 
 namespace Modules\Shop\Http\Controllers;
 
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -13,7 +15,19 @@ class ShopController extends Controller
 {
     public function list(Category $category)
     {
+
+        SEOMeta::setTitle($category->seo->title ?? $category->name)
+            ->addMeta("article:published_time", $category->created_at)
+            ->addMeta("revised", $category->updated_at)
+            ->addMeta("designer", env("DESIGNER"));
+        // ->addKeyword($category->tags(true));
+
         return view('shop::product-list.index', compact('category'));
+    }
+
+    public function search()
+    {
+        // return view("shop::product-list.search");
     }
 
     public function show(Product $product)

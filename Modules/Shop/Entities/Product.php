@@ -37,6 +37,7 @@ class Product extends Model implements HasMedia, UseCartable
         "short_desc",
         "cover_hover",
         // "gallery",
+        'tiered_price',
         "slug",
         "name",
         "category_id"
@@ -46,6 +47,7 @@ class Product extends Model implements HasMedia, UseCartable
         "cover_tag" => "array",
         "short_information" => "array",
         'published_at' => "datetime",
+        'tiered_price' => 'array'
         // "gallery" => "array"
     ];
 
@@ -123,7 +125,7 @@ class Product extends Model implements HasMedia, UseCartable
         if (empty($this->cover))
             return "/placeholder.webp";
         else
-            return "/storage/" . $this->cover;
+            return asset("/storage/" . $this->cover);
     }
 
     public function discountItem()

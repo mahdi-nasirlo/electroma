@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-    @include('blog::hero.index', [
+    {{-- @include('blog::hero.index', [
         'name' => $product->name,
         'category' => $product->category,
         'title' => 'فروشگاه',
-    ])
+    ]) --}}
     @include('shop::product-page.product-detail')
     <section style="overflow: inherit !important" class="section pb-0">
         <div>
