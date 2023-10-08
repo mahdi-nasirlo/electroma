@@ -40,6 +40,9 @@ class Banner extends Model
 
     public function getLink()
     {
+        if (!$this->bannerable)
+            return "#";
+
         switch ($this->bannerable_type) {
             case get_class(new ShopCategory()):
                 return route('shop.product.list', $this->bannerable);
@@ -56,10 +59,6 @@ class Banner extends Model
         }
     }
 
-    // public function getLlt()
-    // {
-    //     # code...
-    // }
 
     protected static function newFactory()
     {
