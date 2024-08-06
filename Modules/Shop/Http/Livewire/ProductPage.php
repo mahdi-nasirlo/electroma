@@ -2,6 +2,7 @@
 
 namespace Modules\Shop\Http\Livewire;
 
+use Illuminate\Support\Facades\Log;
 use Jackiedo\Cart\Facades\Cart;
 use Livewire\Component;
 use Modules\Shop\Entities\Product;
@@ -81,6 +82,7 @@ class ProductPage extends Component
 
     public function addToCart()
     {
+        Log::info("product page cart updated", [$this->cartItem(), $this->product]);
         if (!$this->cartItem()) {
             $this->product->addToCart(
                 'shopping',
