@@ -96,7 +96,7 @@ class ProductPage extends Component
         } else {
             $this->updateQuantity();
         }
-        Log::info("product page after log create", [$this->cartItem(), $this->product]);
+        Log::info("product page after log create", [Cart::name('shopping')->getItems(), $this->product]);
 
         $this->emit('cartUpdated');
 
