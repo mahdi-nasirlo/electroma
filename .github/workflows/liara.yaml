@@ -1,8 +1,8 @@
-name: CD-Liara
+name: CD-Liara-Refactor
 on:
   push:
     branches:
-      - stable-version
+      - refactor
 jobs:
   deploy:
     runs-on: ubuntu-latest
