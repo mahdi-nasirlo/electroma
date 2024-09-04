@@ -1,4 +1,4 @@
-name: CD-Liara-Refactor
+name: CD-Liara
 on:
   push:
     branches:
@@ -16,5 +16,5 @@ jobs:
         env:
           LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
         run: |
-          npm i -g @liara/cli@4
-          liara deploy --api-token="$LIARA_RIFACTORE_API_KEY" --detach
+          npm i -g @liara/cli@5
+          liara deploy --app="refactor-electroma" --api-token="LIARA_RIFACTORE_API_KEY" --no-app-logs
