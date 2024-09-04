@@ -1,6 +1,9 @@
 {
     "platform": "laravel",
     "app": "refactor-electroma",
+    "laravel": {
+        "phpVersion": "8.2"
+    },
     "disks": [
         {
             "name": "data",

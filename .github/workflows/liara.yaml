@@ -1,4 +1,4 @@
-name: CD-Liara
+name: CD-Liara-Refactor
 on:
   push:
     branches:
