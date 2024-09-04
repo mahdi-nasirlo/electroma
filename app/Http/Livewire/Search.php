@@ -2,8 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use Modules\Shop\Entities\Product;;
-
+use Illuminate\View\View;
 use Livewire\Component;
 use Modules\Shop\Entities\Product as EntitiesProduct;
 
@@ -15,16 +14,11 @@ class Search extends Component
         'string'
     ];
 
-    public function mount()
+    public function render(): View
     {
-        // dd(Product::query()->where('name', 'link', '%' . $this->string . '%')->get());
-        // return $this->result = "lsdjkfkl";
-    }
+        $result = [];
 
-    public function render()
-    {
-        $result = EntitiesProduct::query()->where('name', 'like', '%' . $this->string . '%')->get();
-
+        if ($this->string) $result = EntitiesProduct::query()->where('name', 'like', '%' . $this->string . '%')->get();
 
         return view('livewire.search', ['result' => $result]);
     }

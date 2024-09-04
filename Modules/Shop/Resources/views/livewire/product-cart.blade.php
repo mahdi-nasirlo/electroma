@@ -43,7 +43,7 @@
     </div>
     <div style="display: flex !important;flex-direction: column;align-items: center;justify-content: space-between;"
         class="card-body pt-3 p-1 p-md-2 product-card">
-        <a href="{{ route('shop.product.single', $product) }}" {{-- style="height: 66px"  content  --}}
+        <a href="{{ route('shop.product.single', $product) }}"  style="height: 66px"  content
             class="text-warning product-name h6 mb-0 text-center">
             @if (isset($product->name))
                 {{ $product->name }}
@@ -71,9 +71,9 @@
                                 <x-font-star style="width: 14px;height: 14px;" />
                             @endif
                         </li>
-                        {{-- <li class="list-inline-item"><i
+                         <li class="list-inline-item"><i
                                 class="mdi mdi-star @if ($i > $product->rate - 1) mdi-star-outline @endif"></i>
-                        </li> --}}
+                        </li>
                     @endfor
                 </ul>
             @endif

@@ -12,7 +12,7 @@ class ProductCart extends Component
     public $new_price;
     public $has_inventory;
 
-    public function mount($product)
+    public function mount($product): void
     {
         $this->has_inventory = $product->inventory > 0;
         $this->product = $product;

@@ -38,6 +38,11 @@ class Banner extends Model
         return $this->belongsTo(ShopCategory::class, "bannerable_id");
     }
 
+    public function blogCategory()
+    {
+        return $this->belongsTo(BlogCategory::class, "bannerable_id");
+    }
+
     public function getLink()
     {
         if (!$this->bannerable)

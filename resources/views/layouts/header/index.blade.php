@@ -107,15 +107,16 @@
     @php
         $shopCategoies = \Modules\Shop\Entities\Category::where('is_visible', true)
             ->get()
-            ->toTree();
-        
+            ->toTree()
+            ->toArray();
+
         $courses = \Modules\Course\Entities\Course::where('published_at', '<', now())->where('inventory', '>', 0);
-        
+
         // FIXME product condition to display category
         // $products = \Modules\Shop\Entities\Product::all();
         // ->where('inventory', '>', 0)
         // ->where('published_at', '<', now());
-        
+
         // $categoreis = \Modules\Blog\Entities\Category::all()
         //     ->where('is_visible', true)
         //     ->where('parent_id', 0);
@@ -125,6 +126,6 @@
             ->toTree();
     @endphp
     @include('layouts.header.navigation')
-    @include('layouts.header.mobile_menu')
+{{--    @include('layouts.header.mobile_menu')--}}
 
 </header>

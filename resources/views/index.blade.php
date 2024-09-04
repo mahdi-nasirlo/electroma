@@ -18,7 +18,7 @@
 
 @section('content')
     @php
-        $banners = \Modules\Information\Entities\Banner::all();
+        $banners = \Modules\Information\Entities\Banner::with("bannerable")->get();
         $carouselBanner = $banners->where('collection', 'carousel');
         $smallBanner = $banners->where('collection', 'small-banner');
         $mediumBanner = $banners->where('collection', 'medium-banner');
@@ -55,7 +55,7 @@
         @include('index.product-related', [
             'name' => 'last-product-slider',
             'label' => 'اخرین محصولات',
-            'product' => \Modules\Shop\Entities\Product::orderBy('created_at', 'desc')->take(8)->get(),
+            'product' => \Modules\Shop\Entities\Product::withSum("comments", "rating")->withCount("comments")->orderBy('created_at', 'desc')->take(8)->get(),
         ])
 
         @include('index.info-banner', [
@@ -65,12 +65,12 @@
         @include('index.product-related', [
             'name' => 'most-buy-product',
             'label' => 'پرفروش ترین محصولات',
-            'product' => \Modules\Shop\Entities\Product::withCount('orders')->orderBy('orders_count', 'DESC')->take(8)->get(),
+            'product' => \Modules\Shop\Entities\Product::withCount('orders')->withSum("comments", "rating")->withCount("comments")->orderBy('orders_count', 'DESC')->take(8)->get(),
         ])
 
     </section>
     @if ($posts->count() > 3)
-        <section style="margin-top: 80px 0" class="bg-light pt-4">
+        <section style="margin-top: 80px 0px" class="bg-light pt-4">
             <div class="container-xxl">
                 <div class="row mb-4 py-4 rounded-4">
                     <div class="col-12">

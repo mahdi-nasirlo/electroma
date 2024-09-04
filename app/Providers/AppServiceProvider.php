@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
@@ -52,17 +52,17 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(LoginResponseContract::class, \App\Http\Responses\LoginResponse::class);
 
-        if (config('app.env') !== 'build') {
-            if (Schema::hasTable("infographics")) {
-                $data = Infographic::all(['name', 'content'])
-                    // ->whereIn("name", ['location'])
-                    ->keyBy("name")
-                    ->toArray();
-
-                view()->composer('*', function ($view) use ($data) {
-                    $view->with('information', $data);
-                });
-            }
-        }
+//        if (config('app.env') !== 'build') {
+//            if (Schema::hasTable("infographics")) {
+//                $data = Infographic::all(['name', 'content'])
+//                    // ->whereIn("name", ['location'])
+//                    ->keyBy("name")
+//                    ->toArray();
+//
+//                view()->composer('*', function ($view) use ($data) {
+//                    $view->with('information', $data);
+//                });
+//            }
+//        }
     }
 }

@@ -21,6 +21,6 @@
                 @endforeach
             </div>
         </div>
-        <!--end col-->
     </div>
 @endif
+

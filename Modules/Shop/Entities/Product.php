@@ -98,13 +98,15 @@ class Product extends Model implements HasMedia, UseCartable
             ->withPivot(['value']);
     }
 
-    public function getRateAttribute()
+    public function getRateAttribute(): float|int
     {
-        if (!$this->comments()->count()) {
+        if (!$this->comments_count) {
             return 0;
         }
 
-        return ($this->comments()->sum('rating') / $this->comments()->count());
+        if (!$this->comments_sum_rating) return 0;
+
+        return ($this->comments_sum_rating / $this->comments_count);
     }
 
     public function getGalleryAttribute()
