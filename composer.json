@@ -1,68 +1,31 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": [
-        "framework",
-        "laravel"
-    ],
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
-        "3x1io/filament-user": "^1.1",
-        "ariaieboy/filament-jalali-datetime": "^1.0",
-        "ariaieboy/filament-jalali-datetimepicker": "^1.0",
-        "artesaos/seotools": "^0.22.1",
-        "bezhansalleh/filament-shield": "^2.1",
-        "blade-ui-kit/blade-icons": "^1.5",
-        "codeat3/blade-forkawesome": "^1.8",
-        "cviebrock/eloquent-sluggable": "^9.0",
-        "filament/filament": "^2.16",
-        "filament/spatie-laravel-media-library-plugin": "^2.16",
-        "filament/spatie-laravel-settings-plugin": "^2.15",
-        "filament/spatie-laravel-tags-plugin": "^2.16",
-        "filipfonal/filament-log-manager": "^1.1",
-        "guzzlehttp/guzzle": "^7.2",
-        "hollyit/filament-static-assets": "^0.1.3",
-        "jackiedo/cart": "^3.0",
-        "jeffgreco13/filament-breezy": "v1.4.10.1",
-        "kalnoy/nestedset": "^6.0",
-        "laravel/framework": "^9.19",
-        "laravel/octane": "^1.5",
-        "laravel/sanctum": "^3.0",
-        "laravel/socialite": "^5.6",
-        "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.11",
-        "mhmiton/laravel-modules-livewire": "^1.5",
-        "mohamedsabil83/filament-forms-tinyeditor": "^1.6",
-        "mohamedsabil83/filament-hijri-picker": "^0.1.0",
-        "nwidart/laravel-modules": "^9.0",
-        "ralphjsmit/laravel-filament-seo": "^1.0",
-        "ralphjsmit/laravel-seo": "^1.0",
-        "shetabit/payment": "^4.3",
-        "spatie/laravel-medialibrary": "^10.0.0"
+        "php": "^8.2",
+        "filament/filament": "^3.2",
+        "laravel/framework": "^11.9",
+        "laravel/tinker": "^2.9",
+        "livewire/livewire": "^3.5"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.7",
-        "fakerphp/faker": "^1.9.1",
-        "itsgoingd/clockwork": "^5.1",
-        "laravel/pint": "^1.0",
-        "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "barryvdh/laravel-debugbar": "^3.13",
+        "fakerphp/faker": "^1.23",
+        "laravel/pint": "^1.13",
+        "laravel/sail": "^1.26",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.0",
+        "phpunit/phpunit": "^11.0.1"
     },
     "autoload": {
         "psr-4": {
-            "Modules\\": "Modules/",
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
-        "files": [
-            "app/Helper/Helpers.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
@@ -72,7 +35,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -81,7 +45,9 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
         ]
     },
     "extra": {
@@ -94,9 +60,10 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

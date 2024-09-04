@@ -1,9 +1,0 @@
-{
-    "Blog": true,
-    "Shop": true,
-    "Payment": true,
-    "Course": true,
-    "Service": true,
-    "Information": true,
-    "AddAddressIdColumnToOrdersTable": true
-}

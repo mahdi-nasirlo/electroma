@@ -3,18 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-
-use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Modules\Payment\Entities\Order;
-use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -25,13 +20,6 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
-        "last_name",
-        "mobile",
-        "state",
-        "city",
-        "post",
-        "address",
-        'avatar'
     ];
 
     /**
@@ -45,26 +33,15 @@ class User extends Authenticatable implements FilamentUser
     ];
 
     /**
-     * The attributes that should be cast.
+     * Get the attributes that should be cast.
      *
-     * @var array<string, string>
+     * @return array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    public function canAccessFilament(): bool
+    protected function casts(): array
     {
-        return auth()->user()->roles()->count() > 0;
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class)->latest();
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }
