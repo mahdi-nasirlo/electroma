@@ -110,7 +110,7 @@
             ->toTree()
             ->toArray();
 
-        $courses = \Modules\Course\Entities\Course::where('published_at', '<', now())->where('inventory', '>', 0);
+        $courses = \Modules\Course\Entities\Course::where('published_at', '<', now())->where('inventory', '>', 0)->get();
 
         // FIXME product condition to display category
         // $products = \Modules\Shop\Entities\Product::all();
@@ -123,9 +123,9 @@
         $pages = \Modules\Information\Entities\Page::get(['name', 'slug', 'id']);
         $category = \Modules\Blog\Entities\Category::where('is_visible', true)
             ->get()
-            ->toTree();
+            ->toTree()
+            ->toArray();
     @endphp
     @include('layouts.header.navigation')
 {{--    @include('layouts.header.mobile_menu')--}}
-
 </header>

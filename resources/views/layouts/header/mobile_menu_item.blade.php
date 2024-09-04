@@ -23,7 +23,7 @@
 @endforeach --}}
 
 
-{{-- 
+{{--
 @if ($title)
     @if ($categoreis->isEmpty())
         <li>
@@ -64,15 +64,18 @@
 
 
 @if ($title)
-    @if ($categoreis->isEmpty())
+    @if (count($categoreis) > 0)
         <li>
-            <a href="{{ isset($link) ? $link : '#' }}">
+            <a
+{{--                href="{{ isset($link) ? $link : '#' }}"--}}
+            >
                 {{ $title }}
             </a>
         </li>
     @else
         <li class="has-submenu">
-            <a href="{{ isset($parentLink) ? $parentLink : '#' }}"
+            <a
+{{--                href="{{ isset($parentLink) ? $parentLink : '#' }}"--}}
                 data-submenu="{{ $id }}">{{ $title }}</a>
 
             <div id="{{ $id }}" class="submenu">

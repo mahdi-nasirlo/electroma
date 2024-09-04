@@ -89,7 +89,7 @@
             </li>
         @endauth
         <livewire:payment::cart.mobile-cart />
-        @if ($shopCategoies->count() > 0)
+        @if (count($shopCategoies) > 0)
             @include('layouts.header.mobile_menu_item', [
                 'categoreis' => $shopCategoies,
                 'parentName' => 'منو اصلی',
@@ -122,7 +122,7 @@
                 </div>
             </li>
         @endif
-        @if ($category->count() > 0)
+        @if (count($category) > 0)
             @include('layouts.header.mobile_menu_item', [
                 'categoreis' => $category,
                 'parentName' => 'منو اصلی',

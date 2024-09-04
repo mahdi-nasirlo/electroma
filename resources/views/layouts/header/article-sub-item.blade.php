@@ -1,17 +1,17 @@
-@if ($categoreis->count() > 0)
+@if (count($categoreis) > 0)
     @foreach ($categoreis as $item)
-        {{-- $item->is_visible and $item->isVisible() --}}
-        @if ($item->is_visible)
+        @if ($item["is_visible"])
             <li class="has-submenu parent-menu-item">
-                <a href="{{ $item->link() }}">
-                    {{ $item->name }}
+                <a
+                    href="{{ route('blog.article.list', $item["slug"]) }}"
+                >
+                    {{ $item["name"] }}
                 </a>
-                {{-- $item->childIsVisible() --}}
-                @if ($item->children()->count() > 0)
+                @if (count($item["children"]) > 0)
                     <span class="submenu-arrow"></span>
                     <ul style="display: block" class="submenu">
                         @include('layouts.header.article-sub-item', [
-                            'categoreis' => $item->children()->get(),
+                            'categoreis' => $item["children"],
                             'category' => $item,
                         ])
                     </ul>

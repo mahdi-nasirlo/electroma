@@ -24,25 +24,41 @@
 
 <body style="background: #f7f7f7ad">
 
-    @include('layouts.header.index')
 
-    @yield('content')
+<x-layout.header/>
 
-    @if (isset($slot) and $slot !== null)
-        {{ $slot }}
-    @endif
+@yield('content')
 
-    <!-- Back to top -->
-    <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-primary back-to-top">
-        <x-icon-o-arrow-sm-up data-feather="arrow-up" class="icons h-75 w-75" />
-    </a>
-    <!-- Back to top -->
-    @include('layouts.footer.index')
-    @include('layouts.click_to_chat')
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    @yield('script')
-    @vite('resources/js/app.js')
-    @livewireScripts
+@if (isset($slot) and $slot !== null)
+    {{ $slot }}
+@endif
+
+<!-- Back to top -->
+<a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-primary back-to-top">
+    <x-icon-o-arrow-sm-up data-feather="arrow-up" class="icons h-75 w-75"/>
+</a>
+
+<script type="text/javascript">
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "02f796f2-e0a1-45f8-9557-a6a22e3e2c41";
+    setTimeout(() => {
+        (function () {
+            d = document;
+            s = d.createElement("script");
+            s.src = "https://client.crisp.chat/l.js";
+            s.async = 1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    }, 4000);
+</script>
+
+<x-layout.footer/>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+@yield('script')
+@vite('resources/js/app.js')
+@livewireScripts
 </body>
 
 </html>
