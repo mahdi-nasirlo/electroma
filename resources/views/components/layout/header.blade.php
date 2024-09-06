@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Log; @endphp
 <div>
 
     {{--  ******** top of header *******  --}}
@@ -21,7 +22,6 @@
             <div class="">
                 <a style="display: flex;align-items: center;" class="text-white d-flex"
                    href="{{ strip_tags(Helper::information('location')) }}">
-
                     <x-icon-o-location-marker class="mx-1" style="margin: 2px 0"/>
                     نشانی
                     <span class="d-none d-sm-flex px-1">
@@ -80,7 +80,7 @@
                                 <div class="dropdown dropdown-primary">
                                     <button type="button" class="btn my-1 btn-soft-primary px-2 py-1 shadow-none"
                                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <x-icon-o-user/>
+                                        {{--                                        <x-icon-o-user/>--}}
                                     </button>
                                     <div
                                         class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 pb-3"
@@ -94,7 +94,7 @@
                                             <a class="dropdown-item text-danger "
                                                href="{{ route('filament.pages.dashboard') }}">
                                                 <x-icon-o-view-grid-add/>
-                                                </i> پنل مدیریت
+                                                پنل مدیریت
                                             </a>
                                             <div class="dropdown-divider border-top"></div>
                                         @endif
@@ -218,7 +218,7 @@
                     <li class="has-submenu parent-parent-menu-item">
                         <a href="javascript:void(0)">دوره های آموزشی </a><span class="menu-arrow"></span>
                         <ul class="submenu">
-                            @foreach ($courses->get() as $item)
+                            @foreach ($courses as $item)
                                 <li class="has-submenu parent-menu-item">
                                     <a href="{{ route('course.single', $item) }}"> {{ $item->title }} </a>
                                 </li>
@@ -255,13 +255,186 @@
             </ul>
             @if (!request()->routeIs('service.index') and Route::has('service.index'))
                 <a class="px-0" href="{{ route('service.index') }}">
-            <span class="bg-soft-warning px-2 py-1 rounded">
-                درخواست تعمیرکار
-            </span>
+                    <span class="bg-soft-warning px-2 py-1 rounded">
+                        درخواست تعمیرکار
+                    </span>
                 </a>
             @endif
         </div>
         {{--  ******** navigation *******  --}}
+
+        {{--  ******** mobile navigation *******  --}}
+        <div class="zeynep right">
+            <div class="d-flex">
+                <a class="logo" href="/">
+                    <img src="{{ asset('/static/logo.png') }}" alt="Logo" height="100">
+                </a>
+            </div>
+
+
+            <ul>
+                <li>
+                    <a>
+                        <livewire:search/>
+                    </a>
+                </li>
+                @auth
+                    <li class="bottom-username-element d-flex justify-content-between bg-soft-blue py-3 w-full">
+                <span class="ps-1">
+                    {{ auth()->user()->name }} خوش آمدید
+                </span>
+                        <button style="width: 24%;text-align: left"
+                                class="dropdown-item text-dark p-0 w-10 text-left me-1"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                                class="uil uil-sign-out-alt align-middle me-1"></i> خروج
+                        </button>
+                        <form id="logout-form" action="{{ route('filament.auth.logout') }}" method="POST"
+                              style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                @endauth
+                @if (!request()->routeIs('service.index') and Route::has('service.index'))
+                    <li>
+                        <a class="text-warning " href="{{ route('service.index') }}">
+                            <x-icon-o-cog/>
+                            درخواست تعمیر کار
+                        </a>
+                    </li>
+                @endif
+                @guest
+                    <li>
+                        <a class="px-1 d-flex justify-content-between bg-soft-warning"
+                           href="{{ route('filament.auth.login') }}">
+                            ورود / ثبت نام
+                            <x-icon-o-login/>
+                        </a>
+                    </li>
+                @endguest
+
+
+
+                @auth
+                    @if (auth()->user()->canAccessFilament())
+                        <li>
+                            <a href="{{ route('filament.pages.dashboard') }}">
+                                <x-icon-o-view-grid-add/>
+                                پنل مدیریت
+                            </a>
+                        </li>
+                    @endif
+                    <li class="has-submenu">
+                        <a href="#" data-submenu="userPanel">
+                            <x-icon-o-user/>
+                            پنل کاربری
+                        </a>
+
+                        <div id="userPanel" class="submenu">
+                            <div class="submenu-header">
+                                <a href="#" data-submenu-close="userPanel">منو اصلی</a>
+                            </div>
+
+                            <label>پنل کاربری</label>
+
+                            <ul>
+                                <li>
+                                    <a href="{{ route('profile', ['tab' => 'dashboard']) }}">
+                                        <x-icon-o-user/>
+                                        حساب کاربری
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('profile', ['tab' => 'order']) }}">
+                                        <x-icon-o-truck/>
+                                        سفارشات من
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('profile', ['tab' => 'address']) }}">
+                                        <x-icon-o-map/>
+                                        آدرس
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endauth
+                <livewire:payment::cart.mobile-cart/>
+                @if (count($shopCategories) > 0)
+                    <x-layout.mobile_menu_item
+                        id="products"
+                        title="فروشگاه"
+                        parent-name="منو اصلی"
+                        :categoreis="$shopCategories"
+                    />
+                @endif
+
+                @if (count($courses) > 0)
+                    <li class="has-submenu">
+                        <a href="#" data-submenu="course">
+                            دوره های آموزشی
+                        </a>
+
+                        <div id="course" class="submenu">
+                            <div class="submenu-header">
+                                <a href="#" data-submenu-close="course">منو اصلی</a>
+                            </div>
+
+                            <label>دوره آموزشی</label>
+
+                            <ul>
+                                @foreach ($courses as $course)
+                                    <li>
+                                        <a href="{{ route('course.single', $course) }}">
+                                            {{ $course->title }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+
+                @if (count($category) > 0)
+                    <x-layout.mobile_menu_item
+                        id="articles"
+                        title="مجله تخصصی تعمیرات"
+                        parent-name="منو اصلی"
+                        :categoreis="$category"
+                    />
+                @endif
+
+                @if (count($pages))
+                    <li class="has-submenu">
+                        <a href="#" data-submenu="pages">لینک های مفید</a>
+
+                        <div id="pages" class="submenu">
+                            <div class="submenu-header">
+                                <a href="#" data-submenu-close="pages">منو اصلی</a>
+                            </div>
+
+                            <label>لینک های مفید</label>
+
+                            <ul>
+                                @foreach ($pages as $page)
+                                    <li>
+                                        <a href="{{ route('pages', $page) }}">
+                                            {{ $page->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </li>
+                @endif
+            </ul>
+        </div>
+
+        <div class="zeynep-overlay"></div>
+
+        {{--  ******** mobile navigation *******  --}}
     </header>
 
 </div>

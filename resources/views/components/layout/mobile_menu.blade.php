@@ -9,7 +9,7 @@
     <ul>
         <li>
             <a>
-                <livewire:search />
+                <livewire:search/>
             </a>
         </li>
         @auth
@@ -18,9 +18,11 @@
                     {{ auth()->user()->name }} خوش آمدید
                 </span>
                 <button style="width: 24%;text-align: left" class="dropdown-item text-dark p-0 w-10 text-left me-1"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                        class="uil uil-sign-out-alt align-middle me-1"></i> خروج </button>
-                <form id="logout-form" action="{{ route('filament.auth.logout') }}" method="POST" style="display: none;">
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                        class="uil uil-sign-out-alt align-middle me-1"></i> خروج
+                </button>
+                <form id="logout-form" action="{{ route('filament.auth.logout') }}" method="POST"
+                      style="display: none;">
                     @csrf
                 </form>
             </li>
@@ -28,16 +30,17 @@
         @if (!request()->routeIs('service.index') and Route::has('service.index'))
             <li>
                 <a class="text-warning " href="{{ route('service.index') }}">
-                    <x-icon-o-cog />
+                    <x-icon-o-cog/>
                     درخواست تعمیر کار
                 </a>
             </li>
         @endif
         @guest
             <li>
-                <a class="px-1 d-flex justify-content-between bg-soft-warning" href="{{ route('filament.auth.login') }}">
+                <a class="px-1 d-flex justify-content-between bg-soft-warning"
+                   href="{{ route('filament.auth.login') }}">
                     ورود / ثبت نام
-                    <x-icon-o-login />
+                    <x-icon-o-login/>
                 </a>
             </li>
         @endguest
@@ -48,14 +51,14 @@
             @if (auth()->user()->canAccessFilament())
                 <li>
                     <a href="{{ route('filament.pages.dashboard') }}">
-                        <x-icon-o-view-grid-add />
+                        <x-icon-o-view-grid-add/>
                         پنل مدیریت
                     </a>
                 </li>
             @endif
             <li class="has-submenu">
                 <a href="#" data-submenu="userPanel">
-                    <x-icon-o-user />
+                    <x-icon-o-user/>
                     پنل کاربری
                 </a>
 
@@ -69,29 +72,32 @@
                     <ul>
                         <li>
                             <a href="{{ route('profile', ['tab' => 'dashboard']) }}">
-                                <x-icon-o-user /> حساب کاربری
+                                <x-icon-o-user/>
+                                حساب کاربری
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ route('profile', ['tab' => 'order']) }}">
-                                <x-icon-o-truck /> سفارشات من
+                                <x-icon-o-truck/>
+                                سفارشات من
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ route('profile', ['tab' => 'address']) }}">
-                                <x-icon-o-map /> آدرس
+                                <x-icon-o-map/>
+                                آدرس
                             </a>
                         </li>
                     </ul>
                 </div>
             </li>
         @endauth
-        <livewire:payment::cart.mobile-cart />
-        @if (count($shopCategoies) > 0)
-            @include('layouts.header.mobile_menu_item', [
-                'categoreis' => $shopCategoies,
+        <livewire:payment::cart.mobile-cart/>
+        @if (count($shopCategories) > 0)
+            @include('components.layout.mobile_menu_item', [
+                'categoreis' => $shopCategories,
                 'parentName' => 'منو اصلی',
                 'title' => 'فروشگاه',
                 'id' => 'products',
@@ -123,7 +129,7 @@
             </li>
         @endif
         @if (count($category) > 0)
-            @include('layouts.header.mobile_menu_item', [
+            @include('components.layout.mobile_menu_item', [
                 'categoreis' => $category,
                 'parentName' => 'منو اصلی',
                 'title' => 'مجله تخصصی تعمیرات',
