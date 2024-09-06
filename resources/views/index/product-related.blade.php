@@ -1,7 +1,7 @@
 @php
-    $products =
-        $product instanceof \App\Models\Shop\Product
-            ? \App\Models\Shop\Product::where('id', '!=', $product->id)
+    use App\Models\Shop\Product;$products =
+        $product instanceof Product
+            ? Product::where('id', '!=', $product->id)
                 ->where('category_id', $product->category_id)
                 ->get()
             : $product;
@@ -16,7 +16,7 @@
             <div class="{{ $name }}">
                 @foreach ($products as $product)
                     <div class="tiny-slide">
-                        <livewire:shop::product-cart :product="$product" />
+                        @include("shop::components.product-cart")
                     </div>
                 @endforeach
             </div>
