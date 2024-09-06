@@ -4,16 +4,11 @@ namespace App\Admin\Resources\Shop;
 
 use App\Admin\Resources\Shop\PaymentResource\Pages;
 use App\Admin\Resources\Shop\PaymentResource\RelationManagers;
-use App\Models\User;
-use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
-use Filament\Tables;
 use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Modules\Payment\Entities\Payment;
 
 class PaymentResource extends Resource
@@ -40,12 +35,6 @@ class PaymentResource extends Resource
         return "تراکنش ها";
     }
 
-
-    protected static function getNavigationBadge(): ?string
-    {
-        return Payment::all()->where("status", true)->count();
-    }
-
     public static function form(Form $form): Form
     {
         return $form
@@ -59,10 +48,10 @@ class PaymentResource extends Resource
                 TextColumn::make("resnumber")
                     ->label("کد رهگیری بانک")->searchable(),
                 TextColumn::make("order.price")->label("مبلغ")->searchable()->sortable()
-                    ->formatStateUsing(fn (string $state): string => number_format($state) . " تومان"),
+                    ->formatStateUsing(fn(string $state): string => number_format($state) . " تومان"),
                 TextColumn::make("order.user.name")
                     ->label("کاربر")
-                    ->url(fn (Payment $record): string => route("filament.resources.shop/customers.edit", $record->order->user)),
+                    ->url(fn(Payment $record): string => ""),
                 BooleanColumn::make("status")->label("وضعیت پرداخت")->sortable()
 
             ])
@@ -83,5 +72,10 @@ class PaymentResource extends Resource
         return [
             'index' => Pages\ListPayments::route('/'),
         ];
+    }
+
+    protected static function getNavigationBadge(): ?string
+    {
+        return Payment::all()->where("status", true)->count();
     }
 }

@@ -7,13 +7,13 @@ use App\Admin\Resources\Shop\OrderResource\Pages\ViewOrder;
 use App\Admin\Resources\Shop\OrderResource\RelationManagers\CoursesRelationManager;
 use App\Admin\Resources\Shop\OrderResource\RelationManagers\MyPaymentsRelationManager;
 use App\Admin\Resources\Shop\OrderResource\RelationManagers\ProductsRelationManager;
-use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Modules\Payment\Entities\Order;
@@ -44,13 +44,6 @@ class OrderResource extends Resource
         return "سفارشات";
     }
 
-
-    protected static function getNavigationBadge(): ?string
-    {
-        return Order::all()->where("status", "paid")->count();
-    }
-
-
     public static function form(Form $form): Form
     {
         return $form
@@ -77,7 +70,7 @@ class OrderResource extends Resource
                 TextColumn::make("price")
                     ->searchable()
                     ->label("مبلغ")
-                    ->formatStateUsing(fn (string $state): string => number_format($state) . " تومان"),
+                    ->formatStateUsing(fn(string $state): string => number_format($state) . " تومان"),
                 TextColumn::make("status")
                     ->label("وضعیت")
                     ->enum(
@@ -112,19 +105,12 @@ class OrderResource extends Resource
                     ->label("جزئیات")
                     ->color('info')
                     ->icon('heroicon-o-eye')
-                    ->url(fn (Order $record): string => route('filament.resources.shop/orders.view', $record)),
+                    ->url(fn(Order $record): string => route('filament.resources.shop/orders.view', $record)),
                 Action::make('address')
                     ->label("اطلاعات پست")
                     ->color('success')
-                    ->url(fn (Order $record): string => route("filament.resources.shop/customers.edit", $record->user))
+//                    ->url(fn (Order $record): string => route("filament.resources.shop/customers.edit", $record->user))
             ]);
-    }
-
-    protected function getTableActions(): array
-    {
-        return [
-            // ...
-        ];
     }
 
     public static function getRelations(): array
@@ -141,6 +127,18 @@ class OrderResource extends Resource
         return [
             'index' => Pages\ListOrders::route('/'),
             "view" => ViewOrder::route("/{record}")
+        ];
+    }
+
+    protected static function getNavigationBadge(): ?string
+    {
+        return Order::all()->where("status", "paid")->count();
+    }
+
+    protected function getTableActions(): array
+    {
+        return [
+            // ...
         ];
     }
 }
