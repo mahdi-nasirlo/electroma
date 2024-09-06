@@ -1,11 +1,12 @@
 <div style="margin-right: 1px;" class="card shop-list border-0 rounded position-relative shadow mb-1">
     <div class="shop-image position-relative overflow-hidden rounded shadow">
         <a href="{{ route('shop.product.single', $product) }}">
-            <img data-src="{{ $product->getCoverUrl() }}" class="img-fluid" style="width: 100%" alt="">
+            <img src="{{ $product->getCoverUrl() }}" class="img-fluid"
+                 style="width: 100%; min-width: 100%; min-height: 250px" alt="">
         </a>
         @if (isset($product->cover_hover))
             <a href="{{ route('shop.product.single', $product) }}" class="overlay-work">
-                <img data-src="{{ asset('/storage/' . $product->cover_hover) }}" class="img-fluid" alt="">
+                <img src="{{ asset('/storage/' . $product->cover_hover) }}" class="img-fluid" alt="">
             </a>
         @endif
         @if (!isset($product->inventory))

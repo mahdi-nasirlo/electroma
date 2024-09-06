@@ -80,7 +80,7 @@
                                 <div class="dropdown dropdown-primary">
                                     <button type="button" class="btn my-1 btn-soft-primary px-2 py-1 shadow-none"
                                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{--                                        <x-icon-o-user/>--}}
+                                        <x-icon-o-user/>
                                     </button>
                                     <div
                                         class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow rounded border-0 mt-3 pb-3"
