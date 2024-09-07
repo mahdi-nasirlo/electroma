@@ -2,7 +2,7 @@
     <div class="shop-image position-relative overflow-hidden rounded shadow">
         <a href="{{ route('shop.product.single', $product) }}">
             <img src="{{ $product->getCoverUrl() }}" class="img-fluid"
-                 style="width: 100%; min-width: 100%; min-height: 250px" alt="">
+                 style="width: 100%; min-width: 100%; min-height: 250px; object-fit: cover;" alt="">
         </a>
         @if (isset($product->cover_hover))
             <a href="{{ route('shop.product.single', $product) }}" class="overlay-work">
