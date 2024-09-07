@@ -80,7 +80,7 @@
                 </ul>
             @endif
         </div>
-        <livewire:shop::product-cart :product="$product"/>
+        @include("shop::components.product-cart")
     </div>
 </div>
 

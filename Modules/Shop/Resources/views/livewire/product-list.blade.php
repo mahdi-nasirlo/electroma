@@ -55,7 +55,7 @@
                                 @if ($products->isNotEmpty())
                                     @foreach ($products as $product)
                                         <div class="col-lg-4 col-md-6 col-6 ">
-                                            <livewire:shop::product-cart :product="$product" />
+                                            @include("shop::components.product-cart")
                                         </div>
                                     @endforeach
                                 @else
@@ -86,11 +86,11 @@
         @endif
     </div>
 
-    {{-- 
+    {{--
     TODO add rating filter
     TODO add papular filter
     TODO add more product sale in product list sidebar
-    TODO fix product cart 
+    TODO fix product cart
     FIXME fix brudcump on title
     FIXME fix category filter links
 --}}
