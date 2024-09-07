@@ -2,15 +2,17 @@
 
 namespace Modules\Information\Entities;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Blog\Entities\Category as BlogCategory;
 use Modules\Blog\Entities\Post;
+use Modules\Information\Database\factories\BannerFactory;
 use Modules\Shop\Entities\Category as ShopCategory;
 use Modules\Shop\Entities\Product;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Banner extends Model
+class Banner extends Model implements HasMedia
 {
     use InteractsWithMedia;
     use HasFactory;
@@ -27,6 +29,11 @@ class Banner extends Model
     protected $morphable = [
         []
     ];
+
+    protected static function newFactory()
+    {
+        return BannerFactory::new();
+    }
 
     public function bannerable()
     {
@@ -62,11 +69,5 @@ class Banner extends Model
             default:
                 return '#';
         }
-    }
-
-
-    protected static function newFactory()
-    {
-        return \Modules\Information\Database\factories\BannerFactory::new();
     }
 }
